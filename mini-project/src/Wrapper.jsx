@@ -7,6 +7,13 @@ import { useSelector } from 'react-redux';
 import { selectTitle } from './redux/appSlice.js';
 import classnames from 'classnames';
 
+import Main from './pages/Main.jsx';
+import Project from './pages/Project.jsx';
+import Curriculum from './pages/Curriculum.jsx';
+import Profile from './pages/Profile.jsx';
+import Signin from './pages/Signin.jsx';
+import Login from './pages/Login.jsx';
+
 const Container=styled.div`
     display:flex;
     justify-content:center;
@@ -87,13 +94,14 @@ const Wrapper = ({})=>{
     return(
         <>
             <Container>
+                <Title>이것은 Title이다.</Title>
                 <BackButton 
-                onClick={onBackButtonClick()}
-                className={classnames({hidden:backwardUrl === false,})}
-                >
-                    뒤로가기
+                    onClick={onBackButtonClick()}
+                    className={classnames({hidden:backwardUrl === false,})}
+                    >
+                        뒤로가기 글자색은 Wrapper에서,bgc는 App.jsx에서 오고 있다.
                 </BackButton>
-                <Title>{showTitle}</Title>
+                {/* <Title>{showTitle}</Title> */}
                 <Outlet />
             </Container>
         </>
