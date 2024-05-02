@@ -18,6 +18,7 @@ const Container=styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    
 `;
 
 const Title=styled.p`
@@ -96,11 +97,17 @@ const Wrapper = ({})=>{
             <Container>
                 <Title>이것은 Title이다.</Title>
                 <BackButton 
-                    onClick={onBackButtonClick()}
-                    className={classnames({hidden:backwardUrl === false,})}
+                    // onClick={onBackButtonClick()}
+                    // className={classnames({hidden:backwardUrl === false,})}
                     >
                         뒤로가기 글자색은 Wrapper에서,bgc는 App.jsx에서 오고 있다.
                 </BackButton>
+                <Main />
+                <Login />
+                <Signin />
+                <Project />
+                <Curriculum />
+                <Profile />
                 {/* <Title>{showTitle}</Title> */}
                 <Outlet />
             </Container>

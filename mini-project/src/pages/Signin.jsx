@@ -17,8 +17,8 @@ const Signin=()=>{
     return(
         <>
             <TestText>Signin page</TestText>
-            <Link to={'/'}>
-                <BackwardText>back</BackwardText>
+            <Link to={'/project'}>
+                <BackwardText>go to project</BackwardText>
             </Link>
         </>
     )
