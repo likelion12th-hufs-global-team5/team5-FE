@@ -18,8 +18,8 @@ const Curriculum=()=>{
     return(
         <>
             <TestText>Curriculum page</TestText>
-            <Link to={'/'}>
-                <BackwardText>back</BackwardText>
+            <Link to={'/profile'}>
+                <BackwardText>go to profile</BackwardText>
             </Link>
         </>
     )

@@ -11,14 +11,17 @@ import { login } from './redux/userSlice.js';
 import GlobalStyle from './styles/GlobalStyle.js';
 import Wrapper from './Wrapper.jsx';
 
+import Signin from './pages/Signin.jsx';
 
 const Container=styled.div`
+  wedth : 1280px;
   height:100%;
   background-color:#FFDD87;
 `;
 
 
 function App() {
+    //routes map함수 돌려서 elements에 선언.
     const elements=routes.map((item,index)=>{
       <Route key={index} path={item.path} elements={item.element} />
     });
@@ -33,6 +36,7 @@ function App() {
       }
     },[]);
 
+
     return(
         <Provider store={store}>
             <Container>
@@ -43,6 +47,7 @@ function App() {
                         </Route>
                     </Routes>
                 </Router>
+                            <Signin />
             </Container>
         </Provider>
     );

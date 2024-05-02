@@ -18,7 +18,7 @@ const Profile=()=>{
         <>
             <TestText>Profile page</TestText>
             <Link to={'/'}>
-                <BackwardText>back</BackwardText>
+                <BackwardText>go to main</BackwardText>
             </Link>
         </>
     )

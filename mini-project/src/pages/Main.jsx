@@ -17,8 +17,8 @@ const Main=()=>{
     return(
         <>
             <TestText>Main page</TestText>
-            <Link to={'/'}>
-                <BackwardText>back</BackwardText>
+            <Link to={'/login'}>
+                <BackwardText>go to login</BackwardText>
             </Link>
         </>
     )

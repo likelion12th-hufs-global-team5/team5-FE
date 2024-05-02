@@ -17,8 +17,8 @@ const Project=()=>{
     return(
         <>
             <TestText>Project page</TestText>
-            <Link to={'/'}>
-                <BackwardText>back</BackwardText>
+            <Link to={'/curriculum'}>
+                <BackwardText>go to curriculum</BackwardText>
             </Link>
         </>
     )
