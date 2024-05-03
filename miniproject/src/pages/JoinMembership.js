@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Header from '../components/Header';
+
 const Text=styled.p`
     color:blue;
     font-weight:700;
@@ -26,6 +28,7 @@ const JoinMembership=()=>{
 
     return(
         <>
+            <Header />
             <Text>test Text - JoinMembership</Text>
             <Link to={'/'}>
                 Main 이동

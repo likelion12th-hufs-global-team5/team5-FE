@@ -11,6 +11,7 @@ import Curriculum from './pages/Curriculum';
 import Member from './pages/Member';
 import Profile from './pages/Profile';
 
+import theme from './styles/theme';
 
 
 // router css
