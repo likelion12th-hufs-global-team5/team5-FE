@@ -4,6 +4,14 @@ import styled from 'styled-components';
 
 import Header from '../components/Header';
 
+const Container=styled.div`
+    display:flex;
+    flex-direction:column;
+
+    text-align:center;
+    align-items:center;
+`;
+
 const Text=styled.p`
     color:blue;
     font-weight:700;
@@ -12,11 +20,13 @@ const Profile=()=>{
 
     return(
         <>
-            <Header />
-            <Text>test Text - Profile</Text>
-            <Link to={'/'}>
-                Main 이동
-            </Link>
+            <Container>
+                <Header />
+                <Text>test Text - Profile</Text>
+                <Link to={'/'}>
+                    Main 이동
+                </Link>
+            </Container>
         </>
     )
 }
