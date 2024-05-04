@@ -11,7 +11,8 @@ const Container=styled.div`
     text-align:center;
     align-items:center;
     
-    margin:50px auto auto 90px;
+    position:fixed;
+    top:43px;
 `;
 
 const Logo=styled.p`

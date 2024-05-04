@@ -11,6 +11,11 @@ const Container=styled.div`
     flex-direction:row;
     text-align:center;
     align-items:center;
+    
+    position:fixed;
+    bottom:30px;
+    margin: 0 auto;
+
 
     color:${({theme})=>theme.colors.mainColor};
     font-family:${({theme})=>theme.fonts.english};

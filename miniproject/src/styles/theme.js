@@ -1,3 +1,7 @@
+const size={
+    
+}
+
 const theme={
     colors:{
         mainColor:'#FE5826',
@@ -27,7 +31,7 @@ const theme={
         placeHolder:'18px',
         buttonFont:'26px',
         login:'40px',
-        footerFont:'36px',
+        footerFont:'30px',
     }
 }
 
