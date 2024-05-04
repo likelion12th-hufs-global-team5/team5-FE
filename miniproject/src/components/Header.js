@@ -7,7 +7,10 @@ import {BsCaretDownFill} from 'react-icons/bs';
 
 const Container=styled.div`
     display:flex;
-
+    flex-direction:row;
+    text-align:center;
+    align-items:center;
+    
     margin:50px auto auto 90px;
 `;
 
@@ -58,18 +61,24 @@ const Select=styled.div`
 
 const UserImg=styled.div`
     margin-left:90px;
-    marign-righe:30px;
+    margin-right:30px;
+
     width:50px; 
     height:50px;
     border-radius:100%;
     background-color:${({theme})=>theme.colors.mainColor};
-
 `;
 const LoginBtn=styled.button`
     padding:7px 20px;
     font-size:${({theme})=>theme.fontSize.login};
     color:${({theme})=>theme.colors.white};
     background-color:${({theme})=>theme.colors.mainColor};
+    border-radius:15px;
+
+    font-weight:700;
+    font-family:${({theme})=>theme.fonts.english}
+    font-style:${({theme})=>theme.fonts.login};
+    letter-spacing:${({theme})=>theme.fonts.logoLetterSpace};
 `;
 
 const Header = () => {
@@ -110,7 +119,7 @@ const Header = () => {
                 <UserImg />
                 <Link to={'/login'}>
                     <LoginBtn>
-                        Login
+                        LOGIN
                     </LoginBtn>
                 </Link>
             </Container>
