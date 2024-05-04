@@ -11,6 +11,7 @@ const GlobalStyle=createGlobalStyle`
     *{
         box-sizing:border-box;
         margin:0 auto;
+
     }
     html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,dl,dt,dd,ol,ul,lil,form,label,table{
         margin:0;
