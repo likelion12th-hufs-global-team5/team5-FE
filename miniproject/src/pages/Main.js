@@ -24,7 +24,7 @@ const Main = () => {
                 <Header />
                 <Circle />
                 <Footer />
-                <RandomStars />
+                {/* <RandomStars /> */}
             </Container> 
         </>
     )
