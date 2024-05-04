@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import theme from '../styles/theme';
 
-import Header from '../components/Header';
-
-const Text=styled.p`
-    color:blue;
-    font-weight:700;
-`;
+import Logo from '../components/Logo';
 
 const LoginContainer=styled.div`
     display:flex;
     flex-direction:column;
+
+    background-color:${({theme})=>theme.backgroundColor.white};
+
 `;
 const LoginInput=styled.input`
     padding: 10px;
@@ -21,10 +20,8 @@ const Login=()=>{
 
     return(
         <>
-            <Header />
-            <Text>test Text - Login</Text>
             <Link to={'/'}>
-                Main 이동
+                <Logo />
             </Link>
             <LoginContainer>
                 ID <LoginInput placeholder='아이디를 입력해주세요.'/>

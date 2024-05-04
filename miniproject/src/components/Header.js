@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 
+import Logo from './Logo';
+
 import {BsCaretDownFill} from 'react-icons/bs';
 
 const Container=styled.div`
@@ -15,22 +17,6 @@ const Container=styled.div`
     top:43px;
 `;
 
-const Logo=styled.p`
-    margin-right:90px;
-    font-weight:700;
-    font-family:${({theme})=>theme.fonts.english}
-    font-style:${({theme})=>theme.fonts.style};
-    letter-spacing:${({theme})=>theme.fonts.logoLetterSpace};
-
-    .hufs{
-        color:${({theme})=>theme.colors.white};
-        font-size:${({theme})=>theme.fontSize.logo};
-    }
-    .lion{
-        color:${({theme})=>theme.colors.mainColor};
-        font-size:${({theme})=>theme.fontSize.logo};
-    }
-`;
 const Select=styled.div`
     display:flex;
     flex-direction: row;
@@ -88,10 +74,7 @@ const Header = () => {
         <>
             <Container>
                 <Link to='/'>
-                    <Logo>
-                        <span className='hufs'>HUFS</span>
-                        <span className='lion'>LION</span>
-                    </Logo>
+                    <Logo />
                 </Link>
                 <Link to={'/project'}>
                     <Select>
