@@ -1,17 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../styles/theme';
 
-const Container=styled.div`
-    display:flex;
-    flex-direction:row;
-    text-align:center;
-    align-items:center;
+// const Container=styled.div`
+//     display:flex;
+//     flex-direction:row;
+//     text-align:center;
+//     align-items:center;
     
-    position:fixed;
-    top:43px;
-`;
+//     position:fixed;
+//     top:43px;
+// `;
 
 const LogoText=styled.p`
     display:flex;
