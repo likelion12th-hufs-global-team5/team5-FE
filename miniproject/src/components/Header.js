@@ -35,13 +35,16 @@ const Select=styled.div`
 
     &:hover{
         color:${({theme})=>theme.colors.mainColor};
+        transition: color 0.2s;
     }
 
     &:active{
         color:${({theme})=>theme.colors.white};
+        transition: color 0.2s;
         border-color:transparent;
         border-radius : 25px 25px 0px 0px;
         background-color:${({theme})=>theme.colors.mainColor};
+        transition: background-color 0.2s;
     }
     
 `;

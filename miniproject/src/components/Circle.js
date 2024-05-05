@@ -15,22 +15,27 @@ const rotate = keyframes`
     from{
         background: linear-gradient(105deg, rgba(254,88,38,0.75) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.75) 100%);
         opacity:1;
+        // transition: background-color 0.2s;
     }
     25%{
         background: linear-gradient(105deg, rgba(254,88,38,0.5) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.5) 100%);
         opacity:0.75;
+        // transition: background-color 0.2s;
     }
     50%{
         background: linear-gradient(105deg, rgba(0,0,0,0) 0%, rgba(32,8,1,0.25) 50%, rgba(254,88,38,0.25) 100%);
         opacity:0.5;
+        // transition: background-color 0.2s;
     }
     75%{
         background: linear-gradient(105deg, rgba(0,0,0,0) 0%, rgba(32,8,1,0.5) 50%, rgba(254,88,38,0.5) 100%);
         opacity:0.75;
+        // transition: background-color 0.2s;
     }
     to{
         background: linear-gradient(105deg, rgba(32,8,1,0.75) 0% , rgba(254,88,38,0.75) 50%, rgba(0,0,0,0) 100% ) ;
         opacity:1;
+        // transition: background-color 0.2s;
     }
 `;
 
@@ -56,6 +61,7 @@ const CircleDiv=styled.div`
     // border-color:#fff;
 
     animation:${rotate} 1s linear infinite;
+    transition: background-color 0.2s;
     
     `;
 
