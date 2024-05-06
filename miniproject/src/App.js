@@ -12,6 +12,10 @@ import Member from './pages/Member';
 import Profile from './pages/Profile';
 
 import theme from './styles/theme';
+import ProjectUpload from './pages/ProjectUpload';
+import ProjectDetail from './pages/ProjectDetail';
+import CurriculumUpload from './pages/CurriculumUpload';
+import CurriculumDetail from './pages/CurriculumDetail';
 
 
 // router css
@@ -31,7 +35,11 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/joinMembership' element={<JoinMembership />} />
               <Route path='/project' element={<Project />} />
+              <Route path='/projectUpload' element={<ProjectUpload />} />
+              <Route path='/projectDetail' element={<ProjectDetail />} />
               <Route path='/curriculum' element={<Curriculum />} />
+              <Route path='/curriculumUpload' element={<CurriculumUpload />} />
+              <Route path='/curriculumDetail' element={<CurriculumDetail />} />
               <Route path='/member' element={<Member />} />
               <Route path='/profile' element={<Profile />} />
             </Routes>
