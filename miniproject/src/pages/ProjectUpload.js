@@ -10,32 +10,29 @@ const Container=styled.div`
 
     text-align:center;
     align-items:center;
+
+    color:#fff;
 `;
 
 const Text=styled.p`
-    margin:30px auto;
     color:blue;
     font-weight:700;
+
+    margin:30px auto;
 `;
-const Curriculum=()=>{
+const ProjectUpload=()=>{
 
     return(
         <>
             <Container>
                 <Header />
-                <Text>test Text - Curriculum</Text>
+                <Text>test Text - Project upload page</Text>
                 <Link to={'/'}>
                     Main 이동
-                </Link>
-                <Link to={'/curriculumUpload'}>
-                    커리큘럼 업로드 페이지
-                </Link>
-                <Link to={'/curriculumDetail'}>
-                    커리큘럼 디테일 페이지
                 </Link>
             </Container>
         </>
     )
 }
 
-export default Curriculum
+export default ProjectUpload;

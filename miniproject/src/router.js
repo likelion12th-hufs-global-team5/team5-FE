@@ -5,6 +5,10 @@ import Project from './pages/Project';
 import Curriculum from './pages/Curriculum';
 import Member from './pages/Member';
 import Profile from './pages/Profile';
+import ProjectUpload from './pages/ProjectUpload';
+import ProjectDetail from './pages/ProjectDetail';
+import CurriculumUpload from './pages/CurriculumUpload';
+import CurriculumDetail from './pages/CurriculumDetail';
 
 const routes=[
     {
@@ -28,9 +32,29 @@ const routes=[
         name:'프로젝트페이지',
     },
     {
+        path:'/projectUpload',
+        element:<ProjectUpload />,
+        name:'프로젝트업로드페이지'
+    },
+    {
+        path:'/projectDetail',
+        element:<ProjectDetail />,
+        name:'프로젝트디테일페이지'
+    },
+    {
         path:'/curriculum',
         element:<Curriculum />,
         name:'커리큘럼페이지',
+    },
+    {
+        path:'/curriculumUpload',
+        element:<CurriculumUpload />,
+        name:'커리큘럼업로드페이지',
+    },
+    {
+        path:'/curriculumDetail',
+        element:<CurriculumDetail />,
+        name:'커리큘럼디테일페이지',
     },
     {
         path:'/member',

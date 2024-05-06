@@ -15,6 +15,8 @@ const Container=styled.div`
 const Text=styled.p`
     color:blue;
     font-weight:700;
+
+    margin:30px auto;
 `;
 const Project=()=>{
 
@@ -26,9 +28,15 @@ const Project=()=>{
                 <Link to={'/'}>
                     Main 이동
                 </Link>
+                <Link to={'/projectUpload'}>
+                    Project upload 페이지로 이동
+                </Link>
+                <Link to={'/projectDetail'}>
+                    Project detail 페이지로 이동
+                </Link>
             </Container>
         </>
     )
 }
 
-export default Project
+export default Project;
