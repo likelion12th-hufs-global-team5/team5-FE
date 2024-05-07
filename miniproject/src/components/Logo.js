@@ -1,16 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// const Container=styled.div`
-//     display:flex;
-//     flex-direction:row;
-//     text-align:center;
-//     align-items:center;
-    
-//     position:fixed;
-//     top:43px;
-// `;
-
 const LogoText=styled.p`
     display:flex;
     flex-direction:row;
@@ -18,6 +8,7 @@ const LogoText=styled.p`
     align-items:center;
 
     margin-right:90px;
+    
     font-weight:700;
     font-family:${({theme})=>theme.fonts.english}
     font-style:${({theme})=>theme.fonts.style};

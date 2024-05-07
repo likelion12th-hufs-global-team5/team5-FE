@@ -8,24 +8,25 @@ import Circle from '../components/Circle';
 const Container=styled.div`
     display:flex;
     flex-direction:row;
-    text-align:center;
+
     align-items:center;
+	justify-content: center;
 
-    margin:25px;
-
-    // .loginLogo{
-    //     position:fixed;
-    //     // top:50px;
-    //     left:50px;
-    // }
-
+    padding:60px;
 `;
+    
 
 const LogoCircleDiv=styled.div`
     z-index:1;
 
+    width:100%;
+    height:100%;
+    // margin-left:60px;
+
     display:flex;
     flex-direction:column;
+
+    justify-content: space-between;
 `;
 
 const LoginContainer=styled.div`
@@ -40,7 +41,6 @@ const LoginContainer=styled.div`
     padding:40px;
     
     color:${({theme})=>theme.colors.white};
-    // background: rgba(${({ theme }) => theme.backgroundColor.white}, 0.19);
     background:rgba(255,255,255,0.19);
     border-radius:20px;
 
@@ -84,6 +84,7 @@ const LoginInput=styled.input`
     border-radius:50px;
 
     font-size:${({theme})=>theme.fontSize.loginInputText};
+    font-size: 36px;
 
     outline:none;
 
@@ -101,14 +102,7 @@ const LoginInput=styled.input`
         color:${({theme})=>theme.colors.mainColor};
     }
 
-    // &:hover{
-    //     border:solid 4px;
-
-    //     background:rgba(255,255,255,0.19);
-    //     border-color:${({theme})=>theme.colors.white};
-
-    //     color:${({theme})=>theme.colors.white};
-    // }
+    
 `;
 const LoginButton=styled.button`
     margin-top : 45px;
@@ -141,6 +135,12 @@ const GotoJoinMembership=styled.div`
         color:${({theme})=>theme.colors.white};
     }
 `;
+
+const ProjectDiv=styled.div`
+    width:300px;
+    height:300px;
+`;
+
 const Login=()=>{
 
     return(
@@ -148,9 +148,12 @@ const Login=()=>{
             <Container>
                 <LogoCircleDiv>
                     <Link to={'/'}>
-                        <Logo styled='position:fixed; top:50px;'/>
+                        {/* <Logo styled={{flex: `1 0 auto;`}}/> */}
+                        <Logo />
                     </Link>
                     <Circle />
+                    {/* <Circle styled={{flex: `1 0 auto;`}}/> */}
+                    {/* <Circle style={{ margin: '0px auto 108px auto' }} /> */}
                 </LogoCircleDiv>
                 <LoginContainer>
                     <p className='LoginHeader'>로그인</p><br />
@@ -170,6 +173,7 @@ const Login=()=>{
                         </Link>
                     </GotoJoinMembership>
                 </LoginContainer>
+                <ProjectDiv></ProjectDiv>
             </Container>
         </>
     )
