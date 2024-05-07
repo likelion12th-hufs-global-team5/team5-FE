@@ -13,8 +13,10 @@ const Container=styled.div`
     text-align:center;
     align-items:center;
     
-    position:fixed;
-    top:43px;
+    // position:fixed;
+    // top:43px;
+
+    margin:43px auto 77px auto;
 `;
 
 const Select=styled.div`

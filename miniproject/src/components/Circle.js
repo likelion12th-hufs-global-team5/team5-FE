@@ -3,14 +3,6 @@ import styled,
         //animation
         { keyframes }from 'styled-components';
 
-// animation
-import { useTransition,
-    // eslint-disable-next-line
-    animated 
-} from '@react-spring/web';
-
-
-
 const rotate = keyframes`
     from{
         background: linear-gradient(105deg, rgba(254,88,38,0.75) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.75) 100%);
@@ -48,7 +40,7 @@ const CircleDiv=styled.div`
     width:619px;
     height:619px;
 
-    margin:160px auto 0px auto;
+    // margin:160px auto 0px auto;
 
     // background: linear-gradient(105deg, rgba(254,88,38,0.75) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.75) 100%);
     backdrop-filter: blur(100px);

@@ -12,8 +12,14 @@ const Container=styled.div`
     display:flex;
     flex-direction:column;
 
-    text-align:center;
     align-items:center;
+
+    // justify-contents:space-between;
+    justify-content: space-evenly;
+    
+    // justify-contents:center;
+    justify-content: space-between;
+    // flex:1;
 `;
 
 const Main = () => {

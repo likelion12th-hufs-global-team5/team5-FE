@@ -12,9 +12,11 @@ const Container=styled.div`
     text-align:center;
     align-items:center;
     
-    position:fixed;
-    bottom:30px;
-    margin: 0 auto;
+    // position:fixed;
+    // bottom:30px;
+
+    // margin: 0 auto;
+    margin:43px auto 77px auto;
 
 
     color:${({theme})=>theme.colors.mainColor};
