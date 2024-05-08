@@ -1,99 +1,67 @@
-import React, { useState } from 'react';
-import styled,
-        //animation
-        { keyframes }from 'styled-components';
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const rotate = keyframes`
-    from{
+    from {
         background: linear-gradient(105deg, rgba(254,88,38,0.75) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.75) 100%);
-        opacity:1;
-        // transition: background-color 0.2s;
+        opacity: 1;
     }
-    25%{
+    25% {
         background: linear-gradient(105deg, rgba(254,88,38,0.5) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.5) 100%);
-        opacity:0.75;
-        // transition: background-color 0.2s;
+        opacity: 0.75;
     }
-    50%{
+    50% {
         background: linear-gradient(105deg, rgba(0,0,0,0) 0%, rgba(32,8,1,0.25) 50%, rgba(254,88,38,0.25) 100%);
-        opacity:0.5;
-        // transition: background-color 0.2s;
+        opacity: 0.5;
     }
-    75%{
+    75% {
         background: linear-gradient(105deg, rgba(0,0,0,0) 0%, rgba(32,8,1,0.5) 50%, rgba(254,88,38,0.5) 100%);
-        opacity:0.75;
-        // transition: background-color 0.2s;
+        opacity: 0.75;
     }
-    to{
-        background: linear-gradient(105deg, rgba(32,8,1,0.75) 0% , rgba(254,88,38,0.75) 50%, rgba(0,0,0,0) 100% ) ;
-        opacity:1;
-        // transition: background-color 0.2s;
+    to {
+        background: linear-gradient(105deg, rgba(32,8,1,0.75) 0% , rgba(254,88,38,0.75) 50%, rgba(0,0,0,0) 100%);
+        opacity: 1;
     }
 `;
 
-const CircleDiv=styled.div`
-    display:flex;
-    flex-direction:column;
-    text-align:center;
-    align-items:center;
+const CircleDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    width:619px;
-    height:619px;
-
-    // margin:160px auto 0px auto;
-
-    // background: linear-gradient(105deg, rgba(254,88,38,0.75) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.75) 100%);
-    backdrop-filter: blur(100px);
-
-    border:solid 0.5px;
-    border-radius:100%;
-    // border-color: liner-gradient(75deg, rgba(254,88,38,0.75) 0%, rgba(0,0,0,0) 50%, rgba(32,8,1,0.75) 100%)
-
-    // border-color:rgba(255,255,255,0.1);
-    // border-color:#fff;
-
-    animation:${rotate} 1s linear infinite;
-    transition: background-color 0.2s;
+    width: 35%;
+    height: 0%;
+    padding-bottom: 35%; /* 원의 가로길이와 높이를 같게 만듦 */
     
-    `;
-
-// Blur 속성 먹이려고 p -> div로 styled 타입 바꿈
-// const Slogan=styled.p`
-//     margin:auto 0;
-
-//     color:${({theme})=>theme.colors.white};
-//     font-family:${({theme})=>theme.fonts.english};
-//     font-size:${({theme})=>theme.fontSize.slogan};
-// `;
-
-const Slogan=styled.div`
-    margin:0 auto;
-
-    width:619px;
-    height:619px;
-
-    display:flex;
-
-    text-align:center;
-    align-items:center;
-    justify-content:center;
-
-    backdrop-filter: blur(5px);
-
-    color:${({theme})=>theme.colors.white};
-    font-family:${({theme})=>theme.fonts.english};
-    font-size:${({theme})=>theme.fontSize.slogan};
+    backdrop-filter: blur(100px);
+    /* border: solid 0.5px; */
+    border-radius: 50%;
+    animation: ${rotate} 1s linear infinite;
+    transition: background-color 0.2s;
 `;
 
-const Circle=()=>{
-    return(
-        <> 
+const Slogan = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: ${({ theme }) => theme.colors.white};
+    font-family: ${({ theme }) => theme.fonts.english};
+    font-size: 7vw;
+    max-width: 90%; /* 슬로건이 원 안에 넘치지 않도록 최대 너비 설정 */
+    white-space: nowrap;
+`;
+
+const Circle = () => {
+    return (
+        <>
             <CircleDiv>
                 <Slogan>GROWL - TO<br/>- &gt; WORLD</Slogan>
-            </CircleDiv> 
+            </CircleDiv>
         </>
     )
 };
-
 
 export default Circle;
