@@ -25,6 +25,7 @@ const LogoCircleDiv=styled.div`
 
     display:flex;
     flex-direction:column;
+    flex-wrap: wrap;
 
     justify-content: space-between;
 `;
@@ -45,7 +46,7 @@ const LoginContainer=styled.div`
     border-radius:20px;
 
     .LoginHeader{
-        margin-botton:28px;
+        margin-bottom:28px;
 
         font-size:${({theme})=>theme.fontSize.loginHeader};
         color:${({theme})=>theme.colors.white};
@@ -73,7 +74,6 @@ const LoginInput=styled.input`
     display:flex;
     flex-direction:left;
 
-    type:'text';
     margin:30px 0px;
     padding:18px 33px;
 
@@ -84,7 +84,7 @@ const LoginInput=styled.input`
     border-radius:50px;
 
     font-size:${({theme})=>theme.fontSize.loginInputText};
-    font-size: 36px;
+    /* font-size: 36px; */
 
     outline:none;
 
@@ -102,7 +102,9 @@ const LoginInput=styled.input`
         color:${({theme})=>theme.colors.mainColor};
     }
 
-    
+    &:hover::placeholder {
+        color:${({theme})=>theme.colors.mainColor}; /* hover 시 placeholder 색상 변경 */
+    }
 `;
 const LoginButton=styled.button`
     margin-top : 45px;
@@ -117,6 +119,12 @@ const LoginButton=styled.button`
     font-family:${({theme})=>theme.fonts.english};
     font-size:${({theme})=>theme.fontSize.buttonFont};
     font-weight:${({theme})=>theme.fontWeights.loginHeader};
+    letter-spacing:0.1vw;
+    &:hover{
+        color: ${({theme})=>theme.colors.white};
+        background-color: ${({theme})=>theme.colors.mainColor};
+        transition: all 0.2s;
+    }
 `;
 const GotoJoinMembership=styled.div`
     display:flex;

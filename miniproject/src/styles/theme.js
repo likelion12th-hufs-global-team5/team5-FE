@@ -1,6 +1,4 @@
-const size={
-    
-}
+import JoinMembership from "../pages/JoinMembership";
 
 const theme={
     colors:{
@@ -36,16 +34,19 @@ const theme={
         login:'40px',
         loginHeader:'48px',
         loginHeaderText:'24px',
-        loginInputText:'26px',
+        loginInputText:'20px',
         inputText:'26px',
+        joinHeader:'48px',
         footerFont:'30px',
         test:'18px'
     },
     fontWeights:{
         loginHeader:'Bold',
         loginText:'Light',
+        joinHeader:'Bold',
         inputText:'Bold',
         gotoJoinMembership:'Bold',
+        JoinMembership:'Bold',
     },
     fontLineHeight:{
         loginText:'140%',
