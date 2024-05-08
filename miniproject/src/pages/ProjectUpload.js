@@ -15,10 +15,15 @@ const Container=styled.div`
 `;
 
 const Text=styled.p`
-    color:blue;
+    color:#FE5826;
     font-weight:700;
 
     margin:30px auto;
+
+    &:hover{
+    background-color:white;
+    color:#FE5826;
+    }
 `;
 const ProjectUpload=()=>{
 
