@@ -47,7 +47,7 @@ const Select = styled.div`
     color: ${({ theme }) => theme.colors.white};
     transition: color 0.2s;
     border-color: transparent;
-    border-radius: 3.125vw; /* 변경된 값 */
+    border-radius: 25px 25px 5px 5px; /* 변경된 값 */
     background-color: ${({ theme }) => theme.colors.mainColor};
     transition: background-color 0.2s;
   }
@@ -64,18 +64,18 @@ const User = styled.div`
 `;
 
 const UserImg = styled.div`
-  width: 5.938vw; /* 변경된 값 */
-  height: 5.938vw; /* 변경된 값 */
+  width: 3vw; /* 변경된 값 */
+  height: 3vw; /* 변경된 값 */
   border-radius: 50%; /* 변경된 값 */
   background-color: ${({ theme }) => theme.colors.mainColor};
 `;
 
 const LoginBtn = styled.button`
-  padding: 0.859vw 2.5vw; /* 변경된 값 */
+  padding: 0.4vw 1.5vw; /* 변경된 값 */
   font-size: ${({ theme }) => theme.fontSize.login};
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.mainColor};
-  border-radius: 1.406vw; /* 변경된 값 */
+  border-radius: 1vw; /* 변경된 값 */
   font-weight: 700;
   font-family: ${({ theme }) => theme.fonts.english};
   font-style: ${({ theme }) => theme.fonts.login};
