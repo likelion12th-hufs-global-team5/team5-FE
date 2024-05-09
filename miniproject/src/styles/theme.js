@@ -35,6 +35,7 @@ const theme={
         loginHeader:'48px',
         loginHeaderText:'24px',
         loginInputText:'20px',
+        joinPositionBtn:'18px',
         inputText:'26px',
         joinHeader:'48px',
         footerFont:'30px',
