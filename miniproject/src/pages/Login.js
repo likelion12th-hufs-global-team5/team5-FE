@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Logo from '../components/Logo';
-import Circle from '../components/Circle';
+import LogoCircle from '../components/LogoCircle';
 
 const Container=styled.div`
     display:flex;
@@ -13,21 +12,9 @@ const Container=styled.div`
 	justify-content: center;
 
     padding:60px;
-`;
-    
 
-const LogoCircleDiv=styled.div`
-    z-index:1;
-
-    width:100%;
-    height:100%;
-    // margin-left:60px;
-
-    display:flex;
-    flex-direction:column;
     flex-wrap: wrap;
-
-    justify-content: space-between;
+    gap: 7vw;
 `;
 
 const LoginContainer=styled.div`
@@ -37,8 +24,11 @@ const LoginContainer=styled.div`
     flex-direction:column;
     text-align:left;
 
-    width:609px;
-    height:744px;
+    /* width:609px;
+    height:744px; */
+    width: 40%;
+    padding: 2vw;
+
     padding:40px;
     
     color:${({theme})=>theme.colors.white};
@@ -154,15 +144,7 @@ const Login=()=>{
     return(
         <>
             <Container>
-                <LogoCircleDiv>
-                    <Link to={'/'}>
-                        {/* <Logo styled={{flex: `1 0 auto;`}}/> */}
-                        <Logo />
-                    </Link>
-                    <Circle />
-                    {/* <Circle styled={{flex: `1 0 auto;`}}/> */}
-                    {/* <Circle style={{ margin: '0px auto 108px auto' }} /> */}
-                </LogoCircleDiv>
+                <LogoCircle />
                 <LoginContainer>
                     <p className='LoginHeader'>로그인</p><br />
                     <p className='LoginText'>

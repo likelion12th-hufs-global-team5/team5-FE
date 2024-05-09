@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Logo from '../components/Logo';
 import Circle from '../components/Circle';
 import theme from '../styles/theme';
+import LogoCircle from '../components/LogoCircle';
 
 const Container=styled.div`
     display:flex;
@@ -15,20 +16,8 @@ const Container=styled.div`
 
     padding:60px;
 
-`;
-const LogoCircleDiv=styled.div`
-    z-index:1;
-
-    /* width:100%; */
-    width: 50%;
-    height:100%;
-    // margin-left:60px;
-
-    display:flex;
-    flex-direction:column;
     flex-wrap: wrap;
-
-    justify-content: space-between;
+    gap: 7vw;
 `;
 const JoinContainer=styled.div`
     z-index:5;
@@ -183,12 +172,7 @@ const JoinMembership=()=>{
     return(
         <>
             <Container>
-                <LogoCircleDiv>
-                    <Link to='/'>
-                        <Logo />
-                    </Link>
-                    <Circle />
-                </LogoCircleDiv>
+                <LogoCircle />
                 <JoinContainer>
                     <JoinContainerHeader>
                         <p className='Header'>회원가입</p>
