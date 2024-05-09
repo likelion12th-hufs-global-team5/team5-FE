@@ -18,6 +18,17 @@ const Text=styled.p`
 
     margin:30px auto;
 `;
+
+const Projectdiv=styled.div`
+    width : 1150px;
+    height : 549px;
+
+    background-color:rgba(255,255,255,0.19);
+    border-radius:35px;
+    padding-top:77px;
+    padding-right:77px;
+`;
+
 const ProjectDetail=()=>{
 
     return(
@@ -28,6 +39,9 @@ const ProjectDetail=()=>{
                 <Link to={'/'}>
                     Main 이동
                 </Link>
+                <Projectdiv>
+                    dd
+                </Projectdiv>
             </Container>
         </>
     )
