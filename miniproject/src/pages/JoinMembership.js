@@ -14,11 +14,13 @@ const Container=styled.div`
 	justify-content: center;
 
     padding:60px;
+
 `;
 const LogoCircleDiv=styled.div`
     z-index:1;
 
-    width:100%;
+    /* width:100%; */
+    width: 50%;
     height:100%;
     // margin-left:60px;
 
@@ -34,16 +36,28 @@ const JoinContainer=styled.div`
     display:flex;
     flex-direction:column;
     text-align:left;
+    justify-content: center;
 
-    width:609px;
-    height:744px;
-    padding:30px;
+    width: 40%;
+    padding: 2vw;
 
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+    gap: 1.5vw;
 
     color:${({theme})=>theme.colors.white};
     background:rgba(255,255,255,0.19);
     border-radius:20px;
+
+    .joinButton{
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+
+    // 회원가입 버튼 위치 조정때문에 넣음
+    .empty{
+        /* background-color: blue; */
+        width: 50%;
+    }
 `;
 const JoinContainerHeader=styled.div`
     display: flex;
@@ -54,7 +68,9 @@ const JoinContainerHeader=styled.div`
     line-height: 130%;
 
     flex-wrap: wrap;
-    gap: 30px;
+    /* gap: 30px; */
+    gap: 0.7vw;
+    line-height: 150%;;
 
     .Header{
         font-size: ${({theme})=>theme.fontSize.joinHeader};
@@ -65,21 +81,41 @@ const JoinInputDiv=styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    flex-wrap: wrap;
+    gap:1vw;
     p{
+        text-align: center;
         font-size:${({theme})=>theme.fontSize.inputText};
         font-weight:${({theme})=>theme.fontWeights.inputText};
+        
+        /* background-color: blue; */
+
+        width: 3vw;
     }
 
-    .password{
-        align-items: first baseline;
+    // input password 창 정렬 맞추기 위해 만든것.
+    .passwordTransparent{
+        color:transparent;
+        background-color: transparent;
+    }
+
+    .position{
+        display: flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: start;
+
+        flex-wrap: wrap;
+        gap: 0.5vw;
     }
 `;
 const JoinInput=styled.input`
     display:flex;
-    /* flex-direction:left; */
 
     margin:30px 0px;
-    padding:18px 33px;
+    /* padding:18px 33px; */
+    padding: 18px 23px;
 
     width:450px;
     height:50px;
@@ -88,7 +124,6 @@ const JoinInput=styled.input`
     border-radius:50px;
 
     font-size:${({theme})=>theme.fontSize.loginInputText};
-    /* font-size: 36px; */
 
     outline:none;
 
@@ -117,6 +152,8 @@ const JoinInputPosition=styled.button`
 
     border-radius: 50px;
     box-sizing: border-box; /* border-box 값을 설정하여 border가 요소 안으로 들어가게 함 */
+
+    font-size: ${({theme})=>theme.fontSize.joinPositionBtn};
 
     &:hover{
         background:rgba(254,88,38,0.19);
@@ -158,31 +195,39 @@ const JoinMembership=()=>{
                         <p>한국외국어대학교 글로벌 캠퍼스<br />
                             멋쟁이사자처럼 대학 홈페이지 입니다.</p>
                     </JoinContainerHeader>
-                    <JoinInputDiv>
-                        <p>이름</p>
-                        <JoinInput placeholder='이름을 작성해주세요.'/>
-                    </JoinInputDiv>
-                    <JoinInputDiv>
-                        <p>학번</p>
-                        <JoinInput placeholder='학번을 작성해주세요.'/>
-                    </JoinInputDiv>
-                    <JoinInputDiv>
-                        <p>ID</p>
-                        <JoinInput placeholder='아이디를 작성해주세요.'/>
-                    </JoinInputDiv>
-                    <JoinInputDiv className='password'>
-                        <p>pw</p>
-                        <div>
+                    <div>
+                        <JoinInputDiv>
+                            <p>이름</p>
+                            <JoinInput placeholder='이름을 작성해주세요.'/>
+                        </JoinInputDiv>
+                        <JoinInputDiv>
+                            <p>학번</p>
+                            <JoinInput placeholder='학번을 작성해주세요.'/>
+                        </JoinInputDiv>
+                        <JoinInputDiv>
+                            <p>I  D</p>
+                            <JoinInput placeholder='아이디를 작성해주세요.'/>
+                        </JoinInputDiv>
+                        <JoinInputDiv>
+                            <p>P  W</p>
                             <JoinInput placeholder='비밀번호를 작성해주세요.'/>
+                        </JoinInputDiv>
+                        <JoinInputDiv>
+                            <p className='passwordTransparent'>pw</p>
                             <JoinInput placeholder='비밀번호를 다시 작성해주세요.'/>
-                        </div>
-                    </JoinInputDiv>
-                    <JoinInputDiv>
-                        <p>활동</p>
-                        <JoinInputPosition>아기사자</JoinInputPosition>
-                        <JoinInputPosition>운영진</JoinInputPosition>
-                    </JoinInputDiv>
-                    <JoinButton>회원가입</JoinButton>
+                        </JoinInputDiv>
+                        <JoinInputDiv >
+                            <p>활동</p>
+                            <div className='position'>
+                                <JoinInputPosition>아기사자</JoinInputPosition>
+                                <JoinInputPosition>운영진</JoinInputPosition>
+                            </div>
+                        </JoinInputDiv>
+                    </div>
+                    <div className='joinButton'>
+                        <div className='empty'/>
+                        <JoinButton>회원가입</JoinButton>
+                    </div>
                 </JoinContainer>
             </Container>
         </>
