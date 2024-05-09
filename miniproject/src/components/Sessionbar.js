@@ -3,13 +3,13 @@ import React from "react";
 import styled from "styled-components";
 
 const BarContainer = styled.div`
-  background-color: #dfdfdf;
+  background-color: rgba(255, 255, 255, 0.35);
   color: white;
   padding: 10px 15px 10px 15px;
   margin-top: 15px;
   border-radius: 5px;
   height: 35px;
-  width: 800px;
+  width: ${(props) => props.width || "780px"}; // 기본값은 800px
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,11 +34,17 @@ const UploadButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   flex-shrink: 0; // 버튼의 크기가 줄어들지 않도록
+
+  &:hover {
+    // 마우스를 버튼 위에 올렸을 때 적용될 스타일
+    background-color: #fe5826;
+    color: white;
+  }
 `;
 
-const SessionBar = ({ label, onLabelClick, onButtonClick }) => {
+const SessionBar = ({ label, onLabelClick, onButtonClick, width }) => {
   return (
-    <BarContainer>
+    <BarContainer width={width}>
       <ButtonLabel onClick={onLabelClick}>{label}</ButtonLabel>
       <UploadButton onClick={onButtonClick}>업로드</UploadButton>
     </BarContainer>

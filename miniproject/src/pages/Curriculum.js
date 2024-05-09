@@ -49,7 +49,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Header from "../components/Header";
-
+import Footer from "../components/Footer";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,13 +58,13 @@ const Container = styled.div`
 `;
 const CurriculumBox = styled.div`
   width: 1000px;
-  height: 1000px;
-  background-color: rgba(211, 211, 211, 0.7); // 투명한 밝은 회색
+  height: 1100px;
+  background-color: rgba(255, 255, 255, 0.19); // 투명한 밝은 회색
   border-radius: 10px; // 둥근 모서리
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0; // 상단과 하단의 padding 제거
+  padding: 0;
 `;
 const Curriculumtext = styled.p`
   margin-top: 77px;
@@ -83,8 +83,11 @@ const CommoncurBox = styled.div`
   background-color: rgba(0, 0, 0, 0); // 투명한 배경
   border-radius: 8px;
   padding: 20px;
-  margin-top: 20px;
+
   position: relative; // 선을 위한 포지셔닝
+`;
+const CommonsessionContainer = styled.div`
+  padding-left: 40px; // 선으로부터의 간격
 `;
 const CommonTitle = styled.p`
   color: #fe5826;
@@ -111,9 +114,47 @@ const Commonline = styled.div`
   background-color: #fe5826; // 선의 색상
 `;
 
-const CommonsessionContainer = styled.div`
-  padding-left: 40px; // 선으로부터의 간격
+//중간 FE/BD 파트 나뉘는 부분
+const PartBox = styled.div`
+  display: flex;
+  justify-content: center; // 가로 중앙 정렬
+  align-items: center; // 세로 중앙 정렬
+  gap: 20px; // 요소 사이 간격
+  padding-top: 57px;
+  padding-bottom: 77px;
+  //border: 2px solid white; // 테두리 스타일, 두께, 색상 추가
 `;
+const Parttext = styled.div`
+  display: flex;
+  //justify-content: center; // 가로 중앙 정렬
+  align-items: center; // 세로 중앙 정렬
+  gap: 20px; // 요소 사이 간격
+`; // Title과 subtitle 가로나열 용도
+const PartTitle = styled.p`
+  color: #fe5826;
+  font-weight: bold;
+  text-align: left;
+  font-size: 25px;
+  padding-left: 5px;
+`;
+const Partsubitle = styled.p`
+  color: #fe5826;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 10px; // 타이틀과의 수직 간격 조정
+`;
+
+// Hackerthon 관련
+// title과 subtitile은 이전의 Parttext,PartTitle,Partsubitle
+// PartBox도 재사용(요소 가로 배열 용도)
+const Hackerthon = styled.p`
+  justify-content: center;
+  color: #fe5826;
+  font-weight: bold;
+  text-align: left;
+  font-size: 25px;
+`;
+
 //위에는 css 관련//
 const Curriculum = () => {
   const navigate = useNavigate();
@@ -162,7 +203,85 @@ const Curriculum = () => {
               />
             </CommonsessionContainer>
           </CommoncurBox>
+          <PartBox>
+            <div>
+              <Parttext>
+                <PartTitle>FE</PartTitle>
+                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+              </Parttext>
+              <SessionBar
+                label="React 기초"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+              <SessionBar
+                label="React 심화 & 해커톤 대비"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+            </div>
+            <div>
+              <Parttext>
+                <PartTitle>BE</PartTitle>
+                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+              </Parttext>
+              <SessionBar
+                label="Django restframework (DRF)"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+              <SessionBar
+                label="django 회원가입/로그인 & 해커톤 대비 세션"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+            </div>
+          </PartBox>
+          <Hackerthon>HACKERTHON</Hackerthon>
+          <PartBox>
+            <div>
+              <Parttext>
+                <PartTitle>FE</PartTitle>
+                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+              </Parttext>
+              <SessionBar
+                label="React 기초"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+              <SessionBar
+                label="React 심화 & 해커톤 대비"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+            </div>
+            <div>
+              <Parttext>
+                <PartTitle>BE</PartTitle>
+                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+              </Parttext>
+              <SessionBar
+                label="Django restframework (DRF)"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+              <SessionBar
+                label="django 회원가입/로그인 & 해커톤 대비 세션"
+                onLabelClick={handleDetailClick}
+                onButtonClick={handleUploadClick}
+                width="400px"
+              />
+            </div>
+          </PartBox>
         </CurriculumBox>
+        <Footer />
       </Container>
     </>
   );
