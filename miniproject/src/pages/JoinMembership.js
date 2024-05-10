@@ -1,11 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Logo from '../components/Logo';
-import Circle from '../components/Circle';
-import theme from '../styles/theme';
+import { useDispatch, useSelector } from 'react-redux';
+import {registerUserAsync} from '../redux/authSlice';
+
 import LogoCircle from '../components/LogoCircle';
+import axios from 'axios';
 
 const Container=styled.div`
     display:flex;
@@ -168,6 +169,49 @@ const JoinButton=styled.button`
     }
 `;
 const JoinMembership=()=>{
+    const name=document.getElementsByName('name');
+    const studentNumber=document.getElementsByName('studentName');
+    const id=document.getElementsByName('id');
+    const password=document.getElementsByName('password');
+    const password2=document.getElementsByName('password2');
+    const position=document.getElementsByName('position');
+
+    axios({
+        method:"POST",
+        url:"https://api.likelionhufsglobal.com/join",
+        data:{
+            "name":name.value,
+            "studentNumber":studentNumber.value,
+            "id":id.value,
+            "password":password.value,
+            "position":position.value
+        }
+    }).then((res)=>{
+        console.log(res);
+    }).catch((res)=>{
+        // console.log(error);
+        // throw new Error(error);
+    });
+
+    const dispatch=useDispatch();
+    const loading=useSelector(state=>state.auth.loading)
+    const [formData, setFormData]=useState(
+        {name:'',studentNumber:'',id:'',password:'',password2:'',position:''});
+    
+    const handleInputChange=(e)=>{
+        const {name,value}=e.target;
+        setFormData({...formData, [name]:value});
+    };
+
+    const handleInputPosition=(e)=>{
+        const {value}=e.target;
+        setFormData({...formData,[setFormData.position]:value});
+    }
+
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        dispatch(registerUserAsync(formData));
+    };
 
     return(
         <>
@@ -182,35 +226,97 @@ const JoinMembership=()=>{
                     <div>
                         <JoinInputDiv>
                             <p>이름</p>
-                            <JoinInput placeholder='이름을 작성해주세요.'/>
+                            <JoinInput 
+                                type='text'
+                                name='name'
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
+                                placeholder='이름을 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv>
                             <p>학번</p>
-                            <JoinInput placeholder='학번을 작성해주세요.'/>
+                            <JoinInput 
+                                type='number'
+                                name='studentNumber'
+                                value={formData.studentNumber}
+                                onChange={handleInputChange}
+                                required
+                                placeholder='학번을 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv>
                             <p>I  D</p>
-                            <JoinInput placeholder='아이디를 작성해주세요.'/>
+                            <JoinInput 
+                                type='text'
+                                name='id'
+                                value={formData.id}
+                                onChange={handleInputChange}
+                                required
+                                placeholder='아이디를 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv>
                             <p>P  W</p>
-                            <JoinInput placeholder='비밀번호를 작성해주세요.'/>
+                            <JoinInput 
+                                type='password'
+                                name='password'
+                                value={formData.password}
+                                onChange={handleInputChange}
+                                required
+                                placeholder='비밀번호를 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv>
                             <p className='passwordTransparent'>pw</p>
-                            <JoinInput placeholder='비밀번호를 다시 작성해주세요.'/>
+                            <JoinInput 
+                                type='password'
+                                name='password2'
+                                value={formData.password2}
+                                // 위의 비밀번호와 비교하는 new event를 넣기
+                                // onChange={}
+                                placeholder='비밀번호를 다시 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv >
-                            <p>활동</p>
+                            {/* 버튼의 value는 아직 잘 모르겠어서 주석처리함 */}
+                            {/* <p>활동</p>
                             <div className='position'>
-                                <JoinInputPosition>아기사자</JoinInputPosition>
-                                <JoinInputPosition>운영진</JoinInputPosition>
+                                <JoinInputPosition
+                                    type='button'
+                                    value={formData.position}
+                                >
+                                    아기사자</JoinInputPosition>
+                                <JoinInputPosition
+                                    type='button'
+                                    value={formData.manager}
+                                >운영진</JoinInputPosition>
+                            </div> */}
+                            <div onChange={handleInputChange}>
+                                <JoinInputPosition
+                                    type='button'
+                                    name='babylion'
+                                    value={formData.babylion}
+                                    onChange={handleInputPosition}
+                                    required
+                                >아기사자</JoinInputPosition>
+                                <JoinInputPosition
+                                    type='button'
+                                    name='manager'
+                                    value={formData.manager}
+                                    onChange={handleInputPosition}
+                                    required
+                                >운영진</JoinInputPosition>
                             </div>
                         </JoinInputDiv>
                     </div>
                     <div className='joinButton'>
                         <div className='empty'/>
-                        <JoinButton>회원가입</JoinButton>
+                        <Link to={'/login'}>
+                            <JoinButton
+                                type='submit'
+                                disabled={loading}
+                            >
+                                {/* 회원가입 */}
+                                {loading ? '가입중...':'가입하기'}
+                            </JoinButton>
+                        </Link>
                     </div>
                 </JoinContainer>
             </Container>
