@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Container=styled.div`
     display:flex;
@@ -53,34 +54,44 @@ const AllDiv=styled.div`
 `;
 
 const InputService=styled.input`
+    padding:15 10px;
     width:400px;
-    height:47px;
     margin-left: 50px;
     color:white;
+    background-color: transparent;
     font-size:24px;
     font-weight : 400;
     font-family: "Jersey+15", sans-serif;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 3px solid white;
+    outline:none;
+    margin-bottom: 15px;
+    padding-bottom:15px;
+    padding-left:10px;
+
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
-    margin-top: 15px;
     width: 423px;
     margin-left: 50px;
 `;
 
 
 const Button=styled.button`
-    width: 110px;
-    height: 50px;
+    flex-grow: 1;
     border-radius: 15px;
     text-align: center;
     color:white;
     font-size:15px;
-    font-weight : 700;
+    font-weight : 500;
     font-family: "Noto+Sans+KR", sans-serif;
     background-color:rgba(255,255,255,0.19);
     margin-right: 31px;
+    padding :14px 7px;
+    margin-top:15px;
 
     &:hover{
     background-color:#FE5826;
@@ -99,8 +110,13 @@ const WriteDetails=styled.input`
     background-color:rgba(255,255,255,0.5);
     margin-left: 50px;
     margin-top: 15px;
-    padding:10px;
+    margin-bottom: auto;
     box-sizing: border-box;
+    display:flex;
+    align-items: flex-start;
+    text-align: left;
+    vertical-align: top;
+
 `;
 
 const UploadButton=styled.button`
@@ -147,11 +163,14 @@ const ProjectUpload=()=>{
                             <Button>개인프로젝트</Button>
                         </ButtonContainer>
                         <WriteDetails type="text" placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" />
-                        <UploadButton>
-                            업로드하기
-                        </UploadButton>
+                        <Link to={'/project'} className='link'>
+                            <UploadButton>
+                                업로드하기
+                            </UploadButton>
+                        </Link>
                     </AllDiv>
                 </Projectdiv>
+                <Footer />
             </Container>
         </>
     )
