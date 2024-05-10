@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import LogoCircle from '../components/LogoCircle';
@@ -140,6 +140,8 @@ const ProjectDiv=styled.div`
 `;
 
 const Login=()=>{
+    const navigate=useNavigate();
+
     return(
         <>
             <Container>
@@ -154,7 +156,9 @@ const Login=()=>{
                     <LoginInput placeholder='아이디를 입력해주세요.'/>
                     <p id='inputText'>PW</p>
                     <LoginInput placeholder='비밀번호를 입력해주세요.'/>
-                    <LoginButton>Login</LoginButton>
+                    <LoginButton
+                        onClick={()=>navigate('/')}
+                    >Login</LoginButton>
                     <GotoJoinMembership>
                         회원이 아니신가요?
                         <Link to='/joinMembership' className='textGotoJoin'>
