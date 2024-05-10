@@ -70,7 +70,7 @@ const UserImg = styled.div`
   background-color: ${({ theme }) => theme.colors.mainColor};
 `;
 
-const LoginBtn = styled.button`
+const LoginButton = styled.button`
   padding: 0.4vw 1.5vw; /* 변경된 값 */
   font-size: ${({ theme }) => theme.fontSize.login};
   color: ${({ theme }) => theme.colors.white};
@@ -86,7 +86,16 @@ const LoginBtn = styled.button`
   }
 `;
 
-const Header = () => {
+// const LoginButton=({isLoggedIn, onLogin, onLogout })=>{
+//   return(
+//     <button 
+//       onClick={isLoggedIn?onLogout:onLogin}>
+//       {isLoggedIn?'LOGOUT':'LOGIN'}
+//     </button>
+//   )
+// }
+
+const Header = ({isLoggedIn, onLogin, onLogout}) => {
   return (
     <>
       <Container>
@@ -120,7 +129,10 @@ const Header = () => {
         <User>
           <UserImg />
           <Link to={'/login'}>
-            <LoginBtn>LOGIN</LoginBtn>
+          <LoginButton 
+                isLoggedIn={isLoggedIn} onLogin={onLogin} onLogout={onLogout}>
+                {isLoggedIn ? 'LOGOUT':'LOGIN'}
+          </LoginButton>
           </Link>
         </User>
       </Container>

@@ -48,6 +48,13 @@ const JoinContainer=styled.div`
         /* background-color: blue; */
         width: 50%;
     }
+
+    .position{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2vw;
+    }
 `;
 const JoinContainerHeader=styled.div`
     display: flex;
@@ -288,7 +295,11 @@ const JoinMembership=()=>{
                                     value={formData.manager}
                                 >운영진</JoinInputPosition>
                             </div> */}
-                            <div onChange={handleInputChange}>
+                            <p>활동</p>
+                            <div 
+                                onChange={handleInputChange}
+                                className='position'
+                                >
                                 <JoinInputPosition
                                     type='button'
                                     name='babylion'
