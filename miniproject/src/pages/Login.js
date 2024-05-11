@@ -142,6 +142,25 @@ const ProjectDiv=styled.div`
 const Login=()=>{
     const navigate=useNavigate();
 
+    const [formData,setFormData]=useState({
+        id:'',
+        password:''
+    });
+
+    const handleInputChange=(e)=>{
+        const {name,value}=e.target;
+        setFormData({
+            ...formData,
+            [name]:value
+        });
+    };
+
+    const handleFormSubmit=(e)=>{
+        e.preventDefault();
+        console.log(formData);
+        navigate('/');
+    }
+
     return(
         <>
             <Container>
@@ -153,11 +172,26 @@ const Login=()=>{
                         멋쟁이사자처럼 대학 홈페이지 입니다.<br />
                     </p>
                     <p id='inputText'>ID</p>
-                    <LoginInput placeholder='아이디를 입력해주세요.'/>
+                    <LoginInput 
+                        type='text'
+                        name='id'
+                        value={formData.id}
+                        onChange={handleInputChange}
+                        required
+                        placeholder='아이디를 입력해주세요.'
+                    />
                     <p id='inputText'>PW</p>
-                    <LoginInput placeholder='비밀번호를 입력해주세요.'/>
+                    <LoginInput 
+                        type='password'
+                        name='password'
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                        placeholder='비밀번호를 입력해주세요.'
+                    />
                     <LoginButton
-                        onClick={()=>navigate('/')}
+                        type='submit'
+                        onClick={handleFormSubmit}
                     >Login</LoginButton>
                     <GotoJoinMembership>
                         회원이 아니신가요?
