@@ -67,7 +67,6 @@ const InputService=styled.input`
     border-right: none;
     border-bottom-width: 3px solid white;
     outline:none;
-    margin-bottom: 15px;
     padding-bottom:15px;
     padding-left:10px;
 
@@ -80,8 +79,26 @@ const ButtonContainer = styled.div`
 `;
 
 
-const Button=styled.button`
-    flex-grow: 1;
+const Button1=styled.button`
+    border-radius: 15px;
+    text-align: center;
+    color:white;
+    font-size:15px;
+    font-weight : 500;
+    font-family: "Noto+Sans+KR", sans-serif;
+    background-color:rgba(255,255,255,0.19);
+    margin-right: 31px;
+    padding :14px 13px;
+    margin-top:15px;
+    white-space: nowrap;
+
+    &:hover{
+    background-color:#FE5826;
+    color:white;
+}
+`;
+
+const Button2=styled.button`
     border-radius: 15px;
     text-align: center;
     color:white;
@@ -92,6 +109,26 @@ const Button=styled.button`
     margin-right: 31px;
     padding :14px 7px;
     margin-top:15px;
+    white-space: nowrap;
+
+    &:hover{
+    background-color:#FE5826;
+    color:white;
+}
+`;
+
+const Button3=styled.button`
+    border-radius: 15px;
+    text-align: center;
+    color:white;
+    font-size:15px;
+    font-weight : 500;
+    font-family: "Noto+Sans+KR", sans-serif;
+    background-color:rgba(255,255,255,0.19);
+    margin-right: 31px;
+    padding :14px 13px;
+    margin-top:15px;
+    white-space: nowrap;
 
     &:hover{
     background-color:#FE5826;
@@ -109,14 +146,10 @@ const WriteDetails=styled.input`
     font-family: "Jersey+15", sans-serif;
     background-color:rgba(255,255,255,0.5);
     margin-left: 50px;
-    margin-top: 15px;
-    margin-bottom: auto;
-    box-sizing: border-box;
     display:flex;
-    align-items: flex-start;
+    flex-direction: column;
     text-align: left;
-    vertical-align: top;
-
+    margin-top: 15px;
 `;
 
 const UploadButton=styled.button`
@@ -158,9 +191,9 @@ const ProjectUpload=()=>{
                     <AllDiv>
                         <InputService type="text" placeholder="서비스명을 작성해주세요.(최대 10글자)" />
                         <ButtonContainer>
-                            <Button>미니프로젝트</Button>
-                            <Button>해커톤프로젝트</Button>
-                            <Button>개인프로젝트</Button>
+                            <Button1>미니프로젝트</Button1>
+                            <Button2>해커톤프로젝트</Button2>
+                            <Button3>개인프로젝트</Button3>
                         </ButtonContainer>
                         <WriteDetails type="text" placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" />
                         <Link to={'/project'} className='link'>
