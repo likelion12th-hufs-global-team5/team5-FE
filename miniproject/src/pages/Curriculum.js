@@ -43,13 +43,14 @@ export default Curriculum
 
 // Curriculum.js
 import React from "react";
-import { Link } from "react-router-dom";
 import SessionBar from "../components/Sessionbar";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+//link는 sessionbar에서 처리
+//import { Link } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -157,15 +158,15 @@ const Hackerthon = styled.p`
 
 //위에는 css 관련//
 const Curriculum = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleDetailClick = () => {
-    navigate("/curriculumDetail");
-  };
+  //  const handleDetailClick = () => {
+  //    navigate("/curriculumDetail");
+  //  };
 
-  const handleUploadClick = () => {
-    navigate("/curriculumUpload");
-  };
+  //  const handleUploadClick = () => {
+  //    navigate("/curriculumUpload");
+  //  };
 
   return (
     <>
@@ -183,23 +184,23 @@ const Curriculum = () => {
             <CommonsessionContainer>
               <SessionBar
                 label="Github Session"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
               />
               <SessionBar
                 label="FE - Session : HTML, CSS, JavaScript"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
               />
               <SessionBar
                 label="BE - Session : Django 기초 restful api&ERD"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
               />
               <SessionBar
                 label="PM/PD - Session : 노션으로 서비스 기획하기+ui/ux 디자인"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
               />
             </CommonsessionContainer>
           </CommoncurBox>
@@ -211,14 +212,14 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="React 기초"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="React 심화 & 해커톤 대비"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
             </div>
@@ -229,14 +230,14 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="Django restframework (DRF)"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="django 회원가입/로그인 & 해커톤 대비 세션"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
             </div>
@@ -250,14 +251,14 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="React 기초"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="React 심화 & 해커톤 대비"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
             </div>
@@ -268,14 +269,14 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="Django restframework (DRF)"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="django 회원가입/로그인 & 해커톤 대비 세션"
-                onLabelClick={handleDetailClick}
-                onButtonClick={handleUploadClick}
+                labelTo="/curriculumUpload"
+                buttonTo="/curriculumUpload"
                 width="400px"
               />
             </div>

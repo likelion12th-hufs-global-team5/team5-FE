@@ -1,26 +1,34 @@
-// SessionBar.js
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const BarContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.35);
   color: white;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 15px;
   margin-top: 15px;
   border-radius: 5px;
   height: 35px;
-  width: ${(props) => props.width || "780px"}; // 기본값은 800px
+  width: ${(props) => props.width || "780px"};
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 `;
 
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: inherit; // Link의 기본 파란색과 밑줄 없애기
+  text-decoration: none;
+`;
+
 const ButtonLabel = styled.span`
   font-size: 14px;
   font-weight: bold;
-  flex-grow: 1; // Label이 가능한 많은 공간을 차지하도록
-  text-align: left; // 텍스트를 왼쪽 정렬
+  flex-grow: 1;
+  text-align: left;
 `;
 
 const UploadButton = styled.button`
@@ -30,23 +38,26 @@ const UploadButton = styled.button`
   border-radius: 10px;
   width: 60px;
   height: 25px;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
   font-weight: bold;
   cursor: pointer;
-  flex-shrink: 0; // 버튼의 크기가 줄어들지 않도록
+  flex-shrink: 0;
 
   &:hover {
-    // 마우스를 버튼 위에 올렸을 때 적용될 스타일
     background-color: #fe5826;
     color: white;
   }
 `;
 
-const SessionBar = ({ label, onLabelClick, onButtonClick, width }) => {
+const SessionBar = ({ label, labelTo, buttonTo, width }) => {
   return (
     <BarContainer width={width}>
-      <ButtonLabel onClick={onLabelClick}>{label}</ButtonLabel>
-      <UploadButton onClick={onButtonClick}>업로드</UploadButton>
+      <StyledLink to={labelTo}>
+        <ButtonLabel>{label}</ButtonLabel>
+      </StyledLink>
+      <StyledLink to={buttonTo}>
+        <UploadButton>업로드</UploadButton>
+      </StyledLink>
     </BarContainer>
   );
 };
