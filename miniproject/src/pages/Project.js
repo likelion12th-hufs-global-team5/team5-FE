@@ -125,8 +125,10 @@ const Project=()=>{
                             <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>    
                         </Link>
                     </Buttondiv>
+
                     <ImageContainerSet>
                         <ImageContainer>
+                            <Link to={'/projectDetail'} className='link'>
                             <EachDiv>
                                 <Rectangularinimg>
                                     해커톤프로젝트
@@ -143,6 +145,7 @@ const Project=()=>{
                                     <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
                                 </TextBelowImage>
                             </TextBelowImageContainer>
+                            </Link>
                         </ImageContainer>
                         <ImageContainer>
                             <EachDiv>
@@ -173,7 +176,7 @@ const Project=()=>{
                             </EachDiv>
                             <TextBelowImageContainer>
                                 <TextBelowImage>
-                                    5팀최고
+                                    안녕하세요.
                                     <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
                                     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
                                     <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
@@ -195,7 +198,7 @@ const Project=()=>{
                             </EachDiv>
                             <TextBelowImageContainer>
                                 <TextBelowImage>
-                                    5팀최고
+                                    안녕하세요.
                                     <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
                                     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
                                     <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
@@ -213,7 +216,7 @@ const Project=()=>{
                             </EachDiv>
                             <TextBelowImageContainer>
                                 <TextBelowImage>
-                                    5팀최고
+                                    안녕하세요.
                                     <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
                                     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
                                     <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
