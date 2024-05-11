@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Cookies from 'js-cookie';
 
 import Header from '../components/Header';
+import Star from '../components/Star';
+import Stars from '../components/Stars';
 import Footer from '../components/Footer';
 import Circle from '../components/Circle';
 
@@ -20,7 +22,8 @@ const Container=styled.div`
     justify-content: space-evenly;
     
     flex-wrap: wrap;
-    gap: 30px;
+    /* gap: 30px; */
+    gap:5vh;
     overflow: hidden;
 `;
 
@@ -38,11 +41,18 @@ const Main = () => {
         setIsLoggedIn(false);
         Cookies.remove('isLoggedIn');
     }
+
+    // 별 위치,크기,시간 함수
+    const randomNumber = Math.floor(Math.random()*1301);
+    const sizeRandom=Math.floor(Math.random()*7)+7;
+    const timeRandom=Math.floor(Math.random()*0.1)+0.5
     return(
         <>
             <Container>
                 <Header isLoggedIn={isLoggedIn} onLogin={handleLogin} onLogout={handleLogout}/>
-                <Circle />
+                <Circle styled={{ zIndex: 10 }}/>
+                {/* <Star x={randomNumber} y={randomNumber} size={sizeRandom} time={timeRandom}/> */}
+                <Stars />
                 <Footer />
                 {/* <RandomStars /> */}
                 <CheckLoginStatus />

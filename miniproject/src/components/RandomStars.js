@@ -11,6 +11,40 @@ const StarsContainer=styled.div`
     background-color:${({theme})=>theme.colors.white};
 `;
 
+const StyledStar=styled.div`
+    position:absolute;
+    width:${props => props.size}px;
+    height: ${props => props.size}px;
+
+    background-color: ${({theme})=>theme.colors.star};
+    border-radius: 50%;
+
+    left: ${props=>props.x}px;
+    top:${props => props.y}px;
+
+    animation:pulsate ${props => props.time}s infinite;
+
+    @keyframes pulsate {
+        0%{
+            transform: scale(1);
+        }
+        50%{
+            transform: scale(1.2);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+`;
+
+const star=({x,y,size,time})=>{
+    return(
+        <>
+            <StyledStar x={x} y={y} size={size} time={time} />
+        </>
+    )
+};
+
 const RandomStars=()=>{
     const starsRef=useRef(null);
 

@@ -8,6 +8,8 @@ import {registerUserAsync} from '../redux/authSlice';
 import LogoCircle from '../components/LogoCircle';
 import axios from 'axios';
 
+import Stars from '../components/Stars';
+
 const Container=styled.div`
     display:flex;
     flex-direction:row;
@@ -322,6 +324,7 @@ const JoinMembership=()=>{
                         </Link>
                     </div>
                 </JoinContainer>
+                <Stars />
             </Container>
         </>
     )
