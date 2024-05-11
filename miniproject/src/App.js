@@ -1,30 +1,44 @@
+// App retrun 최상위 태그. 태그 안 store 속성 값으로 {store} 삽입
 import { Provider } from 'react-redux';
-import { Route,BrowserRouter as Router,Routes } from 'react-router-dom';
+
 import store from './redux/store';
+import Cookies from 'js-cookie';
+
+import {login} from './redux/userSlice';
+
+import { Route,BrowserRouter as Router,Routes } from 'react-router-dom';
+
+import React,{ useEffect } from 'react';
 import styled from 'styled-components'
 
 import Main from './pages/Main';
 import Login from './pages/Login';
 import JoinMembership from './pages/JoinMembership';
 import Project from './pages/Project';
+import ProjectUpload from './pages/ProjectUpload';
+import ProjectDetail from './pages/ProjectDetail';
 import Curriculum from './pages/Curriculum';
+import CurriculumUpload from './pages/CurriculumUpload';
+import CurriculumDetail from './pages/CurriculumDetail';
 import Member from './pages/Member';
 import Profile from './pages/Profile';
 
-import theme from './styles/theme';
-import ProjectUpload from './pages/ProjectUpload';
-import ProjectDetail from './pages/ProjectDetail';
-import CurriculumUpload from './pages/CurriculumUpload';
-import CurriculumDetail from './pages/CurriculumDetail';
-
-
 // router css
 const Container=styled.div`
-  height:100%;
-  background-color:##FFDD87;
+  /* height:100%; */
+  /* background-color:#FFDD87; */
 `;
 
 function App() {
+  useEffect(()=>{
+    const accessToken=Cookies.get('accessToken');
+    const id=Cookies.get('id');
+
+    if (accessToken && id){
+      store.dispatch(login({accessToken,id}));
+    }
+  },[])
+
   return (
     <>
       <Provider store={store}>
