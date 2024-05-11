@@ -61,11 +61,9 @@ const JoinContainerHeader=styled.div`
     flex-direction: row;
     align-items: center;
     text-align: left;
-    /* justify-content: center; */
     line-height: 130%;
 
     flex-wrap: wrap;
-    /* gap: 30px; */
     gap: 0.7vw;
     line-height: 150%;;
 
@@ -82,13 +80,11 @@ const JoinInputDiv=styled.div`
     flex-wrap: wrap;
     gap:1vw;
     p{
+        width: 3vw;
+        
         text-align: center;
         font-size:${({theme})=>theme.fontSize.inputText};
         font-weight:${({theme})=>theme.fontWeights.inputText};
-        
-        /* background-color: blue; */
-
-        width: 3vw;
     }
 
     // input password 창 정렬 맞추기 위해 만든것.
@@ -111,7 +107,6 @@ const JoinInput=styled.input`
     display:flex;
 
     margin:30px 0px;
-    /* padding:18px 33px; */
     padding: 18px 23px;
 
     width:450px;
@@ -176,49 +171,48 @@ const JoinButton=styled.button`
     }
 `;
 const JoinMembership=()=>{
-    const name=document.getElementsByName('name');
-    const studentNumber=document.getElementsByName('studentName');
-    const id=document.getElementsByName('id');
-    const password=document.getElementsByName('password');
-    const password2=document.getElementsByName('password2');
-    const position=document.getElementsByName('position');
-
-    axios({
-        method:"POST",
-        url:"https://api.likelionhufsglobal.com/join",
-        data:{
-            "name":name.value,
-            "studentNumber":studentNumber.value,
-            "id":id.value,
-            "password":password.value,
-            "position":position.value
-        }
-    }).then((res)=>{
-        console.log(res);
-    }).catch((res)=>{
-        // console.log(error);
-        // throw new Error(error);
+    const [formData,setFormData]=useState({
+        name:'',
+        studentNumber:'',
+        id:'',
+        password:'',
+        password2:'',
+        position:''
     });
 
-    const dispatch=useDispatch();
-    const loading=useSelector(state=>state.auth.loading)
-    const [formData, setFormData]=useState(
-        {name:'',studentNumber:'',id:'',password:'',password2:'',position:''});
-    
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
-        setFormData({...formData, [name]:value});
+        setFormData({
+            ...formData,
+            [name]:value
+        });
     };
 
-    const handleInputPosition=(e)=>{
+    const handlePositionChange=(e)=>{
         const {value}=e.target;
-        setFormData({...formData,[setFormData.position]:value});
+        setFormData({
+            ...formData,
+            position:value
+        });
+    };
+
+    const handleFormSubmit=(e)=>{
+        e.preventDefault();
+        console.log(formData);
     }
 
-    const handleSubmit=async(e)=>{
-        e.preventDefault();
-        dispatch(registerUserAsync(formData));
-    };
+    // const handleFormSubmit=async(e)=>{
+    //     e.preventDefault();
+    //     try{
+    //         const response=await axios.post('백엔드 엔드포인트')
+    //         // 회원가입이 성공하면 서버로부터 받은 응답 처리하는 로직 추가
+    //         console.log(response.data);
+    //         // 성공한 경우 서버로부터 받은 데이터 출력
+    //     }catch(error){
+    //         // 회원가입이 실패하면 나는 에러 처리
+    //         console.error('Error during joinMembership : ',error);
+    //     }
+    // };
 
     return(
         <>
@@ -230,7 +224,10 @@ const JoinMembership=()=>{
                         <p>한국외국어대학교 글로벌 캠퍼스<br />
                             멋쟁이사자처럼 대학 홈페이지 입니다.</p>
                     </JoinContainerHeader>
-                    <div>
+                    <form 
+                        // onSubmit={handleFormSubmit}
+                        onSubmit={handleFormSubmit}
+                        >
                         <JoinInputDiv>
                             <p>이름</p>
                             <JoinInput 
@@ -279,53 +276,43 @@ const JoinMembership=()=>{
                                 value={formData.password2}
                                 // 위의 비밀번호와 비교하는 new event를 넣기
                                 // onChange={}
+                                onChange={handleInputChange}
+                                required
                                 placeholder='비밀번호를 다시 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv >
-                            {/* 버튼의 value는 아직 잘 모르겠어서 주석처리함 */}
-                            {/* <p>활동</p>
-                            <div className='position'>
-                                <JoinInputPosition
-                                    type='button'
-                                    value={formData.position}
-                                >
-                                    아기사자</JoinInputPosition>
-                                <JoinInputPosition
-                                    type='button'
-                                    value={formData.manager}
-                                >운영진</JoinInputPosition>
-                            </div> */}
                             <p>활동</p>
                             <div 
                                 onChange={handleInputChange}
                                 className='position'
-                                >
+                            >
                                 <JoinInputPosition
                                     type='button'
                                     name='babylion'
-                                    value={formData.babylion}
-                                    onChange={handleInputPosition}
+                                    value='babylion'
+                                    onClick={handlePositionChange}
                                     required
                                 >아기사자</JoinInputPosition>
                                 <JoinInputPosition
                                     type='button'
                                     name='manager'
-                                    value={formData.manager}
-                                    onChange={handleInputPosition}
+                                    value='manager'
+                                    onClick={handlePositionChange}
                                     required
                                 >운영진</JoinInputPosition>
                             </div>
                         </JoinInputDiv>
-                    </div>
+                    </form>
                     <div className='joinButton'>
                         <div className='empty'/>
                         <Link to={'/login'}>
                             <JoinButton
                                 type='submit'
-                                disabled={loading}
+                                // disabled={loading}
+                                onClick={handleFormSubmit}
                             >
-                                {/* 회원가입 */}
-                                {loading ? '가입중...':'가입하기'}
+                                회원가입
+                                {/* {loading ? '가입중...':'가입하기'} */}
                             </JoinButton>
                         </Link>
                     </div>
