@@ -3,6 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import LogoCircle from '../components/LogoCircle';
+import Stars from '../components/Stars';
 
 const Container=styled.div`
     display:flex;
@@ -202,6 +203,7 @@ const Login=()=>{
                     </GotoJoinMembership>
                 </LoginContainer>
                 <ProjectDiv></ProjectDiv>
+                <Stars />
             </Container>
         </>
     )

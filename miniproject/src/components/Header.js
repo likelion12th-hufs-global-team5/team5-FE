@@ -11,7 +11,8 @@ const Container = styled.div`
   flex-direction: row;
   text-align: center;
   align-items: center;
-  margin: 3.188vw auto 5.938vw auto; /* 변경된 값 */
+  /* 변경된 값 */
+  /* margin: 3.188vw auto 5.938vw auto;  */
   flex-wrap: wrap;
   gap: 2.813vw; /* 변경된 값 */
 

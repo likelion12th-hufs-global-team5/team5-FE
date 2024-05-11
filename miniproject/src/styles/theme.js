@@ -5,6 +5,7 @@ const theme={
         mainColor:'#FE5826',
         white:'#ffffff',
         black:'#000000',
+        star:'#ffffff'
     },
     backgroundColor:{
         mainColor:'#FE5826',

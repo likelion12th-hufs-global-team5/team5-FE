@@ -10,7 +10,8 @@ const Container = styled.div`
   flex-direction: row;
   text-align: center;
   align-items: center;
-  margin: 4.5625vw auto 8.6875vw auto; /* 변경된 값 */
+  /* 변경된 값 */
+  /* margin: 4.5625vw auto 8.6875vw auto;  */
   color: ${({ theme }) => theme.colors.mainColor};
   font-family: ${({ theme }) => theme.fonts.english};
   font-size: 1.25vw; /* 변경된 값 */
