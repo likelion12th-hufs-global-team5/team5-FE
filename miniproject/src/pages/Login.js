@@ -158,6 +158,7 @@ const Login=()=>{
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(formData);
+        alert('로그인 성공~');
         navigate('/');
     }
 
