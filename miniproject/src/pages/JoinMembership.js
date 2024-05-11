@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -171,6 +171,7 @@ const JoinButton=styled.button`
     }
 `;
 const JoinMembership=()=>{
+    const navigate=useNavigate();
     const [formData,setFormData]=useState({
         name:'',
         studentNumber:'',
@@ -199,6 +200,10 @@ const JoinMembership=()=>{
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(formData);
+        alert('회원가입 성공~');
+        navigate('/login');
+
+        
     }
 
     // const handleFormSubmit=async(e)=>{
