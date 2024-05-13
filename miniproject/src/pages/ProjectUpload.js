@@ -37,6 +37,7 @@ const Projectdiv=styled.div`
     padding-right:77px;
     padding-left: 77px;
     display: flex;
+    margin-bottom: 77px;
 `;
 
 const MainImage=styled.div`
@@ -54,22 +55,27 @@ const AllDiv=styled.div`
 `;
 
 const InputService=styled.input`
+    background-color: transparent;
     padding:15 10px;
     width:400px;
     margin-left: 50px;
     color:white;
-    background-color: transparent;
     font-size:24px;
     font-weight : 400;
     font-family: "Jersey+15", sans-serif;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom-width: 3px solid white;
+    border-bottom: 3px solid white;
     outline:none;
     padding-bottom:15px;
     padding-left:10px;
+    text-align: left;
+    max-width: 100%;
 
+    &::placeholder {
+    color: #fff;
+    }
 `;
 
 const ButtonContainer = styled.div`
@@ -93,7 +99,7 @@ const Button1=styled.button`
     white-space: nowrap;
 
     &:hover{
-    background-color:#FE5826;
+    background-color:rgba(254,58,26,0.75);
     color:white;
 }
 `;
@@ -112,7 +118,7 @@ const Button2=styled.button`
     white-space: nowrap;
 
     &:hover{
-    background-color:#FE5826;
+    background-color:rgba(254,58,26,0.75);
     color:white;
 }
 `;
@@ -131,16 +137,16 @@ const Button3=styled.button`
     white-space: nowrap;
 
     &:hover{
-    background-color:#FE5826;
+    background-color:rgba(254,58,26,0.75);
     color:white;
 }
 `;
 
-const WriteDetails=styled.input`
+const WriteDetails=styled.textarea`
     width: 638px;
     height: 171px;
     border-radius: 15px;
-    color:white;
+    color:#fff;
     font-size:18px;
     font-weight : 400;
     font-family: "Jersey+15", sans-serif;
@@ -150,6 +156,19 @@ const WriteDetails=styled.input`
     flex-direction: column;
     text-align: left;
     margin-top: 15px;
+    padding-left: 22px;
+    padding-top: 24px;
+    resize: none;
+
+    &::placeholder {
+        color: #fff;
+    }
+
+    &:hover {
+    border: 3px solid #FE5826;
+    background-color: rgba(254, 58, 26, 0.19);
+    color: #FE5826;
+}
 `;
 
 const UploadButton=styled.button`
@@ -189,13 +208,16 @@ const ProjectUpload=()=>{
                         
                     </MainImage>
                     <AllDiv>
-                        <InputService type="text" placeholder="서비스명을 작성해주세요.(최대 10글자)" />
+                        <InputService type="text" placeholder="서비스명을 작성해주세요.(최대 10글자)" maxLength="10" />
                         <ButtonContainer>
                             <Button1>미니프로젝트</Button1>
                             <Button2>해커톤프로젝트</Button2>
                             <Button3>개인프로젝트</Button3>
                         </ButtonContainer>
-                        <WriteDetails type="text" placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" />
+                        <WriteDetails 
+                        type="text" 
+                        placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" 
+                        maxLength="200"/>
                         <Link to={'/project'} className='link'>
                             <UploadButton>
                                 업로드하기
