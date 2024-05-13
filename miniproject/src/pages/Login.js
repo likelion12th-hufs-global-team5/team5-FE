@@ -175,6 +175,20 @@ const Login=()=>{
         localStorage.setItem('loginFormData',JSON.stringify(loginFormData));
     },[loginFormData]);
 
+    // 초기 inputData 설정을 위한 useEffect
+    useEffect(() => {
+        const storedLoginFormData = localStorage.getItem('loginFormData');
+        if (storedLoginFormData) {
+        setLoginFormData(JSON.parse(storedLoginFormData));
+        } else {
+        // 로컬 스토리지에 저장된 데이터가 없는 경우 초기 값으로 설정
+        setLoginFormData({
+            id:'',
+            password:''
+            });
+        }
+    }, []);
+
     return(
         <>
             <Container>

@@ -39,6 +39,7 @@ const theme={
         joinPositionBtn:'18px',
         inputText:'26px',
         joinHeader:'48px',
+        passwordAlert:'14px',
         footerFont:'30px',
         test:'18px'
     },

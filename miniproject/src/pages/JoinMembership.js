@@ -172,6 +172,26 @@ const JoinButton=styled.button`
         background-color:${({theme})=>theme.colors.mainColor};
     }
 `;
+
+const PasswordAlert=styled.div`
+    display: flex;
+    flex-direction: row;
+    text-align: flex-end;
+    justify-content: right;
+    
+    
+    margin: auto 0px auto auto;
+
+    font-size:${({theme})=>theme.fontSize.passwordAlert};
+    color:${({theme})=>theme.colors.white};
+
+    // input password 창 정렬 맞추기 위해 만든것.
+    /* .passwordTransparent{
+        color:transparent;
+        background-color: transparent;
+    } */
+`;
+
 const JoinMembership=()=>{
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
@@ -221,6 +241,57 @@ const JoinMembership=()=>{
     }, [formData]);
     // chat 끝
 
+    // 초기 inputData 설정을 위한 useEffect
+    useEffect(() => {
+        const storedFormData = localStorage.getItem('formData');
+        if (storedFormData) {
+        setFormData(JSON.parse(storedFormData));
+        } else {
+        // 로컬 스토리지에 저장된 데이터가 없는 경우 초기 값으로 설정
+        setFormData({
+            name:'',
+            studentNumber:'',
+            id:'',
+            password:'',
+            password2:'',
+            position:''
+            });
+        }
+    }, []);
+
+    const [passwordError, setPasswordError] = useState(false);
+    const checkedPassword = (event) => {
+        // if (formData.password !== formData.password2){
+        //     setPasswordError(true);
+        // } else if (formData.password === formData.password2){
+        //     setPasswordError(false);
+        // }
+
+        // if (formData.password === '' && formData.password2 ===''){
+        //     setPasswordError(false)
+        // } else if (formData.password ===''){
+        //     setPasswordError(false)
+        // } else if (formData.password ==='' && formData.password2!== ''){
+        //     setPasswordError(true)
+        // } else if (formData.password !=='' && formData.password2===''){
+        //     setPasswordError(true)
+        // }
+        //  else if (formData.password2 !==''){
+        //     setPasswordError(true)
+        // } else if (formData.password === formData.password2){
+        //     setPasswordError(false)
+        // } else if (formData.password != formData.password2){
+        //     setPasswordError(true)
+        // }
+
+        if (formData.password != formData.password2){
+            setPasswordError(true)
+        }else if (formData.password==formData.password2){
+            setPasswordError(false)
+        }
+
+      };
+
 
         // localStorage
         // useEffect(()=>{
@@ -257,7 +328,6 @@ const JoinMembership=()=>{
                             멋쟁이사자처럼 대학 홈페이지 입니다.</p>
                     </JoinContainerHeader>
                     <form 
-                        // onSubmit={handleFormSubmit}
                         onSubmit={handleFormSubmit}
                         >
                         <JoinInputDiv>
@@ -290,28 +360,43 @@ const JoinMembership=()=>{
                                 required
                                 placeholder='아이디를 작성해주세요.'/>
                         </JoinInputDiv>
-                        <JoinInputDiv>
-                            <p>P  W</p>
-                            <JoinInput 
-                                type='password'
-                                name='password'
-                                value={formData.password}
-                                onChange={handleInputChange}
-                                required
-                                placeholder='비밀번호를 작성해주세요.'/>
-                        </JoinInputDiv>
-                        <JoinInputDiv>
-                            <p className='passwordTransparent'>pw</p>
-                            <JoinInput 
-                                type='password'
-                                name='password2'
-                                value={formData.password2}
-                                // 위의 비밀번호와 비교하는 new event를 넣기
-                                // onChange={}
-                                onChange={handleInputChange}
-                                required
-                                placeholder='비밀번호를 다시 작성해주세요.'/>
-                        </JoinInputDiv>
+                        <div
+                            onChange={handleInputChange}
+                        >
+                            <JoinInputDiv>
+                                <p>P  W</p>
+                                <JoinInput 
+                                    type='password'
+                                    name='password'
+                                    value={formData.password}
+                                    onChange={checkedPassword}
+                                    required
+                                    placeholder='비밀번호를 작성해주세요.'/>
+                            </JoinInputDiv>
+                            <JoinInputDiv>
+                                <p className='passwordTransparent'>pw</p>
+                                <JoinInput 
+                                    type='password'
+                                    name='password2'
+                                    value={formData.password2}
+                                    // 위의 비밀번호와 비교하는 new event를 넣기
+                                    // onChange={}
+                                    // onChange={handleInputChange}
+                                    // onChange={checkedPassword}
+                                    onChange={checkedPassword}
+                                    required
+                                    placeholder='비밀번호를 다시 작성해주세요.'/>
+                            </JoinInputDiv>
+                            {passwordError && 
+                                <PasswordAlert>
+                                    {/* <p className='passwordTransparent'>pw</p> */}
+                                    <p>비밀번호가 틀렸습니다.</p>
+                                </PasswordAlert>
+                            }
+                            {!passwordError &&
+                                <></>
+                            }
+                        </div>
                         <JoinInputDiv >
                             <p>활동</p>
                             <div 
