@@ -53,17 +53,21 @@ const Container = styled.div`
   text-align: center;
   align-items: center;
   color: #fff;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const CurriculumBox = styled.div`
   width: 1250px;
-  height: 700px;
+  height: 600px;
   background-color: rgba(255, 255, 255, 0.19);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start; // 왼쪽 정렬
-  padding: 0;
+  margin-top: 77px;
+  margin-bottom: 77px;
 `;
 
 const CloseButton = styled(Link)`
@@ -103,12 +107,13 @@ const TitleInput = styled.input`
 const URLinput = styled.input`
   background-color: rgba(255, 255, 255, 0.5);
   border: 2px solid rgba(255, 255, 255, 0);
-  border-radius: 7px;
+  border-radius: 10px;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 600;
   width: 1100px;
-  height: 30px;
-  padding: 10px;
+  height: 40px;
+  padding: 10px 20px;
   margin: 15px 77px 15px 77px;
   &::placeholder {
     color: lightgray;
@@ -126,12 +131,13 @@ const URLinput = styled.input`
 const Detailinput = styled.textarea`
   background-color: rgba(255, 255, 255, 0.5);
   border: 2px solid rgba(255, 255, 255, 0);
-  border-radius: 10px;
+  border-radius: 15px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   width: 1100px;
-  height: 350px;
-  padding: 10px;
+  height: 200px;
+  padding: 20px;
   margin: 5px 77px 15px 77px;
   resize: none; // 사용자가 크기 조정을 못 하게 함
   &::placeholder {
@@ -151,13 +157,13 @@ const UploadButton = styled.button`
   background-color: rgba(255, 255, 255, 0.19);
   color: white;
   font-size: 20px;
+  font-weight: 600;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   margin-left: 82.5%;
-  //margin-bottom: 77px;
-
+  margin-top: 22px;
   &:hover {
     background-color: white;
     color: rgba(254, 88, 38, 1);
