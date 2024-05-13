@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -182,7 +182,7 @@ const JoinMembership=()=>{
         password2:'',
         position:''
     });
-
+    
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
         setFormData({
@@ -190,7 +190,7 @@ const JoinMembership=()=>{
             [name]:value
         });
     };
-
+    
     const handlePositionChange=(e)=>{
         const {value}=e.target;
         setFormData({
@@ -202,18 +202,43 @@ const JoinMembership=()=>{
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(formData);
+        
         alert('회원가입 성공~');
         navigate('/login');
-
-        
     }
+    
+    //chat 시작
+    useEffect(() => {
+        const storedFormData = localStorage.getItem('formData');
+        if (storedFormData) {
+            setFormData(JSON.parse(storedFormData));
+        }
+    }, []); // 빈 배열을 전달하여 페이지가 로드될 때 한 번만 실행되도록 함
+    
+    // formData가 변경될 때마다 로컬 스토리지에 저장
+    useEffect(() => {
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }, [formData]);
+    // chat 끝
+
+
+        // localStorage
+        // useEffect(()=>{
+        //     if(formData.name == 'null'){
+        //         return 'name is null'
+        //     }
+        //     const storedValue=localStorage.getItem('formData');
+        //     if(formData){
+        //         setFormData(storedValue);
+        //     }
+        // },[])
 
     // const handleFormSubmit=async(e)=>{
-    //     e.preventDefault();
-    //     try{
-    //         const response=await axios.post('백엔드 엔드포인트')
-    //         // 회원가입이 성공하면 서버로부터 받은 응답 처리하는 로직 추가
-    //         console.log(response.data);
+        //     e.preventDefault();
+        //     try{
+            //         const response=await axios.post('백엔드 엔드포인트')
+            //         // 회원가입이 성공하면 서버로부터 받은 응답 처리하는 로직 추가
+            //         console.log(response.data);
     //         // 성공한 경우 서버로부터 받은 데이터 출력
     //     }catch(error){
     //         // 회원가입이 실패하면 나는 에러 처리

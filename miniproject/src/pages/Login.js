@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -143,25 +143,37 @@ const ProjectDiv=styled.div`
 const Login=()=>{
     const navigate=useNavigate();
 
-    const [formData,setFormData]=useState({
+    const [loginFormData,setLoginFormData]=useState({
         id:'',
         password:''
     });
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
-        setFormData({
-            ...formData,
+        setLoginFormData({
+            ...loginFormData,
             [name]:value
         });
     };
 
     const handleFormSubmit=(e)=>{
         e.preventDefault();
-        console.log(formData);
+        console.log(loginFormData);
         alert('로그인 성공~');
         navigate('/');
     }
+
+    // chat 시작
+    useEffect(()=>{
+        const storedLoginFormData=localStorage.getItem('loginFormData');
+        if(storedLoginFormData){
+            setLoginFormData(JSON.parse(storedLoginFormData));
+        }
+    },[])
+
+    useEffect(()=>{
+        localStorage.setItem('loginFormData',JSON.stringify(loginFormData));
+    },[loginFormData]);
 
     return(
         <>
@@ -177,7 +189,7 @@ const Login=()=>{
                     <LoginInput 
                         type='text'
                         name='id'
-                        value={formData.id}
+                        value={loginFormData.id}
                         onChange={handleInputChange}
                         required
                         placeholder='아이디를 입력해주세요.'
@@ -186,7 +198,7 @@ const Login=()=>{
                     <LoginInput 
                         type='password'
                         name='password'
-                        value={formData.password}
+                        value={loginFormData.password}
                         onChange={handleInputChange}
                         required
                         placeholder='비밀번호를 입력해주세요.'
