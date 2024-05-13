@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ImageContainers from '../components/ImageContainers';
 
 const Container=styled.div`
     display:flex;
@@ -28,7 +29,7 @@ const Text=styled.p`
 const Projectdiv=styled.div`
     width : 1150px;
     height : 1385px;
-
+    margin-bottom: 77px;
     background-color:rgba(255,255,255,0.19);
     border-radius:35px;
     padding-top:50px;
@@ -127,180 +128,20 @@ const Project=()=>{
                     </Buttondiv>
 
                     <ImageContainerSet>
-                        <ImageContainer>
-                            <Link to={'/projectDetail'} className='link'>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                            </Link>
-                        </ImageContainer>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>  
                     </ImageContainerSet>
-
-
                     <ImageContainerSet>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                    </ImageContainerSet>
-
-
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>  
+                    </ImageContainerSet>                          
                     <ImageContainerSet>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                        
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                        <ImageContainer>
-                            <EachDiv>
-                                <Rectangularinimg>
-                                    해커톤프로젝트
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </Rectangularinimg>
-                            </EachDiv>
-                            <TextBelowImageContainer>
-                                <TextBelowImage>
-                                    안녕하세요.
-                                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
-                                </TextBelowImage>
-                            </TextBelowImageContainer>
-                        </ImageContainer>
-                    </ImageContainerSet>                                        
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>  
+                    </ImageContainerSet>                                                      
                 </Projectdiv>
                 <Footer></Footer>
             </Container>

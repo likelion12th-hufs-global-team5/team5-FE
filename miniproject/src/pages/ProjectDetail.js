@@ -23,11 +23,11 @@ const Text=styled.p`
 const Projectdiv=styled.div`
     width : 1150px;
     height : 449px;
-
     background-color:rgba(255,255,255,0.19);
     border-radius:35px;
     padding:77px;
     display: flex;
+    margin-bottom: 77px;
 `;
 
 const MainImage=styled.div`
