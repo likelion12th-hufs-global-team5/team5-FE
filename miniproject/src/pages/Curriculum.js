@@ -66,6 +66,8 @@ const CurriculumBox = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0;
+  margin-top: 77px;
+  margin-bottom: 77px;
 `;
 const Curriculumtext = styled.p`
   margin-top: 77px;
@@ -184,22 +186,22 @@ const Curriculum = () => {
             <CommonsessionContainer>
               <SessionBar
                 label="Github Session"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
               />
               <SessionBar
                 label="FE - Session : HTML, CSS, JavaScript"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
               />
               <SessionBar
                 label="BE - Session : Django 기초 restful api&ERD"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
               />
               <SessionBar
                 label="PM/PD - Session : 노션으로 서비스 기획하기+ui/ux 디자인"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
               />
             </CommonsessionContainer>
@@ -212,13 +214,13 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="React 기초"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="React 심화 & 해커톤 대비"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
@@ -230,13 +232,13 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="Django restframework (DRF)"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="django 회원가입/로그인 & 해커톤 대비 세션"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
@@ -251,13 +253,13 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="React 기초"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="React 심화 & 해커톤 대비"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
@@ -269,13 +271,13 @@ const Curriculum = () => {
               </Parttext>
               <SessionBar
                 label="Django restframework (DRF)"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
               <SessionBar
                 label="django 회원가입/로그인 & 해커톤 대비 세션"
-                labelTo="/curriculumUpload"
+                labelTo="/curriculumDetail"
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
