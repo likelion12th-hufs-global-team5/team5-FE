@@ -66,13 +66,14 @@ const Main = () => {
                     onLogout={handleLogout}
                     
                     />
-                <input
+                {/* 테스트용 코드 */}
+                {/* <input
                     type='text'
                     value={inputValue}
                     onChange={handleChange}
                     placeholder='test input localStorage'
                 />
-                <p>Test Input value : {inputValue}</p>
+                <p>Test Input value : {inputValue}</p> */}
                 <Circle styled={{ zIndex: 10 }}/>
                 <Stars />
                 <Footer />
