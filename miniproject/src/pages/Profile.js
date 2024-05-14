@@ -11,6 +11,9 @@ const Container=styled.div`
 
     text-align:center;
     align-items:center;
+
+    flex-wrap: wrap;
+    gap:5vh;
 `;
 
 const Text=styled.p`

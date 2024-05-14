@@ -56,6 +56,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  flex-wrap: wrap;
+  gap: 5vh;
 `;
 const CurriculumBox = styled.div`
   width: 1000px;
