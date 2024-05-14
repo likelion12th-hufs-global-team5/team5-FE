@@ -13,6 +13,8 @@ const Container=styled.div`
     text-align:center;
     align-items:center;
 
+    flex-wrap: wrap;
+    gap:5vh;
 
     .link{
         margin:30px auto;
@@ -107,17 +109,7 @@ const Project=()=>{
         <>
             <Container>
                 <Header />
-                <Text>test Text - Project</Text>
-                <Link to={'/'}>
-                    Main 이동
-                </Link>
-                <Link to={'/projectUpload'} className='link'>
-                    Project upload 페이지로 이동
-                </Link>
-                <Link to={'/projectDetail'} className='link'>
-                    Project detail 페이지로 이동
-                </Link>
-;                <Projectdiv>
+                  <Projectdiv>
                     <Buttondiv>
                         <Link to={'/projectUpload'} className='link'>
                             업로드하기

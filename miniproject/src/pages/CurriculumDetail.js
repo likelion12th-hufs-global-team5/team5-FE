@@ -10,6 +10,9 @@ const Container = styled.div`
   text-align: center;
   align-items: center;
   color: #fff;
+
+  flex-wrap: wrap;
+  gap: 5vw;
   @media screen and (max-width: 768px) {
     justify-content: center;
   }

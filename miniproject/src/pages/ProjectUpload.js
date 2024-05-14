@@ -12,6 +12,9 @@ const Container=styled.div`
     text-align:center;
     align-items:center;
 
+    flex-wrap: wrap;
+    gap:5vh;
+
     color:#fff;
 `;
 
@@ -199,10 +202,6 @@ const ProjectUpload=()=>{
         <>
             <Container>
                 <Header />
-                <Text>test Text - Project upload page</Text>
-                <Link to={'/'}>
-                    Main 이동
-                </Link>
                 <Projectdiv>
                     <MainImage>
                         
