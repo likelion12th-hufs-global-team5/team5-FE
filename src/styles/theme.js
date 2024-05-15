@@ -31,7 +31,7 @@ const theme={
         slogan:'130px',
         userHeader:'48px',
         placeHolder:'28px',
-        buttonFont:'26px',
+        buttonFont:'30px',
         login:'40px',
         loginHeader:'48px',
         loginHeaderText:'24px',

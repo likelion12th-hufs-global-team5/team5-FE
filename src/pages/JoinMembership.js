@@ -29,6 +29,7 @@ const JoinContainer=styled.div`
     flex-direction:column;
     text-align:left;
     justify-content: center;
+    justify-content: space-between;
 
     width: 40%;
     padding: 2vw;
@@ -48,7 +49,7 @@ const JoinContainer=styled.div`
     // 회원가입 버튼 위치 조정때문에 넣음
     .empty{
         /* background-color: blue; */
-        width: 50%;
+        width: 70%;
     }
 
     .position{
@@ -78,9 +79,10 @@ const JoinInputDiv=styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 
     flex-wrap: wrap;
-    gap:1vw;
+    gap:0.5vw;
     p{
         width: 3vw;
         
@@ -99,7 +101,6 @@ const JoinInputDiv=styled.div`
         display: flex;
         flex-direction:row;
         align-items: center;
-        justify-content: start;
 
         flex-wrap: wrap;
         gap: 0.5vw;
@@ -111,8 +112,10 @@ const JoinInput=styled.input`
     margin:30px 0px;
     padding: 18px 23px;
 
-    width:450px;
-    height:50px;
+    /* width:450px;
+    height:50px; */
+    width: 85%;
+    height: auto;
 
     border:none;
     border-radius:50px;
@@ -137,6 +140,13 @@ const JoinInput=styled.input`
 
     &:hover::placeholder {
         color:${({theme})=>theme.colors.mainColor}; /* hover 시 placeholder 색상 변경 */
+    }
+    
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 `;
 const JoinInputPosition=styled.button`
@@ -259,6 +269,7 @@ const JoinMembership=()=>{
                     <form 
                         // onSubmit={handleFormSubmit}
                         onSubmit={handleFormSubmit}
+                        style={{margin:'0px'}}
                         >
                         <JoinInputDiv>
                             <p>이름</p>
@@ -312,11 +323,21 @@ const JoinMembership=()=>{
                                 required
                                 placeholder='비밀번호를 다시 작성해주세요.'/>
                         </JoinInputDiv>
-                        <JoinInputDiv >
+                        <JoinInputDiv 
+                            className='positionDiv'
+                            style={{
+                                justifyContent:'left',
+                                flexWrap:'wrap',
+                                gap:'1.9vw',
+                            }}
+                        >
                             <p>활동</p>
                             <div 
                                 onChange={handleInputChange}
                                 className='position'
+                                style={{
+                                    justifyContent:'space-between'
+                                }}
                             >
                                 <JoinInputPosition
                                     type='button'

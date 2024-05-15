@@ -2,20 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledStar=styled.div`
-    position:absolute;
-    width:${props => props.size}px;
-    height: ${props => props.size}px;
-
-    background-color: ${({theme})=>theme.colors.star};
-    border-radius: 50%;
-    opacity: 0.7;
-
-    left: ${props=>props.x}px;
-    top:${props => props.y}px;
-
-    animation:pulsate ${props => props.time}s infinite;
-
-    @keyframes pulsate {
+  @keyframes pulsate {
         0%{
             opacity: 0.5;
             transform: scale(1);
@@ -41,6 +28,38 @@ const StyledStar=styled.div`
             transform: scale(1);
         }
     }
+
+    /* position:absolute;
+    width:${props => props.size}px;
+    height: ${props => props.size}px;
+
+    background-color: ${({theme})=>theme.colors.star};
+    border-radius: 50%;
+    opacity: 0.7;
+
+    left: ${props=>props.x}px;
+    top:${props => props.y}px;
+
+    animation:pulsate ${props => props.time}s infinite; */
+
+    position: absolute;
+    width: ${props => props.size}px;
+    height: ${props => props.size}px;
+    background-color: ${({ theme }) => theme.colors.star};
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: pulsate ${props => props.time}s infinite;
+
+    /* 반응형 설정 */
+    @media (max-width: 768px) {
+      /* 화면 너비가 768px 이하일 때 적용할 스타일 */
+      width: ${props => props.size / 2}px;
+      height: ${props => props.size / 2}px;
+    }
+
+    /* 위치 설정 */
+    left: ${props => props.x}px;
+    top: ${props => props.y}px;
 `;
 
 
