@@ -125,6 +125,12 @@ const LoginButton=styled.button`
         background-color: ${({theme})=>theme.colors.mainColor};
         transition: all 0.2s;
     }
+
+    &:active{
+        color: ${({theme})=>theme.colors.white};
+        background-color:${({theme})=>theme.colors.mainColor};
+        transition: all 0.2s;
+    }
 `;
 const GotoJoinMembership=styled.div`
     display:flex;

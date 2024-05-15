@@ -160,10 +160,19 @@ const JoinInputPosition=styled.button`
     font-size: ${({theme})=>theme.fontSize.joinPositionBtn};
 
     &:hover{
+        background:rgba(255,255,255,0.19);
+        color:${({theme})=>theme.colors.white};
+        border: solid 3px;
+        border-color: ${({theme})=>theme.colors.white};
+        transition: all 0.1s;
+    }
+
+    &:active{
         background:rgba(254,88,38,0.19);
         color:${({theme})=>theme.colors.mainColor};
         border: solid 3px;
         border-color: ${({theme})=>theme.colors.mainColor};
+        transition: all 0.1s;
     }
 `;
 
@@ -180,6 +189,12 @@ const JoinButton=styled.button`
     &:hover{
         color: ${({theme})=>theme.colors.white};
         background-color:${({theme})=>theme.colors.mainColor};
+        transition: all 0.2s;
+    }
+    &:active{
+        color: ${({theme})=>theme.colors.white};
+        background-color:${({theme})=>theme.colors.mainColor};
+        transition: all 0.2s;
     }
 `;
 const JoinMembership=()=>{
@@ -192,7 +207,7 @@ const JoinMembership=()=>{
         password2:'',
         position:''
     });
-    
+
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
         setFormData({
