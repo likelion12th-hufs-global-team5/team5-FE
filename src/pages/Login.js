@@ -68,8 +68,11 @@ const LoginInput=styled.input`
     margin:30px 0px;
     padding:18px 33px;
 
-    width:517px;
-    height:62px;
+    /* width:517px; */
+    /* height:62px; */
+
+    width:100%;
+    height: auto;
 
     border:none;
     border-radius:50px;
@@ -99,8 +102,13 @@ const LoginInput=styled.input`
 `;
 const LoginButton=styled.button`
     margin-top : 45px;
-    width:250.87px;
-    height:61.88px;
+    padding: 12px;
+    text-align: center;
+
+    /* width:250.87px;
+    height:61.88px; */
+    width: 45%;
+    height: auto;
 
     background:${({theme})=>theme.backgroundColor.white};
     color:${({theme})=>theme.colors.mainColor};
@@ -109,6 +117,7 @@ const LoginButton=styled.button`
 
     font-family:${({theme})=>theme.fonts.english};
     font-size:${({theme})=>theme.fontSize.buttonFont};
+    /* font-size: 30px; */
     font-weight:${({theme})=>theme.fontWeights.loginHeader};
     letter-spacing:0.1vw;
     &:hover{
