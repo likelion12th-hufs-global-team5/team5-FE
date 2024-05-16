@@ -5,7 +5,8 @@ const theme={
         mainColor:'#FE5826',
         white:'#ffffff',
         black:'#000000',
-        star:'#ffffff'
+        star:'#ffffff',
+        memberDetail:'#503930'
     },
     backgroundColor:{
         mainColor:'#FE5826',
@@ -13,6 +14,7 @@ const theme={
         black:'#000000',
         test:'#ED9E9E',
         inputHover:'rgba(254,88,38,0.19)',
+        memberContent:'#F6EEEB'
     },
     main:{
         width:'1280px',
@@ -40,7 +42,13 @@ const theme={
         inputText:'26px',
         joinHeader:'48px',
         footerFont:'30px',
-        test:'18px'
+        test:'18px',
+        memberHeader:'40px',
+        memberPosition:'26px',
+        memberContentName:'52px',
+        memberContentYearPosition:'42px',
+        memberContentTextHeader:'42px',
+
     },
     fontWeights:{
         loginHeader:'Bold',
@@ -49,6 +57,7 @@ const theme={
         inputText:'Bold',
         gotoJoinMembership:'Bold',
         JoinMembership:'Bold',
+        memberHeader:'Bold',
     },
     fontLineHeight:{
         loginText:'140%',
