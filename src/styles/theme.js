@@ -48,6 +48,8 @@ const theme={
         memberContentName:'52px',
         memberContentYearPosition:'42px',
         memberContentTextHeader:'42px',
+        profilePosition:'26px',
+        profileButton:'28px',
 
     },
     fontWeights:{
