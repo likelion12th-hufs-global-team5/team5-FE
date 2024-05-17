@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
+
 import Footer from '../components/Footer';
 import Image from '../image/test.jpg';
 
@@ -12,8 +13,8 @@ const Container=styled.div`
 
     text-align:center;
     align-items:center;
-
-    /* flex-wrap: wrap;
+/* 
+    flex-wrap: wrap;
     gap:1vw; */
 `;
 const MemberContainer=styled.div`

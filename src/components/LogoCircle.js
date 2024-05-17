@@ -14,6 +14,7 @@ const Container=styled.div`
 
     width: 50%;
     height: 100%;
+
 `;
 const Logo=styled.div`
     display: flex;
@@ -68,7 +69,6 @@ const Circle=styled.div`
     height: 80%;
     padding: 40%; 
     /* 원의 가로길이와 높이를 같게 만듦 */
-
     
     backdrop-filter: blur(100px);
     /* border: solid 0.5px; */
