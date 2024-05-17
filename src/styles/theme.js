@@ -50,6 +50,7 @@ const theme={
         memberContentTextHeader:'42px',
         profilePosition:'26px',
         profileButton:'28px',
+        profileText:'22px'
 
     },
     fontWeights:{
