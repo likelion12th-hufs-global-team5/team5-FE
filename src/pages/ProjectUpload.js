@@ -84,7 +84,7 @@ const ImageCurcle=styled.div`
     left:50%;
 `;
 
-const ImageIcon=styled.div`
+const ImageIcon=styled.button`
     font-size: 30px;
     color:white;
     position: absolute;
@@ -257,6 +257,9 @@ const UploadButton=styled.button`
 
 const ProjectUpload=()=>{
     const [activeButton, setActiveButton] = useState(null);
+    const handleButton=()=>{
+        alert('버튼 눌림!')
+    }
 
     return(
         <>
@@ -270,8 +273,8 @@ const ProjectUpload=()=>{
                     </Link>
                     <MainImage>
                         <ImageCurcle>
-                            <ImageIcon>
-                                <BsFillCameraFill className='icon' />
+                            <ImageIcon type='submit'>
+                                <BsFillCameraFill onClick={handleButton} className='icon' />
                             </ImageIcon>
                         </ImageCurcle>
                     </MainImage>
