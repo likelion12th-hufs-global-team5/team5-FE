@@ -143,7 +143,11 @@ const Button1=styled.button`
     &.active, &:active{
     background-color:rgba(254,58,26,0.75);
     color:white;
-}
+    }
+    &:hover{
+        background-color:rgba(254,58,26,0.75);
+        color:white;
+    }
 `;
 
 const Button2=styled.button`
@@ -162,7 +166,11 @@ const Button2=styled.button`
     &.active, &:active{
     background-color:rgba(254,58,26,0.75);
     color:white;
-}
+    }
+    &:hover{
+        background-color:rgba(254,58,26,0.75);
+        color:white;
+    }
 `;
 
 const Button3=styled.button`
@@ -181,7 +189,12 @@ const Button3=styled.button`
     &.active, &:active{
     background-color:rgba(254,58,26,0.75);
     color:white;
-}
+    }
+
+    &:hover{
+        background-color:rgba(254,58,26,0.75);
+        color:white;
+    }
 `;
 
 const WriteDetails=styled.textarea`

@@ -140,10 +140,6 @@ const ProjectDetail=()=>{
         <>
             <Container>
                 <Header />
-                <Text>test Text - Project - detail page</Text>
-                <Link to={'/'}>
-                    Main 이동
-                </Link>
                 <Projectdiv>
                     
                     <MainImage>
