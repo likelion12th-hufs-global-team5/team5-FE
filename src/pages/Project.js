@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ImageContainers from '../components/ImageContainers';
+import { useEffect, useState } from 'react';
 
 const Container=styled.div`
     display:flex;
@@ -103,14 +104,88 @@ const Rectangularinimg=styled.div`
 
 `;
 
-const Project=()=>{
+const mockProjects = [
+    {
+        id: 1,
+        project_id: 1,
+        teamName: "Test1",
+        projectType: "미니프로젝트",
+        projectDetail: "This is a test1 post",
+        projectImage: "https://cdn.crowdpic.net/detail-thumb/thumb_d_4D24F988C28882891AB7778F32CF1285.jpg",
+        created_at: "2024-05-11T12:56:41.697182Z"
+    },
+    {
+        id: 2,
+        project_id: 2,
+        teamName: "Test2",
+        projectType: "해커톤프로젝트",
+        projectDetail: "This is a test2 post",
+        projectImage: "https://cdn.crowdpic.net/detail-thumb/thumb_d_4D24F988C28882891AB7778F32CF1285.jpg",
+        created_at: "2024-05-11T12:57:11.242324Z"
+    },
+    {
+        id: 3,
+        project_id: 3,
+        teamName: "Test3",
+        projectType: "해커톤프로젝트",
+        projectDetail: "This is a test3 post",
+        projectImage: "https://cdn.crowdpic.net/detail-thumb/thumb_d_4D24F988C28882891AB7778F32CF1285.jpg",
+        created_at: "2024-05-11T12:57:29.337317Z"
+    }
+];
 
+const Project=()=>{
+    const [projects, setProjects] = useState([]);
+    useEffect(() => {
+        // 모킹 데이터 사용
+        setProjects(mockProjects);
+    }, []);
+
+
+    const [project1, setProject1] = useState(null);
+    const [project2, setProject2] = useState(null);
+    const [project3, setProject3] = useState(null);
+    const navigate = useNavigate();
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const response = await fetch('http://{SERVER_URL}/api/projects', {
+                    headers: {
+                        "HOST": "https://www.example.com/kr",
+                        "Authorization": "usertoken"
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.length > 0) setProject1(data[0]);
+                    if (data.length > 1) setProject2(data[1]);
+                    if (data.length > 2) setProject3(data[2]);
+                } else {
+                    console.error('Failed to fetch projects');
+                }    
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+            }
+        };
+
+        fetchProjects();
+    }, []);
+
+    const handleUploadClick = () => {
+        const isLoggedIn = true;
+        if (isLoggedIn) {
+            navigate('/projectUpload');
+        } else {
+            setError('회원이 아닙니다.');
+        }
+    };
     return(
         <>
             <Container>
                 <Header />
                   <Projectdiv>
-                    <Buttondiv>
+                    <Buttondiv onClick={handleUploadClick}>
                         <Link to={'/projectUpload'} className='link'>
                             업로드하기
                             <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
@@ -120,19 +195,19 @@ const Project=()=>{
                     </Buttondiv>
 
                     <ImageContainerSet>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>  
+                        {projects[0] && <ImageContainers project={projects[0]} />}
+                        {projects[1] && <ImageContainers project={projects[1]} />}
+                        {projects[2] && <ImageContainers project={projects[2]} />}
                     </ImageContainerSet>
                     <ImageContainerSet>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>  
+                        {projects[0] && <ImageContainers project={projects[0]} />}
+                        {projects[1] && <ImageContainers project={projects[1]} />}
+                        {projects[2] && <ImageContainers project={projects[2]} />}
                     </ImageContainerSet>                          
                     <ImageContainerSet>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>  
+                        {projects[0] && <ImageContainers project={projects[0]} />}
+                        {projects[1] && <ImageContainers project={projects[1]} />}
+                        {projects[2] && <ImageContainers project={projects[2]} />}
                     </ImageContainerSet>                                                      
                 </Projectdiv>
                 <Footer></Footer>
