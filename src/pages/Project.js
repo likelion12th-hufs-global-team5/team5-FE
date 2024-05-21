@@ -1,4 +1,4 @@
-import React, {useState, useEffect}from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -143,19 +143,19 @@ const Project=()=>{
                         </Link>
                     </Buttondiv>
                     <ImageContainerSet>
-                        <ImageContainers ></ImageContainers>
-                        <ImageContainers ></ImageContainers>
-                        <ImageContainers ></ImageContainers>  
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>  
                     </ImageContainerSet>
-                    <ImageContainerSet >
-                        <ImageContainers ></ImageContainers>
-                        <ImageContainers ></ImageContainers>
-                        <ImageContainers ></ImageContainers>  
-                    </ImageContainerSet>                          
-                    <ImageContainerSet >
-                        <ImageContainers ></ImageContainers>
-                        <ImageContainers ></ImageContainers>
-                        <ImageContainers ></ImageContainers>  
+                    <ImageContainerSet>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>  
+                    </ImageContainerSet>                        
+                    <ImageContainerSet>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>
+                        <ImageContainers></ImageContainers>  
                     </ImageContainerSet>                                                      
                 </Projectdiv>
                 <Footer></Footer>
