@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 const ImageContainer=styled.div`
@@ -44,15 +45,15 @@ const Rectangularinimg=styled.div`
 `;
 
 
-const ImageContainers=()=>{
+const ImageContainers=({teamName, projectImage, projectType})=>{
 
     return(    
 
         <ImageContainer>
         <Link to={'/projectDetail'} className='link'>
-            <EachDiv>
+            <EachDiv style={{ backgroundImage: `url(${projectImage})`}}>
                 <Rectangularinimg>
-                    해커톤프로젝트
+                    {projectType}
                     <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
                     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
                     <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
@@ -60,7 +61,7 @@ const ImageContainers=()=>{
             </EachDiv>
             <TextBelowImageContainer>
                 <TextBelowImage>
-                    안녕하세요.
+                    {teamName}
                     <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
                     <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
                     <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>

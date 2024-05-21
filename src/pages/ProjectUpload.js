@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
@@ -256,53 +256,117 @@ const UploadButton=styled.button`
 
 
 const ProjectUpload=()=>{
+    const [teamName, setTeamName] = useState('');
+    const [projectType, setProjectType] = useState('');
+    const [projectDetail, setProjectDetail] = useState('');
+    const [projectImage, setProjectImage] = useState(null);
     const [activeButton, setActiveButton] = useState(null);
-    const handleButton=()=>{
-        alert('버튼 눌림!')
-    }
+    const navigate = useNavigate();
+
+    const handleButtonClick = (buttonType) => {
+        setActiveButton(buttonType);
+        setProjectType(buttonType);
+    };
+
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setProjectImage(file);
+        }
+    };
+
+    const [error, setError] = useState(null);
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('teamName', teamName);
+        formData.append('projectType', projectType);
+        formData.append('projectDetail', projectDetail);
+        if (projectImage) {
+            formData.append('projectImage', projectImage);
+        }
+
+        try {
+            const response = await fetch('http://{SERVER_URL}/api/projects', {
+                method: 'POST',
+                headers: {
+                    "Authorization": "usertoken"
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                navigate('/project');
+            } else if (response.status === 400) {
+                const responseData = await response.json();
+                setError(responseData);
+            } else {
+                console.error('이 피드는 필수입니다.');
+            }
+        } catch (error) {
+            console.error('이 피드는 필수입니다.', error);
+        }
+    };
+
 
     return(
         <>
             <Container>
                 <Header />
-                <Projectdiv>
-                    <Link to={'/project'} className='link'>
-                    <CloseButton>
-                        <BsXCircleFill className='icon' />
-                    </CloseButton>
-                    </Link>
-                    <MainImage>
-                        <ImageCurcle>
-                            <ImageIcon type='submit'>
-                                <BsFillCameraFill onClick={handleButton} className='icon' />
-                            </ImageIcon>
-                        </ImageCurcle>
-                    </MainImage>
-                    <AllDiv>
-                    
-                        <InputService type="text" placeholder="서비스명을 작성해주세요.(최대 10글자)" maxLength="10" />
-                        <ButtonContainer>
-                            <Button1
-                            onClick={() => setActiveButton('Button1')}
-                            className={activeButton === 'Button1' ? 'active' : ''}>미니프로젝트</Button1>
-                            <Button2
-                            onClick={() => setActiveButton('Button2')}
-                            className={activeButton === 'Button2' ? 'active' : ''}>해커톤프로젝트</Button2>
-                            <Button3
-                            onClick={() => setActiveButton('Button3')}
-                            className={activeButton === 'Button3' ? 'active' : ''}>개인프로젝트</Button3>
-                        </ButtonContainer>
-                        <WriteDetails 
-                        placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" 
-                        maxLength="200"/>
+                <form onSubmit={handleFormSubmit}>
+                    <Projectdiv>
                         <Link to={'/project'} className='link'>
-                            <UploadButton>
-                                업로드하기
-                            </UploadButton>
+                        <CloseButton>
+                            <BsXCircleFill className='icon' />
+                        </CloseButton>
                         </Link>
-                    </AllDiv>
-                </Projectdiv>
+                        <MainImage>
+                            <input type="file" onChange={handleImageUpload} style={{ display: 'none' }} id="projectImage" />
+                            <label htmlFor="projectImg">
+                                <ImageCurcle>
+                                    <ImageIcon type='button'>
+                                        <BsFillCameraFill className='icon' />
+                                    </ImageIcon>
+                                </ImageCurcle>
+                            </label>
+                        </MainImage>
+                        <AllDiv>
+                            <InputService 
+                            type="text"
+                            placeholder="서비스명을 작성해주세요.(최대 10글자)"
+                            maxLength="10"
+                            value={teamName}
+                            onChange={(e) => setTeamName(e.target.value)} />
+                            <ButtonContainer>
+                                <Button1
+                                onClick={() => handleButtonClick('미니프로젝트')}
+                                className={activeButton === '미니프로젝트' ? 'active' : ''}>미니프로젝트</Button1>
+                                <Button2
+                                onClick={() => handleButtonClick('해커톤프로젝트')}
+                                className={activeButton === '해커톤프로젝트' ? 'active' : ''}>해커톤프로젝트</Button2>
+                                <Button3
+                                onClick={() => handleButtonClick('개인프로젝트')}
+                                className={activeButton === '개인프로젝트' ? 'active' : ''}>개인프로젝트</Button3>
+                            </ButtonContainer>
+                            <WriteDetails 
+                            placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" 
+                            maxLength="200"
+                            value={projectDetail}
+                            onChange={(e) => setProjectDetail(e.target.value)}/>
+                            <Link to={'/project'} className='link'>
+                                <UploadButton type="submit">
+                                    업로드하기
+                                </UploadButton>
+                            </Link>
+                        </AllDiv>
+                    </Projectdiv>
+                </form>
                 <Footer />
+                {error && (
+                    <div>Error: {Object.values(error).flat().join(',')}</div>
+                )}
             </Container>
         </>
     )

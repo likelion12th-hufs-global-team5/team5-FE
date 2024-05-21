@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect}from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ImageContainers from '../components/ImageContainers';
+import axios from 'axios';
 
 const Container=styled.div`
     display:flex;
@@ -104,6 +105,28 @@ const Rectangularinimg=styled.div`
 `;
 
 const Project=()=>{
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchProjects = async () => {
+        try {
+            const response = await axios.get('http://{SERVER_URL}/api/projects', {
+            headers: {
+                HOST: 'https://www.example.com/kr',
+                Authorization: 'usertoken',
+            },
+        });
+        setProjects(response.data);
+        setLoading(false);
+    } catch (error) {
+        console.error('불러오기를 실패했습니다.', error);
+      setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchProjects();
+    }, []);
 
     return(
         <>
@@ -111,6 +134,7 @@ const Project=()=>{
                 <Header />
                   <Projectdiv>
                     <Buttondiv>
+
                         <Link to={'/projectUpload'} className='link'>
                             업로드하기
                             <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
@@ -118,21 +142,20 @@ const Project=()=>{
                             <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>    
                         </Link>
                     </Buttondiv>
-
                     <ImageContainerSet>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>  
+                        <ImageContainers ></ImageContainers>
+                        <ImageContainers ></ImageContainers>
+                        <ImageContainers ></ImageContainers>  
                     </ImageContainerSet>
-                    <ImageContainerSet>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>  
+                    <ImageContainerSet >
+                        <ImageContainers ></ImageContainers>
+                        <ImageContainers ></ImageContainers>
+                        <ImageContainers ></ImageContainers>  
                     </ImageContainerSet>                          
-                    <ImageContainerSet>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>
-                        <ImageContainers></ImageContainers>  
+                    <ImageContainerSet >
+                        <ImageContainers ></ImageContainers>
+                        <ImageContainers ></ImageContainers>
+                        <ImageContainers ></ImageContainers>  
                     </ImageContainerSet>                                                      
                 </Projectdiv>
                 <Footer></Footer>

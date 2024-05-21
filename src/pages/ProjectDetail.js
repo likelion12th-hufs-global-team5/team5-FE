@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import axios from 'axios';
+
+
 
 const Container=styled.div`
     display:flex;
@@ -135,7 +138,29 @@ const WriteDetails=styled.div`
 
 
 const ProjectDetail=()=>{
+    const [projectDetails, setProjectDetails] = useState(null);
+    const [loading, setLoading] = useState(true);
 
+    const fetchProjectDetails = async () => {
+        try {
+          const response = await axios.get('http://{SERVER_URL}/api/project/(id)', {
+            headers: {
+              HOST: 'https://www.example.com/kr'
+            }
+          });
+          
+          setProjectDetails(response.data);
+          setLoading(false);
+        } catch (error) {
+          console.error('불러오기를 실패했습니다.', error);
+          setLoading(false);
+        }
+      };
+    
+      useEffect(() => {
+        fetchProjectDetails();
+      }, []);
+    
     return(
         <>
             <Container>
@@ -146,15 +171,15 @@ const ProjectDetail=()=>{
     
                     </MainImage>
                     <AllDiv>
-                        <InputService> TIFY - 케이크 키우기</InputService>
+                        <InputService>{projectDetails.teamName}</InputService>
                         <ButtonContainer>
+                            {}
                             <Button1>미니프로젝트</Button1>
                             <Button2>해커톤프로젝트</Button2>
                             <Button3>개인프로젝트</Button3>
                         </ButtonContainer>
                         <WriteDetails>
-                            안녕하세요 2명의 T와 2명의 F, 2TF입니다!
-                            생일 어드벤처 캘린더 웹 서비스 입니다!
+                            {projectDetails.projectDetail}
                         </WriteDetails>
                     </AllDiv>
                 </Projectdiv>
