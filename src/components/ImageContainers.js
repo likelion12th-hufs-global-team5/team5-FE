@@ -12,8 +12,10 @@ const EachDiv=styled.div`
     width : 250px;
     height : 250px;
     border-radius:20px;
-    background-image: url('https://cdn.crowdpic.net/detail-thumb/thumb_d_4D24F988C28882891AB7778F32CF1285.jpg');
+    background-image: url(${props => props.imageUrl});
     position:relative;
+
+    background-image: url('https://cdn.crowdpic.net/detail-thumb/thumb_d_4D24F988C28882891AB7778F32CF1285.jpg'); 
 `;
 
 const TextBelowImageContainer = styled.div`
@@ -44,14 +46,6 @@ const Rectangularinimg=styled.div`
 
 `;
 
-
-const ImageContainers=({teamName, projectImage, projectType})=>{
-
-    return(    
-
-        <ImageContainer>
-        <Link to={'/projectDetail'} className='link'>
-            <EachDiv style={{ backgroundImage: `url(${projectImage})`}}>
                 <Rectangularinimg>
                     {projectType}
                     <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
