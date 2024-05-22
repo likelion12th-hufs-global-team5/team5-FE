@@ -371,79 +371,40 @@ const Hackerthon = styled.p`
 `;
 
 const Curriculum = () => {
+  //5.22 기준의 임시 데이터로 작성합니다.
+  // SessionAllDetail의 api 명세서에 작성되어있는 내용을 그대로 사용합니다.
   const [sessions, setSessions] = useState([
-    /* 임시 데이터들*/
     {
       id: 1,
-      session_id: 1,
       sessionName: "Github",
-      part: "공통",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:21:04.321658Z",
     },
     {
       id: 2,
-      session_id: 2,
       sessionName: "FE - Session: HTML, CSS, JavaScript",
-      part: "공통",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:22:14.938621Z",
     },
     {
       id: 3,
-      session_id: 3,
       sessionName: "BE - Session: Django 기초 restful api&ERD",
-      part: "공통",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:22:48.783744Z",
     },
     {
       id: 4,
-      session_id: 4,
-      sessionName: "PM/PD - Session: 노션으로 서비스 기획하기+ui/ux 디자인",
-      part: "공통",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:23:43.553687Z",
+      sessionName: "PM/PD - Session: 노션으로 서비스 기획하+ui/ux 디자인",
     },
     {
       id: 5,
-      session_id: 5,
       sessionName: "React 기초",
-      part: "FE",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:25:33.479900Z",
     },
     {
       id: 6,
-      session_id: 6,
       sessionName: "React 심화 & 해커톤 대비",
-      part: "FE",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:25:51.430047Z",
     },
     {
       id: 7,
-      session_id: 7,
       sessionName: "Django restframework(DRF)",
-      part: "BE",
-      url: null,
-      sessionIntro: "",
-      created_at: "2024-05-11T10:26:18.502274Z",
     },
     {
       id: 8,
-      session_id: 8,
       sessionName: "Django 회원가입/로그인 & 해커톤 대비 세션",
-      part: "BE",
-      url: "https://www.test8.com",
-      sessionIntro: "This is a test8 post",
-      created_at: "2024-05-11T10:26:49.010195Z",
     },
   ]);
 
@@ -451,7 +412,7 @@ const Curriculum = () => {
     const fetchSessions = async () => {
       try {
         const response = await axios.get(
-          "https://team5-fe.vercel.app/session/all" /*url 틀렸음.. 그래서 F12로 볼 때 오류남.*/,
+          "https://team5-fe.vercel.app/session/all",
           {
             headers: {
               Authorization: "usertoken",
@@ -461,12 +422,7 @@ const Curriculum = () => {
         if (response.status === 200) {
           const data = response.data.map((session) => ({
             id: session.id,
-            session_id: session.session_id,
             sessionName: session.sessionName,
-            part: session.part,
-            url: session.url,
-            sessionIntro: session.sessionIntro,
-            created_at: session.created_at,
           }));
           setSessions(data);
         } else {
@@ -480,109 +436,104 @@ const Curriculum = () => {
     fetchSessions();
   }, []);
 
+  // ID에 따라 세션을 분류.
+  const commonSessions = sessions.filter((session) =>
+    [1, 2, 3, 4].includes(session.id)
+  );
+  const feSessions = sessions.filter((session) => [5, 6].includes(session.id));
+  const beSessions = sessions.filter((session) => [7, 8].includes(session.id));
+
   return (
-    <>
-      <Container>
-        <Header />
-        <CurriculumBox>
-          <Curriculumtext>Curriculum</Curriculumtext>
-          <Curriculumsubtext>운영진만 업로드가 가능합니다.</Curriculumsubtext>
-          <CommoncurBox>
-            <CommonTitle>공통</CommonTitle>
-            <Commonsubtitle>
-              3/18 ~ 5/4 공통 파트 세션을 진행했습니다.
-            </Commonsubtitle>
-            <Commonline></Commonline>
-            <CommonsessionContainer>
-              {sessions
-                .filter((session) => session.part === "공통")
-                .map((session) => (
-                  <SessionBar
-                    key={session.id}
-                    label={session.sessionName}
-                    labelTo="/curriculumDetail"
-                    buttonTo="/curriculumUpload"
-                  />
-                ))}
-            </CommonsessionContainer>
-          </CommoncurBox>
-          <PartBox>
-            <div>
-              <Parttext>
-                <PartTitle>FE</PartTitle>
-                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
-              </Parttext>
-              {sessions
-                .filter((session) => session.part === "FE")
-                .map((session) => (
-                  <SessionBar
-                    key={session.id}
-                    label={session.sessionName}
-                    labelTo="/curriculumDetail"
-                    buttonTo="/curriculumUpload"
-                    width="400px"
-                  />
-                ))}
-            </div>
-            <div>
-              <Parttext>
-                <PartTitle>BE</PartTitle>
-                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
-              </Parttext>
-              {sessions
-                .filter((session) => session.part === "BE")
-                .map((session) => (
-                  <SessionBar
-                    key={session.id}
-                    label={session.sessionName}
-                    labelTo="/curriculumDetail"
-                    buttonTo="/curriculumUpload"
-                    width="400px"
-                  />
-                ))}
-            </div>
-          </PartBox>
-          <Hackerthon>HACKERTHON</Hackerthon>
-          <PartBox>
-            <div>
-              <Parttext>
-                <PartTitle>FE</PartTitle>
-                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
-              </Parttext>
-              {sessions
-                .filter((session) => session.part === "FE")
-                .map((session) => (
-                  <SessionBar
-                    key={session.id}
-                    label={session.sessionName}
-                    labelTo="/curriculumDetail"
-                    buttonTo="/curriculumUpload"
-                    width="400px"
-                  />
-                ))}
-            </div>
-            <div>
-              <Parttext>
-                <PartTitle>BE</PartTitle>
-                <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
-              </Parttext>
-              {sessions
-                .filter((session) => session.part === "BE")
-                .map((session) => (
-                  <SessionBar
-                    key={session.id}
-                    label={session.sessionName}
-                    labelTo="/curriculumDetail"
-                    buttonTo="/curriculumUpload"
-                    width="400px"
-                  />
-                ))}
-            </div>
-          </PartBox>
-        </CurriculumBox>
-        <Footer />
-      </Container>
-    </>
+    <Container>
+      <Header />
+      <CurriculumBox>
+        <Curriculumtext>Curriculum</Curriculumtext>
+        <Curriculumsubtext>운영진만 업로드가 가능합니다.</Curriculumsubtext>
+        <CommoncurBox>
+          <CommonTitle>공통</CommonTitle>
+          <Commonsubtitle>
+            3/18 ~ 5/4 공통 파트 세션을 진행했습니다.
+          </Commonsubtitle>
+          <Commonline></Commonline>
+          <CommonsessionContainer>
+            {commonSessions.map((session) => (
+              <SessionBar
+                key={session.id}
+                label={session.sessionName}
+                labelTo="/curriculumDetail"
+                buttonTo="/curriculumUpload"
+              />
+            ))}
+          </CommonsessionContainer>
+        </CommoncurBox>
+        <PartBox>
+          <div>
+            <Parttext>
+              <PartTitle>FE</PartTitle>
+              <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+            </Parttext>
+            {feSessions.map((session) => (
+              <SessionBar
+                key={session.id}
+                label={session.sessionName}
+                labelTo="/curriculumDetail"
+                buttonTo="/curriculumUpload"
+                width="400px"
+              />
+            ))}
+          </div>
+          <div>
+            <Parttext>
+              <PartTitle>BE</PartTitle>
+              <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+            </Parttext>
+            {beSessions.map((session) => (
+              <SessionBar
+                key={session.id}
+                label={session.sessionName}
+                labelTo="/curriculumDetail"
+                buttonTo="/curriculumUpload"
+                width="400px"
+              />
+            ))}
+          </div>
+        </PartBox>
+        <Hackerthon>HACKERTHON</Hackerthon>
+        <PartBox>
+          <div>
+            <Parttext>
+              <PartTitle>FE</PartTitle>
+              <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+            </Parttext>
+            {feSessions.map((session) => (
+              <SessionBar
+                key={session.id}
+                label={session.sessionName}
+                labelTo="/curriculumDetail"
+                buttonTo="/curriculumUpload"
+                width="400px"
+              />
+            ))}
+          </div>
+          <div>
+            <Parttext>
+              <PartTitle>BE</PartTitle>
+              <Partsubitle>파트 선택 후 개별 세션 입니다.</Partsubitle>
+            </Parttext>
+            {beSessions.map((session) => (
+              <SessionBar
+                key={session.id}
+                label={session.sessionName}
+                labelTo="/curriculumDetail"
+                buttonTo="/curriculumUpload"
+                width="400px"
+              />
+            ))}
+          </div>
+        </PartBox>
+      </CurriculumBox>
+      <Footer />
+    </Container>
   );
 };
 
