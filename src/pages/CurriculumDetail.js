@@ -51,15 +51,15 @@ const StyledHr = styled.hr`
   width: 700px;
 `;
 const Title = styled.p`
-  background-color: transparent; // 배경색 제거
-  border: none; // 경계선 제거
-  outline: none; // 포커스 아웃라인 제거
-  color: white; // 글자색 설정
-  font-weight: 700; // 글자 굵기
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 700;
   font-size: 44px;
-  text-align: left; // 텍스트 왼쪽 정렬
+  text-align: left;
   margin: 50px 0 20px 77px;
-  max-width: 100%; // 최대 너비 제한
+  max-width: 100%;
 `;
 
 const URL = styled.p`
@@ -75,9 +75,9 @@ const URL = styled.p`
   padding: 10px 20px;
   margin: 15px 77px 15px 77px;
   overflow-y: auto;
-  white-space: nowrap; // 줄바꿈을 금지
-  overflow-x: auto; //수평 스크롤바가 필요한 경우에만 나타남
-  overflow-y: hidden; // 수직 스크롤바는 항상 숨김
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 `;
 const Detail = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
@@ -91,7 +91,7 @@ const Detail = styled.div`
   height: 200px;
   padding: 27px 20px;
   margin: 5px 77px 15px 77px;
-  white-space: pre-line; // 줄바꿈을 인식.. 인데 동작을 하는건지 의문...(그래서 아래 br로 우선 줄바꿈 처리 했습니다)
+  white-space: pre-line;
   line-height: 1.5;
 `;
 
