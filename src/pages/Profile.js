@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Password from '../components/Password';
 import Footer from '../components/Footer';
-import {BsPencilFill} from 'react-icons/bs'
+import {BsPencilFill,BsFillCameraFill} from 'react-icons/bs'
 
 const Container=styled.div`
     display:flex;
@@ -20,19 +20,71 @@ const Container=styled.div`
     /* width: 100%; */
 `;
 const ContentDiv=styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    /* flex-wrap: wrap;
+    gap: 1vw; */
+
     background:rgba(255,255,255,0.19);
-    width: 90%;
+    width: 80%;
 
     border-radius: 35px;
 
     padding: 2vw;
-
     
 `;
-const UserImage=styled.image`
-    width: 30%;
-    height: 30%;
-    src: 'https://i.pinimg.com/564x/3f/0e/cb/3f0ecb91c433030f5a413795c41a1d56.jpg';
+const UserImage=styled.div`
+    position: relative;
+    
+    z-index: 1;
+
+    width: 27.5vw;
+    height: 27.5vw;
+
+    background-image: url('https://i.pinimg.com/564x/33/5f/14/335f1418109df8cf8bdbe15f80d621c4.jpg');
+`;
+
+const UserImageButton=styled.button`
+    position: absolute;
+    left: 30%;
+    top: 50%;
+
+    z-index: 2;
+
+    width: 3vw;
+    height: 3vw;
+
+    outline: none;
+    border: none;
+
+    background-color: rgba(255,255,255,0.19);
+    border-radius: 100%;
+
+    .icon{
+        width: 30px;
+        height: 30px;
+
+        color: ${({theme})=>theme.colors.white};
+    }
+
+    &:hover{
+        background-color:  ${({theme})=>theme.colors.white};
+        .icon{
+            color: ${({theme})=>theme.colors.mainColor};
+        }
+        transition: all 0.1s;
+    }
+
+    &:active{
+        background-color:${({theme})=>theme.colors.mainColor} ;
+        .icon{
+            color: ${({theme})=>theme.colors.white};
+        }
+        transition: all 0.1s;
+    }
 `;
 const Contant=styled.div`
     display: flex;
@@ -193,7 +245,12 @@ const Profile=()=>{
             <Container>
                 <Header />
                 <ContentDiv>
-                    <UserImage src='https://i.pinimg.com/564x/3f/0e/cb/3f0ecb91c433030f5a413795c41a1d56.jpg'/>
+                    <UserImageButton>
+                        <BsFillCameraFill className='icon'/>
+                    </UserImageButton>
+                    <UserImage 
+                        // src='https://i.pinimg.com/564x/3f/0e/cb/3f0ecb91c433030f5a413795c41a1d56.jpg'
+                        />
                     <Contant>
                         <ContentHeader>
                             <span className='userName'>김준영</span>

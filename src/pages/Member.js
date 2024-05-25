@@ -13,9 +13,9 @@ const Container=styled.div`
 
     text-align:center;
     align-items:center;
-/* 
+
     flex-wrap: wrap;
-    gap:1vw; */
+    gap:5vw;
 `;
 const MemberContainer=styled.div`
     display: flex;
@@ -24,20 +24,22 @@ const MemberContainer=styled.div`
     justify-content: space-between;
 
     flex-wrap: wrap;
-    gap: 2vw;
+    gap: 1vw;
 
     width: 80%;
 
     color:${({theme})=>theme.colors.white};
     background:rgba(255,255,255,0.19);
     /* border-radius:20px; */
+    /* border-radius:35px 35px 0px 0px; */
+    border-radius: 35px;
 `;
 const MemberHeader=styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 80%;
+    width: 100%;
 
     border-radius:35px 35px 0px 0px;
 
@@ -75,7 +77,7 @@ const MemberPositionDiv=styled.div`
     flex-wrap:wrap;
     gap:3vw;
 
-    margin-top:3vw;
+    margin-top:2%;
 `;
 const MemberPosition=styled.button`
     display: flex;
@@ -134,6 +136,10 @@ const MemberDetail=styled.div`
 const MemberImage=styled.image`
     width: 15vw;
     height: 15vw;
+
+    /* width:2%;
+    height:2%; */
+
     background-image: url('https://i.pinimg.com/564x/33/5f/14/335f1418109df8cf8bdbe15f80d621c4.jpg');
 `;
 const MemberDetailText=styled.div`
@@ -150,7 +156,7 @@ const MemberDetailText=styled.div`
         display: flex;
         flex-direction: row;
         align-items: baseline;
-        /* justify-content: space-between; */
+        
         flex-wrap: wrap;
         gap: 2vw;
 
@@ -171,13 +177,13 @@ const Member=()=>{
         <>
             <Container>
                 <Header />
-                <MemberHeader>
-                    <MemberHeaderButton>9th</MemberHeaderButton>
-                    <MemberHeaderButton>10th</MemberHeaderButton>
-                    <MemberHeaderButton>11th</MemberHeaderButton>
-                    <MemberHeaderButton>12th</MemberHeaderButton>
-                </MemberHeader>
                 <MemberContainer>
+                    <MemberHeader>
+                        <MemberHeaderButton>9th</MemberHeaderButton>
+                        <MemberHeaderButton>10th</MemberHeaderButton>
+                        <MemberHeaderButton>11th</MemberHeaderButton>
+                        <MemberHeaderButton>12th</MemberHeaderButton>
+                    </MemberHeader>
                     <MemberPositionDiv>
                         <MemberPosition>아기사자</MemberPosition>
                         <MemberPosition>운영진</MemberPosition>
