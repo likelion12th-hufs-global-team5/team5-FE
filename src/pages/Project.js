@@ -150,7 +150,7 @@ const Project=()=>{
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch('http://{SERVER_URL}/api/projects', {
+                const response = await fetch('https://likelionteam5.pythonanywhere.com/projects/list_detail/', {
                     headers: {
                         "HOST": "https://www.example.com/kr",
                         "Authorization": "usertoken"

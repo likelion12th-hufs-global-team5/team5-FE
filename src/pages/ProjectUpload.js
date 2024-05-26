@@ -289,7 +289,7 @@ const ProjectUpload=()=>{
         }
 
         try {
-            const response = await fetch('http://{SERVER_URL}/api/projects', {
+            const response = await fetch('https://likelionteam5.pythonanywhere.com/projects/upload', {
                 method: 'POST',
                 headers: {
                     "Authorization": "usertoken"
