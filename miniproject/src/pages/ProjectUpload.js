@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import axios from 'axios';
-
-
 
 const Container=styled.div`
     display:flex;
@@ -15,25 +12,31 @@ const Container=styled.div`
     text-align:center;
     align-items:center;
 
-    flex-wrap: wrap;
-    gap:5vh;
+    color:#fff;
 `;
 
 const Text=styled.p`
-    color:blue;
+    color:#FE5826;
     font-weight:700;
 
     margin:30px auto;
+
+    &:hover{
+    background-color:white;
+    color:#FE5826;
+    }
 `;
 
 const Projectdiv=styled.div`
     width : 1150px;
-    height : 449px;
+    height : 549px;
+
     background-color:rgba(255,255,255,0.19);
     border-radius:35px;
-    padding:77px;
+    padding-top:77px;
+    padding-right:77px;
+    padding-left: 77px;
     display: flex;
-    margin-bottom: 77px;
 `;
 
 const MainImage=styled.div`
@@ -48,11 +51,9 @@ const MainImage=styled.div`
 const AllDiv=styled.div`
     display:flex;
     flex-direction :column;
-    flex-wrap: wrap;
-    gap:15px;
 `;
 
-const InputService=styled.div`
+const InputService=styled.input`
     padding:15 10px;
     width:400px;
     margin-left: 50px;
@@ -64,11 +65,10 @@ const InputService=styled.div`
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 3px solid white;
+    border-bottom-width: 3px solid white;
     outline:none;
     padding-bottom:15px;
     padding-left:10px;
-    text-align: left;
 
 `;
 
@@ -79,20 +79,26 @@ const ButtonContainer = styled.div`
 `;
 
 
-const Button1=styled.div`
+const Button1=styled.button`
     border-radius: 15px;
     text-align: center;
     color:white;
     font-size:15px;
     font-weight : 500;
     font-family: "Noto+Sans+KR", sans-serif;
-    background-color:rgba(254,58,26,0.75);
+    background-color:rgba(255,255,255,0.19);
     margin-right: 31px;
     padding :14px 13px;
+    margin-top:15px;
     white-space: nowrap;
+
+    &:hover{
+    background-color:#FE5826;
+    color:white;
+}
 `;
 
-const Button2=styled.div`
+const Button2=styled.button`
     border-radius: 15px;
     text-align: center;
     color:white;
@@ -102,10 +108,16 @@ const Button2=styled.div`
     background-color:rgba(255,255,255,0.19);
     margin-right: 31px;
     padding :14px 7px;
+    margin-top:15px;
     white-space: nowrap;
+
+    &:hover{
+    background-color:#FE5826;
+    color:white;
+}
 `;
 
-const Button3=styled.div`
+const Button3=styled.button`
     border-radius: 15px;
     text-align: center;
     color:white;
@@ -115,10 +127,16 @@ const Button3=styled.div`
     background-color:rgba(255,255,255,0.19);
     margin-right: 31px;
     padding :14px 13px;
+    margin-top:15px;
     white-space: nowrap;
+
+    &:hover{
+    background-color:#FE5826;
+    color:white;
+}
 `;
 
-const WriteDetails=styled.div`
+const WriteDetails=styled.input`
     width: 638px;
     height: 171px;
     border-radius: 15px;
@@ -131,62 +149,64 @@ const WriteDetails=styled.div`
     display:flex;
     flex-direction: column;
     text-align: left;
-    padding-top: 18px;
-    padding-right: 21px;
-    padding-left: 21px;
+    margin-top: 15px;
+`;
+
+const UploadButton=styled.button`
+    width : 195px;
+    height : 65px;
+    background-color:rgba(255,255,255,0.19);
+    border-radius:15px;
+    color:white;
+    text-align:center;
+    font-size:28px;
+    font-weight : 700;
+    font-family: "Noto+Sans+KR", sans-serif;
+    margin-top: 27px;
+    margin-bottom: 77px;
+    margin-left: 496px;
+
+    &:hover{
+        background-color:white;
+        color:#FE5826;
+    }
 `;
 
 
-const ProjectDetail=()=>{
-    const [projectDetails, setProjectDetails] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    const fetchProjectDetails = async () => {
-        try {
-          const response = await axios.get('https://likelionteam5.pythonanywhere.com/projects/list_detail/(id)', {
-            headers: {
-              HOST: 'https://www.example.com/kr'
-            }
-          });
-          
-          setProjectDetails(response.data);
-          setLoading(false);
-        } catch (error) {
-          console.error('불러오기를 실패했습니다.', error);
-          setLoading(false);
-        }
-      };
-    
-      useEffect(() => {
-        fetchProjectDetails();
-      }, []);
-    
+const ProjectUpload=()=>{
+
     return(
         <>
             <Container>
                 <Header />
+                <Text>test Text - Project upload page</Text>
+                <Link to={'/'}>
+                    Main 이동
+                </Link>
                 <Projectdiv>
-                    
                     <MainImage>
-    
+                        
                     </MainImage>
                     <AllDiv>
-                        <InputService>{projectDetails.teamName}</InputService>
+                        <InputService type="text" placeholder="서비스명을 작성해주세요.(최대 10글자)" />
                         <ButtonContainer>
-                            {}
                             <Button1>미니프로젝트</Button1>
                             <Button2>해커톤프로젝트</Button2>
                             <Button3>개인프로젝트</Button3>
                         </ButtonContainer>
-                        <WriteDetails>
-                            {projectDetails.projectDetail}
-                        </WriteDetails>
+                        <WriteDetails type="text" placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" />
+                        <Link to={'/project'} className='link'>
+                            <UploadButton>
+                                업로드하기
+                            </UploadButton>
+                        </Link>
                     </AllDiv>
                 </Projectdiv>
-                <Footer> </Footer>
+                <Footer />
             </Container>
         </>
     )
 }
 
-export default ProjectDetail;
+export default ProjectUpload;
