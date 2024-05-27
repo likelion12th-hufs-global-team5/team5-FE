@@ -21,10 +21,10 @@ const CurriculumBox = styled.div`
   width: 1250px;
   height: 550px;
   background-color: rgba(255, 255, 255, 0.19);
-  border-radius: 10px;
+  border-radius: 35px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; // 왼쪽 정렬
+  align-items: flex-start;
   margin-top: 77px;
   margin-bottom: 77px;
 `;
@@ -38,7 +38,7 @@ const CloseButton = styled(Link)`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  text-decoration: none; // 링크의 밑줄 제거
+  text-decoration: none;
   margin-top: 27px;
   margin-left: 95%;
 `;
