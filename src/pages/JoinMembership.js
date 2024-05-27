@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {registerUserAsync} from '../redux/authSlice';
 
 import LogoCircle from '../components/LogoCircle';
-import axios from 'axios';
 
 import Stars from '../components/Stars';
 
@@ -17,7 +16,7 @@ const Container=styled.div`
     align-items:center;
 	justify-content: center;
 
-    padding:60px;
+    /* padding:60px; */
 
     flex-wrap: wrap;
     gap: 7vw;

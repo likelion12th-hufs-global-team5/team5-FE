@@ -10,12 +10,13 @@ const Container=styled.div`
     flex-direction:row;
 
     align-items:center;
-	justify-content: center;
+	/* justify-content: center; */
+    justify-content: space-between;
 
     padding:60px;
 
     flex-wrap: wrap;
-    gap: 7vw;
+    /* gap: 7vw; */
 `;
 
 const LoginContainer=styled.div`
@@ -150,10 +151,6 @@ const GotoJoinMembership=styled.div`
     }
 `;
 
-const ProjectDiv=styled.div`
-    width:300px;
-    height:300px;
-`;
 
 const Login=()=>{
     const navigate=useNavigate();
@@ -229,7 +226,6 @@ const Login=()=>{
                         </Link>
                     </GotoJoinMembership>
                 </LoginContainer>
-                <ProjectDiv></ProjectDiv>
                 <Stars />
             </Container>
         </>
