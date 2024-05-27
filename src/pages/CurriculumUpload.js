@@ -23,10 +23,10 @@ const CurriculumBox = styled.div`
   width: 1250px;
   height: 600px;
   background-color: rgba(255, 255, 255, 0.19);
-  border-radius: 10px;
+  border-radius: 35px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; // 왼쪽 정렬
+  align-items: flex-start;
   margin-top: 77px;
   margin-bottom: 77px;
 `;
@@ -40,7 +40,7 @@ const CloseButton = styled(Link)`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  text-decoration: none; // 링크의 밑줄 제거
+  text-decoration: none;
   margin-top: 27px;
   margin-left: 95%;
 `;
@@ -54,15 +54,15 @@ const StyledHr = styled.hr`
 `;
 
 const TitleInput = styled.input`
-  background-color: transparent; // 배경색 제거
-  border: none; // 경계선 제거
-  outline: none; // 포커스 아웃라인 제거
-  color: white; // 글자색 설정
-  font-weight: 700; // 글자 굵기
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 700;
   font-size: 44px;
-  text-align: left; // 텍스트 왼쪽 정렬
+  text-align: left;
   margin: 50px 0 20px 77px;
-  max-width: 100%; // 최대 너비 제한
+  max-width: 100%;
 `;
 
 const URLinput = styled.input`
@@ -82,11 +82,13 @@ const URLinput = styled.input`
   &:focus {
     outline: none;
     background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.1s;
   }
   &:hover {
     border: 2px solid rgba(254, 88, 38, 1);
     background-color: rgba(254, 88, 38, 0.19);
     color: rgba(254, 88, 38, 1);
+    transition: all 0.1s;
   }
 `;
 const Detailinput = styled.textarea`
@@ -100,18 +102,20 @@ const Detailinput = styled.textarea`
   height: 200px;
   padding: 20px;
   margin: 5px 77px 15px 77px;
-  resize: none; // 사용자가 크기 조정을 못 하게 함
+  resize: none;
   &::placeholder {
     color: lightgray;
   }
   &:focus {
     outline: none;
     background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.1s;
   }
   &:hover {
     border: 2px solid rgba(254, 88, 38, 1);
     background-color: rgba(254, 88, 38, 0.19);
     color: rgba(254, 88, 38, 1);
+    transition: all 0.1s;
   }
 `;
 const UploadButton = styled.button`
@@ -128,6 +132,7 @@ const UploadButton = styled.button`
   &:hover {
     background-color: white;
     color: rgba(254, 88, 38, 1);
+    transition: all 0.1s;
   }
 `;
 

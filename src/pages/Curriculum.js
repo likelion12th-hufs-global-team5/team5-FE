@@ -17,7 +17,7 @@ const CurriculumBox = styled.div`
   width: 1000px;
   height: 1100px;
   background-color: rgba(255, 255, 255, 0.19);
-  border-radius: 10px;
+  border-radius: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
