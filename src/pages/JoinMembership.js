@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { userJoinMembership } from '../redux/userSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {registerUserAsync} from '../redux/authSlice';
@@ -198,14 +199,28 @@ const JoinButton=styled.button`
 `;
 const JoinMembership=()=>{
     const navigate=useNavigate();
-    const [formData,setFormData]=useState({
-        name:'',
-        studentNumber:'',
-        id:'',
-        password:'',
-        password2:'',
-        position:''
-    });
+    // const [formData,setFormData]=useState({
+    //     name:'',
+    //     studentNumber:'',
+    //     id:'',
+    //     password:'',
+    //     password2:'',
+    //     position:''
+    // });
+    const [formData, setFormData] = useState({
+        memberId: "",
+        name: "",
+        studentNumber: "",
+        // userPhoto: '',
+        password1: "",
+        password2: "",
+        currentPosition: "",
+        year: 0,
+        introduction: "",
+        part: ""
+      });
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
@@ -228,6 +243,7 @@ const JoinMembership=()=>{
         console.log(formData);
         
         alert('회원가입 성공~');
+        dispatch(userJoinMembership(formData));
         navigate('/login');
     }
     
@@ -380,6 +396,8 @@ const JoinMembership=()=>{
                             >
                                 회원가입
                                 {/* {loading ? '가입중...':'가입하기'} */}
+                                {user.status === 'loading' && <p>Loading...</p>}
+                                {user.status === 'failed' && <p>Error: {user.error}</p>}
                             </JoinButton>
                         </Link>
                     </div>
@@ -387,7 +405,7 @@ const JoinMembership=()=>{
                 <Stars />
             </Container>
         </>
-    )
-}
+    );
+};
 
 export default JoinMembership

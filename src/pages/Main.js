@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+import { userLogin,userLogout} from '../redux/userSlice';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
 
@@ -7,7 +9,6 @@ import Stars from '../components/Stars';
 import Footer from '../components/Footer';
 import Circle from '../components/Circle';
 
-import CheckLoginStatus from '../cookie/CheckLoginStatus';
 
 const Container=styled.div`
     display:flex;
@@ -24,6 +25,20 @@ const Container=styled.div`
 `;
 
 const Main = () => {
+    const dispatch=useDispatch();
+    
+    // 화면 로드 시 로그인 상태 확인
+    // useEffect(()=>{
+    //     // 서버에서 로그인 여부를 확인하고 redux 상태 업데이트
+    //     // 예시 코드 : 서버에서 로그인 여부 확인하는 api 호출
+    //     // 이 부분은 서버와의 통산을 통해 실제로 구현되어야 합니다.
+    //     const checkLoginStatus=async()=>{
+    //         try{
+    //             const response=await fetch()
+    //         }
+    //     }
+    // })
+
     // 쿠키
     const [isLoggedIn, setIsLoggedIn]=useState(Cookies.get('isLoggedIn')==='true');
 
@@ -77,7 +92,6 @@ const Main = () => {
                 <Circle styled={{ zIndex: 10 }}/>
                 <Stars />
                 <Footer />
-                <CheckLoginStatus />
             </Container> 
         </>
     )

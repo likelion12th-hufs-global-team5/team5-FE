@@ -1,6 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch,useSelector } from "react-redux";
+import { editUser } from "../redux/userSlice";
 
 import Header from "../components/Header";
 import Password from "../components/Password";
@@ -241,6 +243,26 @@ const EditButton = styled.button`
   }
 `;
 const Profile = () => {
+    const user = useSelector((state) => state.user.user);
+    const [formData, setFormData] = useState({
+        part: user.part || '',
+        introduction: user.introduction || '',
+        userPhoto: user.userPhoto || '',
+        current_password: '',
+        new_password: ''
+    });
+    const dispatch = useDispatch();
+    const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(editUser({ ...formData, memberId: user.memberId }));
+      };
   return (
     <>
       <Container>
@@ -254,10 +276,23 @@ const Profile = () => {
           />
           <Contant>
             <ContentHeader>
-              <span className="userName">김준영</span>
-              <span className="year">11기</span>
+              <span 
+                className="userName">
+                    {/* 김준영 */}
+                    {user.name}
+                    </span>
+              <span 
+                className="year">
+                    11기
+                    {user.year}
+                    </span>
               <EditUserPositionDiv>
-                <EditUserPosition placeholder="바꾸실 포지션을 작성해주세요" />
+                <EditUserPosition 
+                    type="text"
+                    name='part'
+                    value={formData.part}
+                    onChange={handleChange}
+                    placeholder="바꾸실 포지션을 작성해주세요" />
                 <button type="submit">
                   <BsPencilFill className="icon" />
                 </button>
@@ -265,13 +300,23 @@ const Profile = () => {
             </ContentHeader>
             <div className="introduce">
               한줄소개
-              <AddUserIntroduce placeholder="한줄 소개를 입력해주세요" />
+              <AddUserIntroduce 
+                type='text'
+                name='introduction'
+                value={formData.introduction}
+                onChange={handleChange}
+                placeholder="한줄 소개를 입력해주세요">
+                  {user.introduction}
+                </AddUserIntroduce>
             </div>
             <EditPasswordDiv>
               로그인 정보 수정
               <Password
+                type={Password}
                 firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
+                firstValue={formData.current_password}
                 secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
+                secondValue={formData.new_password}
               />
             </EditPasswordDiv>
             <EditButton>수정하기</EditButton>

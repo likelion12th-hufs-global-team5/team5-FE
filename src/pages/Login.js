@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { userLogin, userLogout } from '../redux/userSlice';
 
 import LogoCircle from '../components/LogoCircle';
 import Stars from '../components/Stars';
@@ -151,9 +153,9 @@ const GotoJoinMembership=styled.div`
     }
 `;
 
-
 const Login=()=>{
     const navigate=useNavigate();
+    const dispatch=useDispatch()
 
     const [loginFormData,setLoginFormData]=useState({
         id:'',
@@ -171,6 +173,7 @@ const Login=()=>{
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(loginFormData);
+        dispatch(userLogin({memberId:'esder',password1:123}))
         alert('로그인 성공~');
         navigate('/');
     }
@@ -219,6 +222,11 @@ const Login=()=>{
                         type='submit'
                         onClick={handleFormSubmit}
                     >Login</LoginButton>
+                    <LoginButton
+                        onClick={()=>{dispatch(userLogout())}}
+                    >
+                        Logout
+                    </LoginButton>
                     <GotoJoinMembership>
                         회원이 아니신가요?
                         <Link to='/joinMembership' className='textGotoJoin'>
