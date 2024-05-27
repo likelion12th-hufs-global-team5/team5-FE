@@ -9,6 +9,8 @@ import LogoCircle from '../components/LogoCircle';
 
 import Stars from '../components/Stars';
 
+import { signUp } from '../redux/userSlice';
+
 const Container=styled.div`
     display:flex;
     flex-direction:row;
@@ -198,13 +200,25 @@ const JoinButton=styled.button`
 `;
 const JoinMembership=()=>{
     const navigate=useNavigate();
+    const dispatch=useDispatch();
+    const user = useSelector((state)=>state.user)
     const [formData,setFormData]=useState({
-        name:'',
-        studentNumber:'',
-        id:'',
-        password:'',
-        password2:'',
-        position:''
+        // name:'',
+        // studentNumber:'',
+        // id:'',
+        // password:'',
+        // password2:'',
+        // position:''
+        memberId: "",
+        name: "",
+        studentNumber: "",
+        // userPhoto: '',
+        password1: "",
+        password2: "",
+        currentPosition: "",
+        year: 0,
+        introduction: "",
+        part: ""
     });
 
     const handleInputChange=(e)=>{
@@ -379,6 +393,8 @@ const JoinMembership=()=>{
                                 onClick={handleFormSubmit}
                             >
                                 회원가입
+                                {user.status === 'loading' && <p>Loading...</p>}
+                                {user.status === 'failed' && <p>Error: {user.error}</p>}
                                 {/* {loading ? '가입중...':'가입하기'} */}
                             </JoinButton>
                         </Link>

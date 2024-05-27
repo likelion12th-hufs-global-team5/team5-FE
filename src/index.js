@@ -8,11 +8,13 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 // import Theme from './styles/theme';
 import GlobalStyle from './styles/globalCss';
+import store from './redux/store';
+
 
 const rootElement=document.getElementById('root');
 
 createRoot(rootElement).render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme} store={store}>
     <GlobalStyle />
     <App />
   </ThemeProvider>
