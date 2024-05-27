@@ -1,285 +1,286 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import Header from '../components/Header';
-import Password from '../components/Password';
-import Footer from '../components/Footer';
-import {BsPencilFill,BsFillCameraFill} from 'react-icons/bs'
+import Header from "../components/Header";
+import Password from "../components/Password";
+import Footer from "../components/Footer";
+import { BsPencilFill, BsFillCameraFill } from "react-icons/bs";
 
-const Container=styled.div`
-    display:flex;
-    flex-direction:column;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
 
-    text-align:center;
-    align-items:center;
+  text-align: center;
+  align-items: center;
 
-    flex-wrap: wrap;
-    gap:5vw;
+  flex-wrap: wrap;
+  gap: 5vw;
 
-    /* width: 100%; */
+  /* width: 100%; */
 `;
-const ContentDiv=styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+const ContentDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2vw;
 
-    /* flex-wrap: wrap;
+  /* flex-wrap: wrap;
     gap: 1vw; */
 
-    background:rgba(255,255,255,0.19);
-    width: 80%;
+  background: rgba(255, 255, 255, 0.19);
+  width: 80%;
 
-    border-radius: 35px;
+  border-radius: 35px;
 
-    padding: 2vw;
-    
+  padding: 2vw;
 `;
-const UserImage=styled.div`
-    position: relative;
-    
-    z-index: 1;
+const UserImage = styled.div`
+  position: relative;
 
-    width: 27.5vw;
-    height: 27.5vw;
+  z-index: 1;
 
-    background-image: url('https://i.pinimg.com/564x/33/5f/14/335f1418109df8cf8bdbe15f80d621c4.jpg');
+  width: 27.5vw;
+  height: 27.5vw;
+  padding-left: 50px;
+  background-image: url("https://i.pinimg.com/564x/33/5f/14/335f1418109df8cf8bdbe15f80d621c4.jpg");
 `;
 
-const UserImageButton=styled.button`
-    position: absolute;
-    left: 30%;
-    top: 50%;
+const UserImageButton = styled.button`
+  position: absolute;
+  left: 37%;
+  top: 80%;
 
-    z-index: 2;
+  z-index: 2;
 
-    width: 3vw;
-    height: 3vw;
+  width: 3vw;
+  height: 3vw;
 
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 
-    background-color: rgba(255,255,255,0.19);
-    border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.19);
+  border-radius: 100%;
 
-    .icon{
-        width: 30px;
-        height: 30px;
+  .icon {
+    width: 30px;
+    height: 30px;
 
-        color: ${({theme})=>theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.white};
+    .icon {
+      color: ${({ theme }) => theme.colors.mainColor};
     }
+    transition: all 0.1s;
+  }
 
-    &:hover{
-        background-color:  ${({theme})=>theme.colors.white};
-        .icon{
-            color: ${({theme})=>theme.colors.mainColor};
-        }
-        transition: all 0.1s;
+  &:active {
+    background-color: ${({ theme }) => theme.colors.mainColor};
+    .icon {
+      color: ${({ theme }) => theme.colors.white};
     }
-
-    &:active{
-        background-color:${({theme})=>theme.colors.mainColor} ;
-        .icon{
-            color: ${({theme})=>theme.colors.white};
-        }
-        transition: all 0.1s;
-    }
+    transition: all 0.1s;
+  }
 `;
-const Contant=styled.div`
+const Contant = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  flex-wrap: wrap;
+  gap: 1.3vw;
+
+  .introduce {
     display: flex;
     flex-direction: column;
-
+    align-items: start;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
-    gap: 1.3vw;
+    gap: 1vw;
 
-    .introduce{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        /* justify-content: space-between; */
-        flex-wrap: wrap;
-        gap: 0.5vw;
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+const ContentHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  color: ${({ theme }) => theme.colors.white};
+  align-items: baseline;
 
-        color:${({theme})=>theme.colors.white};
+  flex-wrap: wrap;
+  gap: 2vw;
+
+  .userName {
+    font-size: ${({ theme }) => theme.fontSize.memberContentName};
+    font-family: ${({ theme }) => theme.fonts.korean};
+  }
+  .year {
+    font-size: ${({ theme }) => theme.fontSize.memberContentYearPosition};
+    font-family: ${({ theme }) => theme.fonts.korean};
+  }
+`;
+const EditUserPositionDiv = styled.div`
+  padding-left: 0.5vw;
+  border-bottom: 0.5vw solid ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
+
+  font-size: ${({ theme }) => theme.fontSize.profilePosition};
+  font-family: ${({ theme }) => theme.fonts.korean};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border-bottom: 0.5vw solid ${({ theme }) => theme.colors.mainColor};
+    transition: all 0.1s;
+  }
+
+  &:active {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border-bottom: 0.5vw solid ${({ theme }) => theme.colors.mainColor};
+    transition: all 0.1s;
+  }
+  &:focus {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border-bottom: 0.5vw solid ${({ theme }) => theme.colors.mainColor};
+    transition: all 0.1s;
+  }
+  .icon {
+    width: 1vw;
+    height: 1vw;
+  }
+  button {
+    color: ${({ theme }) => theme.colors.white};
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.mainColor};
+      transition: all 0.1s;
     }
-
-`
-const ContentHeader=styled.div`
-    display: flex;
-    flex-direction:row;
-    color:${({theme})=>theme.colors.white};
-    align-items: baseline;
-
-    flex-wrap: wrap;
-    gap: 2vw;
-
-    .userName{
-        font-size: ${({theme})=>theme.fontSize.memberContentName};
-        font-family: ${({theme})=>theme.fonts.korean};
+    &:active {
+      color: ${({ theme }) => theme.colors.mainColor};
+      transition: all 0.1s;
     }
-    .year{
-        font-size: ${({theme})=>theme.fontSize.memberContentYearPosition};
-        font-family: ${({theme})=>theme.fonts.korean};
+    &:focus {
+      color: ${({ theme }) => theme.colors.mainColor};
+      transition: all 0.1s;
     }
-`
-const EditUserPositionDiv=styled.div`
-    padding-left: 0.5vw;
-    border-bottom: 0.5vw solid ${({theme})=>theme.colors.white};
-    color:${({theme})=>theme.colors.white};
-
-    font-size:${({theme})=>theme.fontSize.profilePosition};
-    font-family: ${({theme})=>theme.fonts.korean};
-
-    &:hover{
-        color:${({theme})=>theme.colors.mainColor};
-        border-bottom: 0.5vw solid ${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
-    }
-
-    &:active{
-        color:${({theme})=>theme.colors.mainColor};
-        border-bottom: 0.5vw solid ${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
-    }
-    &:focus{
-        color:${({theme})=>theme.colors.mainColor};
-        border-bottom: 0.5vw solid ${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
-    }
-    .icon{
-        width:1vw;
-        height:1vw;
-    }
-    button{
-        
-        color:${({theme})=>theme.colors.white};
-
-        &:hover{
-        color:${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
-        }
-        &:active{
-            color:${({theme})=>theme.colors.mainColor};
-            transition: all 0.1s;
-        }
-        &:focus{
-            color:${({theme})=>theme.colors.mainColor};
-            transition: all 0.1s;
-        }
-    }
+  }
 `;
 
-const EditUserPosition=styled.input`
-    border: none;
-    outline: none;
-    background-color: transparent;
+const EditUserPosition = styled.input`
+  border: none;
+  outline: none;
+  background-color: transparent;
 
-    color:${({theme})=>theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
 
-    font-size:${({theme})=>theme.fontSize.profilePosition};
-    font-family: ${({theme})=>theme.fonts.korean};
+  font-size: ${({ theme }) => theme.fontSize.profilePosition};
+  font-family: ${({ theme }) => theme.fonts.korean};
 `;
-const AddUserIntroduce=styled.textarea`
-    padding:1.5vw;
-    color:${({theme})=>theme.colors.white};
-    background-color: rgba(255,255,255,0.19);
-    
-    border: none;
-    outline: none;
-    border-radius: 25px;
+const AddUserIntroduce = styled.textarea`
+  padding: 1.5vw;
+  color: ${({ theme }) => theme.colors.white};
+  background-color: rgba(255, 255, 255, 0.19);
 
-    width:100%;
+  border: 0.3vw solid rgba(255, 255, 255, 0);
+  outline: none;
+  border-radius: 25px;
 
-    resize:none;
+  width: 100%;
 
-    &:hover{
-        border: 0.3vw solid white ;
-        transition: all 0.1s;
-    }
-    &:active{
-        background-color: rgba(254,88,38,0.19);
-        color:${({theme})=>theme.colors.mainColor};
-        border: 0.3vw solid ${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
-    }
+  resize: none;
+
+  &:hover {
+    border: 0.3vw solid white;
+    transition: all 0.1s;
+  }
+  &:active {
+    background-color: rgba(254, 88, 38, 0.19);
+    color: ${({ theme }) => theme.colors.mainColor};
+    border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
+    transition: all 0.1s;
+  }
 `;
-const EditPasswordDiv=styled.div`
-    display: flex;
-    flex-direction:column;
-    align-items: flex-start;
+const EditPasswordDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-    flex-wrap: wrap;
-    gap:0.5vw;
+  flex-wrap: wrap;
+  gap: 0.5vw;
 
-    color:${({theme})=>theme.colors.white};
-    font-weight: bold;
-    font-size: ${({theme})=>theme.fontSize. profileText};
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fontSize.profileText};
 
-    /* flex-wrap: wrap;
+  /* flex-wrap: wrap;
     gap:2vw; */
 `;
-const EditButton=styled.button`
-    background-color: rgba(255,255,255,0.19);
-    color:${({theme})=>theme.colors.white};
+const EditButton = styled.button`
+  position: relative;
+  left: 40%;
+  top: 75%;
+  background-color: rgba(255, 255, 255, 0.19);
+  color: ${({ theme }) => theme.colors.white};
 
-    border-radius: 15px;
-    padding: 1vw;
-
-    font-size: ${({theme})=>theme.fontSize.profileButton};
-    font-weight: bold;
-    &:hover{
-        border: 0.3vw solid white ;
-        transition: all 0.1s;
-    }
-    &:active{
-        background-color: white;
-        color:${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
-    }
+  border-radius: 15px;
+  padding: 1vw;
+  margin-bottom: 50px;
+  border: 0.3vw solid rgba(255, 255, 255, 0);
+  font-size: ${({ theme }) => theme.fontSize.profileButton};
+  font-weight: bold;
+  &:hover {
+    border: 0.3vw solid white;
+    transition: all 0.1s;
+  }
+  &:active {
+    background-color: white;
+    color: ${({ theme }) => theme.colors.mainColor};
+    transition: all 0.1s;
+  }
 `;
-const Profile=()=>{
+const Profile = () => {
+  return (
+    <>
+      <Container>
+        <Header />
+        <ContentDiv>
+          <UserImageButton>
+            <BsFillCameraFill className="icon" />
+          </UserImageButton>
+          <UserImage
+          // src='https://i.pinimg.com/564x/3f/0e/cb/3f0ecb91c433030f5a413795c41a1d56.jpg'
+          />
+          <Contant>
+            <ContentHeader>
+              <span className="userName">김준영</span>
+              <span className="year">11기</span>
+              <EditUserPositionDiv>
+                <EditUserPosition placeholder="바꾸실 포지션을 작성해주세요" />
+                <button type="submit">
+                  <BsPencilFill className="icon" />
+                </button>
+              </EditUserPositionDiv>
+            </ContentHeader>
+            <div className="introduce">
+              한줄소개
+              <AddUserIntroduce placeholder="한줄 소개를 입력해주세요" />
+            </div>
+            <EditPasswordDiv>
+              로그인 정보 수정
+              <Password
+                firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
+                secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
+              />
+            </EditPasswordDiv>
+            <EditButton>수정하기</EditButton>
+          </Contant>
+        </ContentDiv>
+        <Footer />
+      </Container>
+    </>
+  );
+};
 
-    return(
-        <>
-            <Container>
-                <Header />
-                <ContentDiv>
-                    <UserImageButton>
-                        <BsFillCameraFill className='icon'/>
-                    </UserImageButton>
-                    <UserImage 
-                        // src='https://i.pinimg.com/564x/3f/0e/cb/3f0ecb91c433030f5a413795c41a1d56.jpg'
-                        />
-                    <Contant>
-                        <ContentHeader>
-                            <span className='userName'>김준영</span>
-                            <span className='year'>11기</span>
-                            <EditUserPositionDiv>
-                                <EditUserPosition placeholder='바꾸실 포지션을 작성해주세요'/>
-                                <button type='submit'>
-                                    <BsPencilFill className='icon'/>
-                                </button>
-                            </EditUserPositionDiv>
-                        </ContentHeader>
-                        <div className='introduce'>
-                            한줄소개
-                            <AddUserIntroduce placeholder='한줄 소개를 입력해주세요' />
-                        </div>
-                        <EditPasswordDiv>
-                            로그인 정보 수정
-                            <Password 
-                                firstPlaceHolder={'현재 비밀번호를 입력해주세요'}
-                                secondPlaceHolder={'변경하실 비밀번호를 입력해주세요'}
-                                />
-                        </EditPasswordDiv>
-                        <EditButton>수정하기</EditButton>
-                    </Contant>
-                </ContentDiv>
-                <Footer />
-            </Container>
-        </>
-    )
-}
-
-export default Profile
+export default Profile;
