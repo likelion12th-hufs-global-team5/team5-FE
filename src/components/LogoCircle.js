@@ -8,19 +8,27 @@ const Container=styled.div`
 
     flex-wrap: wrap;
     gap:3vw;
+    /* gap:20%; */
 
-    justify-content: start;
-    align-items: start;
+    /* justify-content: start; */
+    justify-content: space-between;
+    /* align-items: start; */
 
     width: 50%;
     height: 100%;
 
 `;
-const Logo=styled.div`
+const Logo=styled.p`
     display: flex;
     flex-direction: row;
     text-align: center;
     align-items: center;
+
+    /* width: 5%; */
+    /* width: 10vw;
+    height: auto; */
+    width: 100%;
+    height: 100%;
 
     font-family: ${({theme})=>theme.fonts.english};
     font-style: ${({theme})=>theme.fonts.style};
@@ -30,7 +38,7 @@ const Logo=styled.div`
     /* font-weight: ${({theme})=>theme.fontWeights.lo}; */
     color:${({theme})=>theme.colors.white};
 
-    /* background-color: blue; */
+    background-color: blue;
     .lion{
         color:${({theme})=>theme.colors.mainColor};
     }
@@ -67,6 +75,8 @@ const Circle=styled.div`
 
     width: 80%;
     height: 80%;
+    /* width: 50%;
+    height: 50%; */
     padding: 40%; 
     /* 원의 가로길이와 높이를 같게 만듦 */
     
