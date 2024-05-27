@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Cookies from 'js-cookie';
 
-import {login} from './redux/userSlice';
+import {userLogin} from './redux/userSlice';
 
 import { Route,BrowserRouter as Router,Routes } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ function App() {
     const id=Cookies.get('id');
 
     if (accessToken && id){
-      store.dispatch(login({accessToken,id}));
+      store.dispatch(userLogin({accessToken,id}));
     }
   },[])
 

@@ -114,14 +114,14 @@ const SecondPassword = styled.input`
   }
 `;
 
-const Password = ({ firstPlaceHolder, secondPlaceHolder }) => {
+const Password = ({ firstPlaceHolder, secondPlaceHolder, firstValue, secondValue }) => {
   return (
     <>
       <Container>
         <Text>PW</Text>
         <PasswordDiv>
-          <FirstPassword placeholder={firstPlaceHolder} />
-          <SecondPassword placeholder={secondPlaceHolder} />
+          <FirstPassword placeholder={firstPlaceHolder} value={firstValue} />
+          <SecondPassword placeholder={secondPlaceHolder} value={secondValue}/>
         </PasswordDiv>
       </Container>
     </>

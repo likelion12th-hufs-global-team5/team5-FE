@@ -9,6 +9,9 @@ import theme from './styles/theme';
 // import Theme from './styles/theme';
 import GlobalStyle from './styles/globalCss';
 
+import { Provider } from 'react-redux';
+import store from '../src/redux/store';
+
 const rootElement=document.getElementById('root');
 
 createRoot(rootElement).render(
@@ -16,6 +19,10 @@ createRoot(rootElement).render(
     <GlobalStyle />
     <App />
   </ThemeProvider>
+  // <Provider theme={theme} store={store}>
+  //   <GlobalStyle />
+  //   <App />
+  // </Provider>
 )
 
 reportWebVitals();
