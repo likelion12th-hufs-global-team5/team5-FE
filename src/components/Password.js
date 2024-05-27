@@ -1,132 +1,131 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container=styled.div`
-    display: flex;
-    flex-direction: row;
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
 
-    width: 100%;
-    justify-content: space-around;
-    
-    padding-left:1vw;
-    border-left: 0.3vw solid white;
-    
-    /* background-color: blue; */
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 1vw;
+  padding-left: 1vw;
+  border-left: 0.3vw solid white;
+
+  /* background-color: blue; */
 `;
-const Text=styled.p`
-    color:white;
-    font-weight: bold;
-`
-const PasswordDiv=styled.div`
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: left;
-    width: 100%;
-
-    flex-wrap: wrap;
-    gap: 0.7vw;
-
-    /* background-color: red; */
+const Text = styled.p`
+  color: white;
+  font-weight: bold;
 `;
-const FirstPassword=styled.input`
-    /* background-color:rgba(255,255,255,0.19);
+const PasswordDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+
+  flex-wrap: wrap;
+  gap: 1.5vw;
+
+  /* background-color: red; */
+`;
+const FirstPassword = styled.input`
+  /* background-color:rgba(255,255,255,0.19);
     color: white;
 
     border-radius: 50px;
 
     &:hover{
-        color: ${({theme})=>theme.colors.mainColor};
-        border: 0.3vw solid ${({theme})=>theme.colors.mainColor};
+        color: ${({ theme }) => theme.colors.mainColor};
+        border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
         transition: all 0.1s;
     } */
-    text-align: start;
+  text-align: start;
 
-    border-radius: 50px;
-    outline: none;
-    border: none;
+  border-radius: 50px;
+  outline: none;
+  border: 0.3vw solid rgba(255, 255, 255, 0);
 
-    color:${({theme})=>theme.colors.white};
-    background-color: rgba(255,255,255,0.19);
+  color: ${({ theme }) => theme.colors.white};
+  background-color: rgba(255, 255, 255, 0.19);
 
-    padding:15px;
+  padding: 15px;
 
-    width: 90%;
+  width: 90%;
 
-    &:hover{
-        color:${({theme})=>theme.colors.white};
-        border: 0.3vw solid white ;
+  &:hover {
+    color: ${({ theme }) => theme.colors.white};
+    border: 0.3vw solid white;
 
-        transition: all 0.1s;
-    }
-    &:active{
-        color:${({theme})=>theme.colors.mainColor};
-        border: 0.3vw solid ${({theme})=>theme.colors.mainColor};
-        background-color:rgba(254,88,38,0.19);
-        transition: all 0.1s;
-    }
-    /* &:valid{
-        color:${({theme})=>theme.colors.mainColor};
-        border: 0.3vw solid ${({theme})=>theme.colors.mainColor};
+    transition: all 0.1s;
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
+    background-color: rgba(254, 88, 38, 0.19);
+    transition: all 0.1s;
+  }
+  /* &:valid{
+        color:${({ theme }) => theme.colors.mainColor};
+        border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
         background-color:rgba(254,88,38,0.19);
         transition: all 0.1s;
     } */
 `;
-const SecondPassword=styled.input`
-    /* text-align: center; */
-    text-align: start;
+const SecondPassword = styled.input`
+  /* text-align: center; */
+  text-align: start;
 
-    border-radius: 50px;
-    outline: none;
-    border: none;
+  border-radius: 50px;
+  outline: none;
+  border: 0.3vw solid rgba(255, 255, 255, 0);
 
-    color:${({theme})=>theme.colors.white};
-    background-color: rgba(255,255,255,0.19);
+  color: ${({ theme }) => theme.colors.white};
+  background-color: rgba(255, 255, 255, 0.19);
 
-    padding:15px;
+  padding: 15px;
 
-    width: 90%;
+  width: 90%;
 
-    &:hover{
-        color:${({theme})=>theme.colors.white};
-        border: 0.3vw solid white ;
+  &:hover {
+    color: ${({ theme }) => theme.colors.white};
+    border: 0.3vw solid white;
 
-        transition: all 0.1s;
-    }
-    &:active{
-        color:${({theme})=>theme.colors.mainColor};
-        border: 0.3vw solid ${({theme})=>theme.colors.mainColor};
-        background-color:rgba(254,88,38,0.19);
-        transition: all 0.1s;
-    }
-    /* &:valid{
-        color:${({theme})=>theme.colors.mainColor};
-        border: 0.3vw solid ${({theme})=>theme.colors.mainColor};
+    transition: all 0.1s;
+  }
+  &:active {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
+    background-color: rgba(254, 88, 38, 0.19);
+    transition: all 0.1s;
+  }
+  /* &:valid{
+        color:${({ theme }) => theme.colors.mainColor};
+        border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
         background-color:rgba(254,88,38,0.19);
         transition: all 0.1s;
     } */
-    &:invalid{
-        color:${({theme})=>theme.colors.white};
-        border: 0.3vw solid ${({theme})=>theme.colors.white};
-        background-color:rgba(255,255,255,0.19);
-        transition: all 0.1s;
-    }
+  &:invalid {
+    color: ${({ theme }) => theme.colors.white};
+    border: 0.3vw solid ${({ theme }) => theme.colors.white};
+    background-color: rgba(255, 255, 255, 0.19);
+    transition: all 0.1s;
+  }
 `;
 
-const Password=({firstPlaceHolder, secondPlaceHolder})=>{
-
-    return(
-        <>
-            <Container>
-                <Text>PW</Text>
-                <PasswordDiv>
-                    <FirstPassword placeholder={firstPlaceHolder}/>
-                    <SecondPassword placeholder={secondPlaceHolder}/>
-                </PasswordDiv>
-            </Container>
-        </>
-    )
+const Password = ({ firstPlaceHolder, secondPlaceHolder }) => {
+  return (
+    <>
+      <Container>
+        <Text>PW</Text>
+        <PasswordDiv>
+          <FirstPassword placeholder={firstPlaceHolder} />
+          <SecondPassword placeholder={secondPlaceHolder} />
+        </PasswordDiv>
+      </Container>
+    </>
+  );
 };
 
 export default Password;
