@@ -1,7 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../redux/userSlice";
 
 import Header from "../components/Header";
@@ -51,8 +51,8 @@ const UserImage = styled.div`
 
 const UserImageButton = styled.button`
   position: absolute;
-  left: 37%;
-  top: 80%;
+  left: 36%;
+  top: 80.5%;
 
   z-index: 2;
 
@@ -243,48 +243,48 @@ const EditButton = styled.button`
   }
 `;
 const Profile = () => {
-    // const user = useSelector((state) => state.user.user);
-    // const [formData, setFormData] = useState({
-    //     part: user.part || '',
-    //     introduction: user.introduction || '',
-    //     userPhoto: user.userPhoto || '',
-    //     current_password: '',
-    //     new_password: ''
-    // });
+  // const user = useSelector((state) => state.user.user);
+  // const [formData, setFormData] = useState({
+  //     part: user.part || '',
+  //     introduction: user.introduction || '',
+  //     userPhoto: user.userPhoto || '',
+  //     current_password: '',
+  //     new_password: ''
+  // });
 
-    const [formData, setFormData] = useState({
-      part: 'testFe',
-      introduction:  '테스트입니다',
-      userPhoto: '',
-      current_password: '',
-      new_password: ''
+  const [formData, setFormData] = useState({
+    part: "testFe",
+    introduction: "테스트입니다",
+    userPhoto: "",
+    current_password: "",
+    new_password: "",
   });
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    // const handleChange = (e) => {
-    //     setFormData({
-    //       ...formData,
-    //       [e.target.name]: e.target.value,
-    //     });
-    // };
-    const handleChange=(e)=>{
-      const {name,value}=e.target;
-      setFormData({
+  // const handleChange = (e) => {
+  //     setFormData({
+  //       ...formData,
+  //       [e.target.name]: e.target.value,
+  //     });
+  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      editUser({
         ...formData,
-        [name]:value
-      });
-    };
-    
-    const handleSubmit = (e) => {
-      e.preventDefault();
-        dispatch(editUser(
-          { 
-            ...formData, 
-            // memberId: user.memberId 
-          }
-        ));
-      };
+        // memberId: user.memberId
+      })
+    );
+  };
   return (
     <>
       <Container>
@@ -298,23 +298,22 @@ const Profile = () => {
           />
           <Contant>
             <ContentHeader>
-              <span 
-                className="userName">
-                    김준영
-                    {/* {user.name} */}
-                    </span>
-              <span 
-                className="year">
-                    11기
-                    {/* {user.year} */}
-                    </span>
+              <span className="userName">
+                김준영
+                {/* {user.name} */}
+              </span>
+              <span className="year">
+                11기
+                {/* {user.year} */}
+              </span>
               <EditUserPositionDiv>
-                <EditUserPosition 
-                    type="text"
-                    name='part'
-                    // value={formData.part}
-                    // onChange={handleChange}
-                    placeholder="바꾸실 포지션을 작성해주세요" />
+                <EditUserPosition
+                  type="text"
+                  name="part"
+                  // value={formData.part}
+                  // onChange={handleChange}
+                  placeholder="바꾸실 포지션을 작성해주세요"
+                />
                 <button type="submit">
                   <BsPencilFill className="icon" />
                 </button>
@@ -322,14 +321,15 @@ const Profile = () => {
             </ContentHeader>
             <div className="introduce">
               한줄소개
-              <AddUserIntroduce 
-                type='text'
-                name='introduction'
+              <AddUserIntroduce
+                type="text"
+                name="introduction"
                 // value={formData.introduction}
                 // onChange={handleChange}
-                placeholder="한줄 소개를 입력해주세요">
-                  {/* {user.introduction} */}
-                </AddUserIntroduce>
+                placeholder="한줄 소개를 입력해주세요"
+              >
+                {/* {user.introduction} */}
+              </AddUserIntroduce>
             </div>
             <EditPasswordDiv>
               로그인 정보 수정

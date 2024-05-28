@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   color: #fff;
-
   flex-wrap: wrap;
   gap: 5vw;
   @media screen and (max-width: 768px) {
@@ -95,34 +96,66 @@ const Detail = styled.div`
   line-height: 1.5;
 `;
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
 const CurriculumDetail = () => {
+  const query = useQuery();
+  const id = query.get("id");
+  const url = `/sessions/detail/${id}/`;
+  const [sessionDetail, setSessionDetail] = useState({
+    sessionName: "임시 Title 입니다",
+    url: "임시 URL 입니다",
+    sessionIntro: "임시 세션 Detail 내용입니다",
+  });
+
+  useEffect(() => {
+    if (id) {
+      fetch(url)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("오류났어용");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setSessionDetail(data);
+        })
+        .catch((error) => {
+          console.error("Fetch error:", error);
+        });
+    }
+  }, [id, url]);
+
+  console.log("전달받은 id:", id);
+  console.log(sessionDetail);
+
+  const displayUrl = sessionDetail.url
+    ? sessionDetail.url
+    : "url이 입력되지 않았습니다.";
+  const displayIntro = sessionDetail.sessionIntro
+    ? sessionDetail.sessionIntro
+    : "내용이 입력되지 않았습니다";
+
+  if (!sessionDetail) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      <Container>
-        <Header />
-        <CurriculumBox>
-          <CloseButton to="/curriculum">
-            <FaTimes />
-          </CloseButton>
-          <Title>Github Session</Title>
-          <StyledHr />
-          <URL>
-            https://velog.io/@hufsglobal09/12th-Session-03.-Django-%EA%B8%B0%EC%B4%88restful-apiERD-%EC%84%A4%EA%B3%84
-          </URL>
-          <Detail>
-            🦁멋쟁이사자차럼 12기 백엔드 기초 세션🦁
-            <br />
-            화면에 보이지 않는 백엔드의개발은 어떻게 진행되는 걸까요? 🤔
-            <br />
-            어디서부터 어떻게 시작해야될지 막막하지 않으신가요..? 🥺
-            <br />
-            그래서 멋쟁이 선배 사자 나연님께서 장고 기초 세팅부터 프로젝트
-            실습까지 포함된 백엔드 기초 세션을 준비해주셨습니다~!🥴
-          </Detail>
-        </CurriculumBox>
-        <Footer />
-      </Container>
-    </>
+    <Container>
+      <Header />
+      <CurriculumBox>
+        <CloseButton to="/curriculum">
+          <FaTimes />
+        </CloseButton>
+        <Title>{sessionDetail.sessionName}</Title>
+        <StyledHr />
+        <URL>{displayUrl}</URL>
+        <Detail>{displayIntro}</Detail>
+      </CurriculumBox>
+      <Footer />
+    </Container>
   );
 };
 
