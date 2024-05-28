@@ -1,13 +1,14 @@
 import React,{useEffect, useState} from 'react';
-import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { Link,useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { userJoinMembership } from '../redux/userSlice';
 
-import { useDispatch, useSelector } from 'react-redux';
 
 import LogoCircle from '../components/LogoCircle';
-
 import Stars from '../components/Stars';
+
 
 const Container=styled.div`
     display:flex;
@@ -198,14 +199,9 @@ const JoinButton=styled.button`
 `;
 const JoinMembership=()=>{
     const navigate=useNavigate();
-    // const [formData,setFormData]=useState({
-    //     name:'',
-    //     studentNumber:'',
-    //     id:'',
-    //     password:'',
-    //     password2:'',
-    //     position:''
-    // });
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+
     const [formData, setFormData] = useState({
         memberId: "",
         name: "",
@@ -214,12 +210,10 @@ const JoinMembership=()=>{
         password1: "",
         password2: "",
         currentPosition: "",
-        year: 0,
+        year: Number,
         introduction: "",
         part: ""
       });
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
@@ -228,62 +222,31 @@ const JoinMembership=()=>{
             [name]:value
         });
     };
-    
-    const handlePositionChange=(e)=>{
-        const {value}=e.target;
+
+    const handleButtonChange = (e) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            position:value
+            [name]: value
         });
     };
 
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(formData);
-        
         alert('회원가입 성공~');
-        dispatch(userJoinMembership(formData));
+        dispatch(userJoinMembership({
+            "memberId": `${formData.memberId}`,
+            "name":`${formData.name}`,
+            "studentNumber": `${formData.studentNumber}`,
+            "password1": `${formData.password1}`,
+            "password2": `${formData.password2}`,
+            "currentPosition": `${formData.currentPosition}`,
+            "year": `${formData.year}`,
+            "part": `${formData.part}`
+        }));
         navigate('/login');
     }
-    
-    //chat 시작
-    useEffect(() => {
-        const storedFormData = localStorage.getItem('formData');
-        if (storedFormData) {
-            setFormData(JSON.parse(storedFormData));
-        }
-    }, []); // 빈 배열을 전달하여 페이지가 로드될 때 한 번만 실행되도록 함
-    
-    // formData가 변경될 때마다 로컬 스토리지에 저장
-    useEffect(() => {
-        localStorage.setItem('formData', JSON.stringify(formData));
-    }, [formData]);
-    // chat 끝
-
-
-        // localStorage
-        // useEffect(()=>{
-        //     if(formData.name == 'null'){
-        //         return 'name is null'
-        //     }
-        //     const storedValue=localStorage.getItem('formData');
-        //     if(formData){
-        //         setFormData(storedValue);
-        //     }
-        // },[])
-
-    // const handleFormSubmit=async(e)=>{
-        //     e.preventDefault();
-        //     try{
-            //         const response=await axios.post('백엔드 엔드포인트')
-            //         // 회원가입이 성공하면 서버로부터 받은 응답 처리하는 로직 추가
-            //         console.log(response.data);
-    //         // 성공한 경우 서버로부터 받은 데이터 출력
-    //     }catch(error){
-    //         // 회원가입이 실패하면 나는 에러 처리
-    //         console.error('Error during joinMembership : ',error);
-    //     }
-    // };
 
     return(
         <>
@@ -321,11 +284,21 @@ const JoinMembership=()=>{
                                 placeholder='학번을 작성해주세요.'/>
                         </JoinInputDiv>
                         <JoinInputDiv>
+                            <p>기수</p>
+                            <JoinInput 
+                                type='number'
+                                name='year'
+                                value={formData.year}
+                                onChange={handleInputChange}
+                                required
+                                placeholder='기수를 숫자로만 작성해주세요.'/>
+                        </JoinInputDiv>
+                        <JoinInputDiv>
                             <p>I  D</p>
                             <JoinInput 
                                 type='text'
-                                name='id'
-                                value={formData.id}
+                                name='memberId'
+                                value={formData.memberId}
                                 onChange={handleInputChange}
                                 required
                                 placeholder='아이디를 작성해주세요.'/>
@@ -334,8 +307,8 @@ const JoinMembership=()=>{
                             <p>P  W</p>
                             <JoinInput 
                                 type='password'
-                                name='password'
-                                value={formData.password}
+                                name='password1'
+                                value={formData.password1}
                                 onChange={handleInputChange}
                                 required
                                 placeholder='비밀번호를 작성해주세요.'/>
@@ -346,8 +319,6 @@ const JoinMembership=()=>{
                                 type='password'
                                 name='password2'
                                 value={formData.password2}
-                                // 위의 비밀번호와 비교하는 new event를 넣기
-                                // onChange={}
                                 onChange={handleInputChange}
                                 required
                                 placeholder='비밀번호를 다시 작성해주세요.'/>
@@ -357,29 +328,61 @@ const JoinMembership=()=>{
                             style={{
                                 justifyContent:'left',
                                 flexWrap:'wrap',
-                                gap:'1.9vw',
+                                // gap:'1.9vw',
                             }}
                         >
-                            <p>활동</p>
+                            <p>파트</p>
                             <div 
-                                onChange={handleInputChange}
-                                className='position'
+                                // onChange={handleInputChange}
+                                className='currentPosition'
                                 style={{
                                     justifyContent:'space-between'
                                 }}
                             >
                                 <JoinInputPosition
                                     type='button'
-                                    name='babylion'
-                                    value='babylion'
-                                    onClick={handlePositionChange}
+                                    name='part'
+                                    value='FE'
+                                    onClick={handleButtonChange}
+                                    required
+                                >Front-End</JoinInputPosition>
+                                <JoinInputPosition
+                                    type='button'
+                                    name='part'
+                                    value='BE'
+                                    onClick={handleButtonChange}
+                                    required
+                                >Back-End</JoinInputPosition>
+                            </div>
+                        </JoinInputDiv>
+                        <JoinInputDiv 
+                            className='positionDiv'
+                            style={{
+                                justifyContent:'left',
+                                flexWrap:'wrap',
+                                // gap:'1.9vw',
+                            }}
+                        >
+                            <p>활동</p>
+                            <div 
+                                // onChange={handleInputChange}
+                                className='currentPosition'
+                                style={{
+                                    justifyContent:'space-between'
+                                }}
+                            >
+                                <JoinInputPosition
+                                    type='button'
+                                    name='currentPosition'
+                                    value='아기사자'
+                                    onClick={handleButtonChange}
                                     required
                                 >아기사자</JoinInputPosition>
                                 <JoinInputPosition
                                     type='button'
-                                    name='manager'
-                                    value='manager'
-                                    onClick={handlePositionChange}
+                                    name='currentPosition'
+                                    value='운영진'
+                                    onClick={handleButtonChange}
                                     required
                                 >운영진</JoinInputPosition>
                             </div>

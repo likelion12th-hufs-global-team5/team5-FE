@@ -12,7 +12,6 @@ const Container=styled.div`
     flex-direction:row;
 
     align-items:center;
-	/* justify-content: center; */
     justify-content: space-between;
 
     padding:60px;
@@ -28,8 +27,6 @@ const LoginContainer=styled.div`
     flex-direction:column;
     text-align:left;
 
-    /* width:609px;
-    height:744px; */
     width: 40%;
     padding: 2vw;
 
@@ -170,6 +167,7 @@ const Login=()=>{
         });
     };
 
+    // login buttun
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(loginFormData);
@@ -180,6 +178,16 @@ const Login=()=>{
             }
         ))
         navigate('/');
+    }
+
+    // logout buttun
+    const handleLogoutButton=(e)=>{
+        e.preventDefault();
+        alert('logout합니다~');
+        dispatch(userLogout({
+            memberId:'',
+            password:''
+        }))
     }
 
     // chat 시작
@@ -227,7 +235,7 @@ const Login=()=>{
                         onClick={handleFormSubmit}
                     >Login</LoginButton>
                     <LoginButton
-                        onClick={()=>{dispatch(userLogout())}}
+                        onClick={()=>{dispatch(handleLogoutButton())}}
                     >
                         Logout
                     </LoginButton>
