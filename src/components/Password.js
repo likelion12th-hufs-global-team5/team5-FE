@@ -120,8 +120,14 @@ const Password = ({ firstPlaceHolder, secondPlaceHolder, firstValue, secondValue
       <Container>
         <Text>PW</Text>
         <PasswordDiv>
-          <FirstPassword placeholder={firstPlaceHolder} value={firstValue} />
-          <SecondPassword placeholder={secondPlaceHolder} value={secondValue}/>
+          <FirstPassword 
+            placeholder={firstPlaceHolder}
+            name="password1"
+            value={firstValue} />
+          <SecondPassword 
+            placeholder={secondPlaceHolder}
+            name="password2"
+            value={secondValue}/>
         </PasswordDiv>
       </Container>
     </>
