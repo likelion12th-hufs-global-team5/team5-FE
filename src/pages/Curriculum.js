@@ -140,8 +140,8 @@ const Curriculum = () => {
   const commonSessions = sessions.filter((session) =>
     [1, 2, 3, 4].includes(session.id)
   );
-  const feSessions = sessions.filter((session) => [5, 6].includes(session.id));
-  const beSessions = sessions.filter((session) => [7, 8].includes(session.id));
+  const feSessions = sessions.filter((session) => [5, 7].includes(session.id));
+  const beSessions = sessions.filter((session) => [6, 8].includes(session.id));
 
   return (
     <Container>
@@ -160,7 +160,7 @@ const Curriculum = () => {
               <SessionBar
                 key={session.id}
                 label={session.sessionName}
-                labelTo="/curriculumDetail"
+                labelTo={`/curriculumDetail?id=${session.id}`}
                 buttonTo="/curriculumUpload"
               />
             ))}
@@ -176,7 +176,7 @@ const Curriculum = () => {
               <SessionBar
                 key={session.id}
                 label={session.sessionName}
-                labelTo="/curriculumDetail"
+                labelTo={`/curriculumDetail?id=${session.id}`}
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
@@ -191,7 +191,7 @@ const Curriculum = () => {
               <SessionBar
                 key={session.id}
                 label={session.sessionName}
-                labelTo="/curriculumDetail"
+                labelTo={`/curriculumDetail?id=${session.id}`}
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
@@ -209,7 +209,7 @@ const Curriculum = () => {
               <SessionBar
                 key={session.id}
                 label={session.sessionName}
-                labelTo="/curriculumDetail"
+                labelTo={`/curriculumDetail?id=${session.id}`}
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
@@ -224,7 +224,7 @@ const Curriculum = () => {
               <SessionBar
                 key={session.id}
                 label={session.sessionName}
-                labelTo="/curriculumDetail"
+                labelTo={`/curriculumDetail?id=${session.id}`}
                 buttonTo="/curriculumUpload"
                 width="400px"
               />
