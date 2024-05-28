@@ -234,11 +234,12 @@ const Login=()=>{
                         type='submit'
                         onClick={handleFormSubmit}
                     >Login</LoginButton>
-                    <LoginButton
+                    {/* 로그아웃 버튼 */}
+                    {/* <LoginButton
                         onClick={()=>{dispatch(handleLogoutButton())}}
                     >
                         Logout
-                    </LoginButton>
+                    </LoginButton> */}
                     <GotoJoinMembership>
                         회원이 아니신가요?
                         <Link to='/joinMembership' className='textGotoJoin'>

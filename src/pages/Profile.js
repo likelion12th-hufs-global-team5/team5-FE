@@ -20,6 +20,7 @@ const Container = styled.div`
   gap: 5vw;
 
   /* width: 100%; */
+  justify-content: space-around;
 `;
 const ContentDiv = styled.div`
   display: flex;
