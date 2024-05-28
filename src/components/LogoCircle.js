@@ -38,7 +38,6 @@ const Logo=styled.p`
     /* font-weight: ${({theme})=>theme.fontWeights.lo}; */
     color:${({theme})=>theme.colors.white};
 
-    background-color: blue;
     .lion{
         color:${({theme})=>theme.colors.mainColor};
     }
