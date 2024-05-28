@@ -243,25 +243,47 @@ const EditButton = styled.button`
   }
 `;
 const Profile = () => {
-    const user = useSelector((state) => state.user.user);
+    // const user = useSelector((state) => state.user.user);
+    // const [formData, setFormData] = useState({
+    //     part: user.part || '',
+    //     introduction: user.introduction || '',
+    //     userPhoto: user.userPhoto || '',
+    //     current_password: '',
+    //     new_password: ''
+    // });
+
     const [formData, setFormData] = useState({
-        part: user.part || '',
-        introduction: user.introduction || '',
-        userPhoto: user.userPhoto || '',
-        current_password: '',
-        new_password: ''
-    });
+      part: 'testFe',
+      introduction:  '테스트입니다',
+      userPhoto: '',
+      current_password: '',
+      new_password: ''
+  });
+
     const dispatch = useDispatch();
-    const handleChange = (e) => {
-        setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
-        });
-      };
+
+    // const handleChange = (e) => {
+    //     setFormData({
+    //       ...formData,
+    //       [e.target.name]: e.target.value,
+    //     });
+    // };
+    const handleChange=(e)=>{
+      const {name,value}=e.target;
+      setFormData({
+        ...formData,
+        [name]:value
+      });
+    };
     
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(editUser({ ...formData, memberId: user.memberId }));
+    const handleSubmit = (e) => {
+      e.preventDefault();
+        dispatch(editUser(
+          { 
+            ...formData, 
+            // memberId: user.memberId 
+          }
+        ));
       };
   return (
     <>
@@ -278,20 +300,20 @@ const Profile = () => {
             <ContentHeader>
               <span 
                 className="userName">
-                    {/* 김준영 */}
-                    {user.name}
+                    김준영
+                    {/* {user.name} */}
                     </span>
               <span 
                 className="year">
                     11기
-                    {user.year}
+                    {/* {user.year} */}
                     </span>
               <EditUserPositionDiv>
                 <EditUserPosition 
                     type="text"
                     name='part'
-                    value={formData.part}
-                    onChange={handleChange}
+                    // value={formData.part}
+                    // onChange={handleChange}
                     placeholder="바꾸실 포지션을 작성해주세요" />
                 <button type="submit">
                   <BsPencilFill className="icon" />
@@ -303,10 +325,10 @@ const Profile = () => {
               <AddUserIntroduce 
                 type='text'
                 name='introduction'
-                value={formData.introduction}
-                onChange={handleChange}
+                // value={formData.introduction}
+                // onChange={handleChange}
                 placeholder="한줄 소개를 입력해주세요">
-                  {user.introduction}
+                  {/* {user.introduction} */}
                 </AddUserIntroduce>
             </div>
             <EditPasswordDiv>
@@ -314,9 +336,11 @@ const Profile = () => {
               <Password
                 type={Password}
                 firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
-                firstValue={formData.current_password}
+                // firstValue={formData.current_password}
                 secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
-                secondValue={formData.new_password}
+                // secondValue={formData.new_password}
+                onChange={handleChange}
+                value={formData.new_password}
               />
             </EditPasswordDiv>
             <EditButton>수정하기</EditButton>
