@@ -158,7 +158,7 @@ const Login=()=>{
     const dispatch=useDispatch()
 
     const [loginFormData,setLoginFormData]=useState({
-        id:'',
+        memberId:'',
         password:''
     });
 
@@ -173,8 +173,12 @@ const Login=()=>{
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         console.log(loginFormData);
-        dispatch(userLogin({memberId:'esder',password1:123}))
-        alert('로그인 성공~');
+        dispatch(userLogin(
+            {
+                memberId:`${loginFormData.id}`,
+                password:`${loginFormData.password}`
+            }
+        ))
         navigate('/');
     }
 
