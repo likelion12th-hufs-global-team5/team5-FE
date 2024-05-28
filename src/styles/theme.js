@@ -1,5 +1,3 @@
-import JoinMembership from "../pages/JoinMembership";
-
 const theme={
     colors:{
         mainColor:'#FE5826',

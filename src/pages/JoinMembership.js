@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { userJoinMembership } from '../redux/userSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {registerUserAsync} from '../redux/authSlice';
 
 import LogoCircle from '../components/LogoCircle';
 

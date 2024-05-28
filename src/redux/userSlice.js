@@ -22,6 +22,7 @@ const initialState = {
     error: null
 };
 
+
 // 비동기 로그인 액션 생성
 export const userLogin = createAsyncThunk(
     'user/login',
@@ -30,7 +31,11 @@ export const userLogin = createAsyncThunk(
             const response = await axios.post(`${SERVER_URL}/members/login/`, credentials);
             // 로그인 성공 후 쿠키에 로그인 정보 설정
             // 로그인 상태 유지 1일 동안 유지
-            Cookies.set('accessToken',response.data.accessToken,{expires:1});
+            Cookies.set(
+                'accessToken',
+                response.data.accessToken,
+                {expires:1}
+            );
             
             // 사용자 정보를 로컬 스토리지에 저장
             // localStorage.setItem('userData',JSON.stringify(userData));
@@ -42,6 +47,7 @@ export const userLogin = createAsyncThunk(
         }
     }
 );
+
 
 // 비동기 회원가입 액션 생성
 export const userJoinMembership = createAsyncThunk(
@@ -61,7 +67,7 @@ export const editUser = createAsyncThunk(
     'user/updateUser',
     async (userInfo, thunkAPI) => {
         try {
-            const response = await axios.put(`${SERVER_URL}/members/update/`, userInfo);
+            const response = await axios.patch(`${SERVER_URL}/members/update/`, userInfo);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
