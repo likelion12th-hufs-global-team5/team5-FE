@@ -16,6 +16,9 @@ const Container=styled.div`
 
     flex-wrap: wrap;
     gap:5vw;
+
+    /* justify-content: space-evenly; */
+    justify-content: space-around;
 `;
 const MemberContainer=styled.div`
     display: flex;

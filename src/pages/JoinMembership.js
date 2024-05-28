@@ -5,7 +5,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userJoinMembership } from '../redux/userSlice';
 
-
+import Password from '../components/Password';
 import LogoCircle from '../components/LogoCircle';
 import Stars from '../components/Stars';
 
@@ -17,7 +17,7 @@ const Container=styled.div`
     align-items:center;
 	justify-content: center;
 
-    /* padding:60px; */
+    padding:60px;
 
     flex-wrap: wrap;
     gap: 7vw;
@@ -32,6 +32,7 @@ const JoinContainer=styled.div`
     justify-content: space-between;
 
     width: 40%;
+    height: 100%;
     padding: 2vw;
 
     flex-wrap: wrap;
@@ -48,13 +49,19 @@ const JoinContainer=styled.div`
 
     // 회원가입 버튼 위치 조정때문에 넣음
     .empty{
-        /* background-color: blue; */
-        width: 70%;
+        width: 10%;
     }
 
     .position{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2vw;
+    }
+
+    .inputsDiv{
+        display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         gap: 2vw;
     }
@@ -101,6 +108,7 @@ const JoinInputDiv=styled.div`
         display: flex;
         flex-direction:row;
         align-items: center;
+        justify-content: space-between;
 
         flex-wrap: wrap;
         gap: 0.5vw;
@@ -109,11 +117,9 @@ const JoinInputDiv=styled.div`
 const JoinInput=styled.input`
     display:flex;
 
-    margin:30px 0px;
+    /* margin:30px 0px; */
     padding: 18px 23px;
 
-    /* width:450px;
-    height:50px; */
     width: 85%;
     height: auto;
 
@@ -129,17 +135,23 @@ const JoinInput=styled.input`
 
     color:${({theme})=>theme.colors.white};
 
-    &:hover{
-        border:solid 4px;
+    &:hover {
+    color: ${({ theme }) => theme.colors.white};
+    border: 0.3vw solid white;
 
-        background:rgba(254,88,38,0.19);
-        border-color:${({theme})=>theme.colors.mainColor};
-
-        color:${({theme})=>theme.colors.mainColor};
+    transition: all 0.1s;
     }
-
     &:hover::placeholder {
-        color:${({theme})=>theme.colors.mainColor}; /* hover 시 placeholder 색상 변경 */
+        color:${({theme})=>theme.colors.white}; /* hover 시 placeholder 색상 변경 */
+    }
+    &:active {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
+    background-color: rgba(254, 88, 38, 0.19);
+    transition: all 0.1s;
+    }
+    &:active::placeholder{
+        color:${({theme})=>theme.colors.mainColor};
     }
     
     /* Chrome, Safari, Edge, Opera */
@@ -149,7 +161,35 @@ const JoinInput=styled.input`
         margin: 0;
     }
 `;
-const JoinInputPosition=styled.button`
+const JoinButtonsDiv=styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+    flex-wrap: wrap;
+    /* gap:0.5vw; */
+    /* gap: 2.3vw; */
+    gap:1.5vw;
+
+    p{
+        width: 3vw;
+        
+        text-align: center;
+        font-size:${({theme})=>theme.fontSize.inputText};
+        font-weight:${({theme})=>theme.fontWeights.inputText};
+    }
+
+    .buttonSpace{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap:1vw;
+        justify-content: space-between;
+    }
+`;
+const JoinInputButtons=styled.button`
     background:rgba(255,255,255,0.19);
     color:${({theme})=>theme.colors.white};
     padding: 12px 25px;
@@ -206,14 +246,16 @@ const JoinMembership=()=>{
         memberId: "",
         name: "",
         studentNumber: "",
-        // userPhoto: '',
         password1: "",
         password2: "",
         currentPosition: "",
         year: Number,
         introduction: "",
         part: ""
-      });
+    });
+
+    // const [partSelect,setPartSelect]=useState(false);
+    // const [positionSelect,setPositionSelect]=useSelector(false);
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
@@ -224,6 +266,11 @@ const JoinMembership=()=>{
     };
 
     const handleButtonChange = (e) => {
+        // if (partSelect){
+        //     setPartSelect=!partSelect
+        // } else if (!partSelect){
+        //     setPartSelect
+        // }
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -258,7 +305,8 @@ const JoinMembership=()=>{
                         <p>한국외국어대학교 글로벌 캠퍼스<br />
                             멋쟁이사자처럼 대학 홈페이지 입니다.</p>
                     </JoinContainerHeader>
-                    <form 
+                    <form
+                        className='inputsDiv'
                         // onSubmit={handleFormSubmit}
                         onSubmit={handleFormSubmit}
                         style={{margin:'0px'}}
@@ -323,77 +371,51 @@ const JoinMembership=()=>{
                                 required
                                 placeholder='비밀번호를 다시 작성해주세요.'/>
                         </JoinInputDiv>
-                        <JoinInputDiv 
-                            className='positionDiv'
-                            style={{
-                                justifyContent:'left',
-                                flexWrap:'wrap',
-                                // gap:'1.9vw',
-                            }}
-                        >
+                        <JoinButtonsDiv>
                             <p>파트</p>
-                            <div 
-                                // onChange={handleInputChange}
-                                className='currentPosition'
-                                style={{
-                                    justifyContent:'space-between'
-                                }}
-                            >
-                                <JoinInputPosition
-                                    type='button'
-                                    name='part'
-                                    value='FE'
-                                    onClick={handleButtonChange}
-                                    required
-                                >Front-End</JoinInputPosition>
-                                <JoinInputPosition
-                                    type='button'
-                                    name='part'
-                                    value='BE'
-                                    onClick={handleButtonChange}
-                                    required
-                                >Back-End</JoinInputPosition>
+                            <div className='buttonSpace'>
+                                <JoinInputButtons
+                                        type='button'
+                                        name='part'
+                                        value='FE'
+                                        onClick={handleButtonChange}
+                                        required
+                                    >Front-End</JoinInputButtons>
+                                    <JoinInputButtons
+                                        type='button'
+                                        name='part'
+                                        value='BE'
+                                        onClick={handleButtonChange}
+                                        required
+                                    >Back-End
+                                </JoinInputButtons>
                             </div>
-                        </JoinInputDiv>
-                        <JoinInputDiv 
-                            className='positionDiv'
-                            style={{
-                                justifyContent:'left',
-                                flexWrap:'wrap',
-                                // gap:'1.9vw',
-                            }}
-                        >
+                        </JoinButtonsDiv>
+                        <JoinButtonsDiv>
                             <p>활동</p>
-                            <div 
-                                // onChange={handleInputChange}
-                                className='currentPosition'
-                                style={{
-                                    justifyContent:'space-between'
-                                }}
-                            >
-                                <JoinInputPosition
+                            <div className='buttonSpace'>
+                                <JoinInputButtons
                                     type='button'
                                     name='currentPosition'
                                     value='아기사자'
                                     onClick={handleButtonChange}
                                     required
-                                >아기사자</JoinInputPosition>
-                                <JoinInputPosition
+                                >아기사자</JoinInputButtons>
+                                <JoinInputButtons
                                     type='button'
                                     name='currentPosition'
                                     value='운영진'
                                     onClick={handleButtonChange}
                                     required
-                                >운영진</JoinInputPosition>
+                                >운영진</JoinInputButtons>
                             </div>
-                        </JoinInputDiv>
+                        </JoinButtonsDiv>
                     </form>
                     <div className='joinButton'>
                         <div className='empty'/>
                         <Link to={'/login'}>
                             <JoinButton
                                 type='submit'
-                                // disabled={loading}
                                 onClick={handleFormSubmit}
                             >
                                 회원가입
