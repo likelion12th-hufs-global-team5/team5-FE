@@ -196,7 +196,7 @@ const JoinInputButtons = styled.button`
 
   border-radius: 50px;
   box-sizing: border-box; /* border-box 값을 설정하여 border가 요소 안으로 들어가게 함 */
-
+  border: 3px solid rgba(255, 255, 255, 0);
   font-size: ${({ theme }) => theme.fontSize.joinPositionBtn};
 
   &:hover {
