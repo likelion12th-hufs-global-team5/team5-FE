@@ -30,9 +30,9 @@ const JoinContainer = styled.div`
   justify-content: center;
   justify-content: space-between;
 
-  width: 42.3%;
+  width: 40%;
   height: 100%;
-  padding: 1.5vw;
+  padding: 2vw;
 
   flex-wrap: wrap;
   gap: 1.5vw;
@@ -116,13 +116,13 @@ const JoinInputDiv = styled.div`
 const JoinInput = styled.input`
   display: flex;
 
-  margin: 0px;
+  /* margin:30px 0px; */
   padding: 18px 23px;
 
   width: 85%;
   height: auto;
 
-  border: none;
+  border: 0.3vw solid rgba(255, 255, 255, 0);
   border-radius: 50px;
 
   font-size: ${({ theme }) => theme.fontSize.loginInputText};
@@ -131,7 +131,7 @@ const JoinInput = styled.input`
 
   background: rgba(255, 255, 255, 0.19);
   //border-color: ${({ theme }) => theme.colors.white};
-  border: 0.3vw solid rgba(255, 255, 255, 0);
+
   color: ${({ theme }) => theme.colors.white};
 
   &:hover {
@@ -198,7 +198,7 @@ const JoinInputButtons = styled.button`
   box-sizing: border-box; /* border-box 값을 설정하여 border가 요소 안으로 들어가게 함 */
 
   font-size: ${({ theme }) => theme.fontSize.joinPositionBtn};
-  border: 3px solid rgba(255, 255, 255, 0);
+
   &:hover {
     background: rgba(255, 255, 255, 0.19);
     color: ${({ theme }) => theme.colors.white};
