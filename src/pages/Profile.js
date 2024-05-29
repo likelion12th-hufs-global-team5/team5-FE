@@ -6,8 +6,11 @@ import { editUser } from "../redux/userSlice";
 
 import Header from "../components/Header";
 import Password from "../components/Password";
+
 import Footer from "../components/Footer";
-import { BsPencilFill, BsFillCameraFill } from "react-icons/bs";
+import { BsPencilFill, BsFillCameraFill,BsExclamationCircleFill } from "react-icons/bs";
+import Stars from "../components/Stars";
+import Circle from "../components/Circle";
 
 const Container = styled.div`
   display: flex;
@@ -21,6 +24,9 @@ const Container = styled.div`
 
   /* width: 100%; */
   justify-content: space-around;
+
+  z-index: 10;
+  position: relative;
 `;
 const ContentDiv = styled.div`
   display: flex;
@@ -105,6 +111,18 @@ const Contant = styled.div`
     gap: 1vw;
 
     color: ${({ theme }) => theme.colors.white};
+  }
+
+  .passwordEdit{
+    /* display: flex;
+    flex-direction: row; */
+    flex-wrap: wrap;
+    gap: 1vw;
+    justify-content: left;
+    text-align: left;
+
+    color: white;
+    background-color:blue;
   }
 `;
 const ContentHeader = styled.div`
@@ -213,37 +231,61 @@ const EditPasswordDiv = styled.div`
   flex-wrap: wrap;
   gap: 0.5vw;
 
+  padding-left: 1vw;
+
   color: ${({ theme }) => theme.colors.white};
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.profileText};
 
-  /* flex-wrap: wrap;
-    gap:2vw; */
+  flex-wrap: wrap;
+    gap:2vw;
+
+  border-left: 0.3vw solid white;
 `;
 const EditPasswordInput=styled.input`
-  background:rgba(255,255,255,0.19);
+  display:flex;
+
+  padding: 18px 23px;
+
+  width: 85%;
+  height: auto;
+
+  border:none;
+  border-radius:50px;
+
+    font-size:${({theme})=>theme.fontSize.loginInputText};
+
+    outline:none;
+
+    background:rgba(255,255,255,0.19);
+    border-color:${({theme})=>theme.colors.white};
+
     color:${({theme})=>theme.colors.white};
-    padding: 12px 25px;
 
-    border-radius: 50px;
-    box-sizing: border-box; /* border-box 값을 설정하여 border가 요소 안으로 들어가게 함 */
+    &:hover {
+    color: ${({ theme }) => theme.colors.white};
+    border: 0.3vw solid white;
 
-    font-size: ${({theme})=>theme.fontSize.joinPositionBtn};
-
-    &:hover{
-        background:rgba(255,255,255,0.19);
-        color:${({theme})=>theme.colors.white};
-        border: solid 3px;
-        border-color: ${({theme})=>theme.colors.white};
-        transition: all 0.1s;
+    transition: all 0.1s;
     }
-
-    &:active{
-        background:rgba(254,88,38,0.19);
+    &:hover::placeholder {
+        color:${({theme})=>theme.colors.white}; /* hover 시 placeholder 색상 변경 */
+    }
+    &:active {
+    color: ${({ theme }) => theme.colors.mainColor};
+    border: 0.3vw solid ${({ theme }) => theme.colors.mainColor};
+    background-color: rgba(254, 88, 38, 0.19);
+    transition: all 0.1s;
+    }
+    &:active::placeholder{
         color:${({theme})=>theme.colors.mainColor};
-        border: solid 3px;
-        border-color: ${({theme})=>theme.colors.mainColor};
-        transition: all 0.1s;
+    }
+    
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 `;
 const EditButton = styled.button`
@@ -328,12 +370,12 @@ const Profile = () => {
           <Contant>
             <ContentHeader>
               <span className="userName">
-                김준영
-                {/* {user.name} */}
+                {/* 김준영 */}
+                {user.name}
               </span>
               <span className="year">
-                11기
-                {/* {user.year} */}
+                {/* 11기 */}
+                {user.year}
               </span>
               <EditUserPositionDiv>
                 <EditUserPosition
@@ -357,42 +399,48 @@ const Profile = () => {
                 onChange={handleChange}
                 placeholder="한줄 소개를 입력해주세요"
               >
-                {/* {user.introduction} */}
+                {user.introduction}
               </AddUserIntroduce>
             </div>
-            <EditPasswordDiv>
+            <div  className="passwordEdit">
+              <BsExclamationCircleFill />
               로그인 정보 수정
-              <EditPasswordInput 
-                type="password"
-                name='current_password'
-                placeholder="현재 비밀번호를 입력해주세요"
-                value={formData.current_password}
-                onChange={handleChange}
-              />
-              <EditPasswordInput 
-                type="password"
-                name='new_password'
-                placeholder="변경하실 비밀번호를 입력해주세요"
-                value={formData.new_password}
-                onChange={handleChange}
-              />
-              {/* <Password
-                type='password'
-                firstName='current_password'
-                firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
-                firstValue={formData.current_password}
-                secondName='new_password'
-                secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
-                secondValue={formData.new_password}
-                onChange={handleChange}
-                value={formData.new_password}
-              /> */}
-            </EditPasswordDiv>
+            </div>
+            <EditPasswordDiv>
+                P W
+                <EditPasswordInput 
+                  type="password"
+                  name='current_password'
+                  placeholder="현재 비밀번호를 입력해주세요"
+                  value={formData.current_password}
+                  onChange={handleChange}
+                />
+                <EditPasswordInput 
+                  type="password"
+                  name='new_password'
+                  placeholder="변경하실 비밀번호를 입력해주세요"
+                  value={formData.new_password}
+                  onChange={handleChange}
+                />
+                {/* <Password
+                  type='password'
+                  firstName='current_password'
+                  firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
+                  firstValue={formData.current_password}
+                  secondName='new_password'
+                  secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
+                  secondValue={formData.new_password}
+                  onChange={handleChange}
+                  value={formData.new_password}
+                /> */}
+              </EditPasswordDiv>
             <EditButton
               onClick={handleSubmit}
             >수정하기</EditButton>
           </Contant>
         </ContentDiv>
+        <Circle />
+        <Stars />
         <Footer />
       </Container>
     </>

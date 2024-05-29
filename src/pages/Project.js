@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
+import Stars from '../components/Stars';
 import Footer from '../components/Footer';
 import ImageContainers from '../components/ImageContainers';
 import { useEffect, useState } from 'react';

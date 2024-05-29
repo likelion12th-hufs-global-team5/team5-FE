@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { userLogin, userLogout } from '../redux/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveCookies, userLogin, userLogout } from '../redux/userSlice';
 import Cookies from 'js-cookie'
 
 import LogoCircle from '../components/LogoCircle';
@@ -153,7 +153,8 @@ const GotoJoinMembership=styled.div`
 
 const Login=()=>{
     const navigate=useNavigate();
-    const dispatch=useDispatch()
+    const dispatch=useDispatch();
+    // const user = useSelector((state) => state.user);
 
     const [loginFormData,setLoginFormData]=useState({
         memberId:'',
@@ -173,20 +174,52 @@ const Login=()=>{
     };
 
     // login buttun
-    const handleFormSubmit=(e)=>{
+    // const handleFormSubmit=(e)=>{
+    //     e.preventDefault();
+    //     console.log(loginFormData);
+    //     dispatch(userLogin(
+    //         {
+    //             memberId:`${loginFormData.memberId}`,
+    //             password:`${loginFormData.password}`
+    //         }
+    //         // saveCookies(
+    //         //     {
+    //         //         memberId: `${user.memberId}`,
+    //         //         name: `${user.name}`,
+    //         //         studentNumber: `${user.studentNumber}`,
+    //         //         userPhoto: `${user.userPhoto}`,
+    //         //         password1: `${user.password1}`,
+    //         //         password2:`${user.password2}`,
+    //         //         currentPosition: `${user.currentPosition}`,
+    //         //         year: `${user.year}`,
+    //         //         introduction: `${user.introduction}`,
+    //         //         part:`${user.part}`,
+    //         //         isLoggedIn: true,
+    //         //         status: 'idle',
+    //         //         error: null
+    //         //     }
+    //         )))
+    //     // 로그인 성공 시 하루동안만 쿠키 유지
+    //     Cookies.set('isLoggedIn','true',{expires:1})
+    //     setIsLoggedIn(true);
+    //     navigate('/');
+    // }
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(loginFormData);
-        dispatch(userLogin(
-            {
-                memberId:`${loginFormData.memberId}`,
-                password:`${loginFormData.password}`
-            }
-        ))
-        // 로그인 성공 시 하루동안만 쿠키 유지
-        Cookies.set('isLoggedIn','true',{expires:1})
-        setIsLoggedIn(true);
-        navigate('/');
-    }
+        try {
+            await dispatch(userLogin({
+                memberId: loginFormData.memberId,
+                password: loginFormData.password
+            })).unwrap();
+
+            Cookies.set('isLoggedIn', 'true', { expires: 1 });
+            setIsLoggedIn(true);
+            navigate('/');
+        } catch (error) {
+            console.error('로그인 실패:', error);
+        }
+    };
 
     // logout buttun
     const handleLogoutButton=(e)=>{
@@ -209,18 +242,6 @@ const Login=()=>{
             setIsLoggedIn(false);
         }
     };
-
-    // chat - 로컬스토리지
-    // useEffect(()=>{
-    //     const storedLoginFormData=localStorage.getItem('loginFormData');
-    //     if(storedLoginFormData){
-    //         setLoginFormData(JSON.parse(storedLoginFormData));
-    //     }
-    // },[])
-
-    // useEffect(()=>{
-    //     localStorage.setItem('loginFormData',JSON.stringify(loginFormData));
-    // },[loginFormData]);
 
     // chat - cookie save
     useEffect(()=>{

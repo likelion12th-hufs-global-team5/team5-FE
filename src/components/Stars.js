@@ -60,6 +60,7 @@ const StyledStar=styled.div`
     /* 위치 설정 */
     left: ${props => props.x}px;
     top: ${props => props.y}px;
+
 `;
 
 
@@ -73,7 +74,7 @@ function generateRandomStars(min, max) {
     const time = Math.random() * 1 + 2;
     const scale = Math.floor(Math.random()*0.7)+1.3;
     stars.push({ x, y, size, time, scale });
-  }
+  } 
   return stars;
 }
 
