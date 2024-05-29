@@ -14,7 +14,6 @@ const EachDiv=styled.div`
     background-image: url(${props => props.imageUrl});
     position:relative;
 
-    background-image: url('https://cdn.crowdpic.net/detail-thumb/thumb_d_4D24F988C28882891AB7778F32CF1285.jpg'); 
 `;
 
 const TextBelowImageContainer = styled.div`
@@ -32,6 +31,8 @@ const Rectangularinimg=styled.div`
     width : 110px;
     height : 50px;
     border-radius:15px;
+    display:flex;
+    justify-content: center;
     text-align: center;
     position: absolute;
     bottom: 20px;
@@ -47,25 +48,19 @@ const Rectangularinimg=styled.div`
 
 
 const ImageContainers=(props)=>{
-    const {imageUrl}=props;
+    const {imageUrl, label1, label2}=props;
     return(    
 
         <ImageContainer>
         <Link to={'/projectDetail'} className='link'>
             <EachDiv imageUrl={imageUrl}>
                 <Rectangularinimg>
-                    해커톤프로젝트
-                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                    <Link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
+                    {label1}
                 </Rectangularinimg>
             </EachDiv>
             <TextBelowImageContainer>
                 <TextBelowImage>
-                    안녕하세요.
-                    <Link rel="preconnect" href="https://fonts.googleapis.com"></Link>
-                    <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></Link>
-                    <Link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"></Link>
+                    {label2}
                 </TextBelowImage>
             </TextBelowImageContainer>
         </Link>
