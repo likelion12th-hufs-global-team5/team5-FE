@@ -23,12 +23,6 @@ const Container=styled.div`
     }
 `;
 
-const Text=styled.p`
-    color:blue;
-    font-weight:700;
-
-    margin:30px auto;
-`;
 
 const Projectdiv=styled.div`
     width : 1150px;
@@ -39,7 +33,6 @@ const Projectdiv=styled.div`
     padding-top:50px;
     padding-right:77px;
 `;
-
 
 const Buttondiv=styled.button`
     width : 195px;
@@ -54,13 +47,16 @@ const Buttondiv=styled.button`
     font-family: "Noto+Sans+KR", sans-serif;
     transition: all 0.1s;
     
-    
-
-&:hover{
-    color:${({theme}) => theme.colors.fe5826};
-    background-color:white;
-
-}
+    &:hover{
+        color:${({theme}) => theme.colors.mainColor};
+        background-color:white;
+        transition: all 0.2s;
+    }
+    &:active{
+        color: ${({theme})=>theme.colors.white};
+        background-color:${({theme}) => theme.colors.mainColor};
+        transition: all 0.2s;
+    }
 `;
 
 const StyledLink = styled(Link)`
@@ -116,12 +112,16 @@ const Project=()=>{
             <Container>
                 <Header />
                   <Projectdiv>
-                    <StyledLink to={'/projectUpload'}>
+                    {/* <StyledLink to={'/projectUpload'}>
                         <Buttondiv onClick={handleUploadClick}>
                             업로드하기
                         </Buttondiv>
-                    </StyledLink>
-
+                    </StyledLink> */}
+                    <Link to={'/projectUpload'}>
+                        <Buttondiv onClick={handleUploadClick}>
+                            업로드하기
+                        </Buttondiv>
+                    </Link>
                     <ImageContainerSet>
                         {filteredProjects.map((project) => (
                             <ImageContainers
