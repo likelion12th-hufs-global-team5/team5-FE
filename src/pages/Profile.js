@@ -55,6 +55,17 @@ const UserImage = styled.div`
   height: 27.5vw;
   padding-left: 50px;
   background-image: url("https://i.pinimg.com/564x/33/5f/14/335f1418109df8cf8bdbe15f80d621c4.jpg");
+
+  img{
+    z-index: 0;
+  }
+
+  .imgButton{
+    position: absolute;
+    /* z-index: 2; */
+
+    color: white;
+  }
 `;
 
 const UserImageButton = styled.button`
@@ -62,7 +73,7 @@ const UserImageButton = styled.button`
   left: 39%;
   top: 63.5%;
 
-  z-index: 2;
+  /* z-index: 1; */
 
   width: 3vw;
   height: 3vw;
@@ -74,6 +85,10 @@ const UserImageButton = styled.button`
   border-radius: 100%;
 
   .icon {
+    /* position: absolute;
+    left: 90%;
+    top: 90%; */
+
     width: 30px;
     height: 30px;
 
@@ -363,21 +378,22 @@ const Profile = () => {
       <Container>
         <Header />
         <ContentDiv>
-          <UserImageButton>
+          {/* <UserImageButton>
             <BsFillCameraFill className="icon" />
           </UserImageButton>
-          <UserImage
-          // src='https://i.pinimg.com/564x/3f/0e/cb/3f0ecb91c433030f5a413795c41a1d56.jpg'
-          />
+          <UserImage/> */}
+          <UserImage>
+            <UserImageButton className="iconButton">
+              <BsFillCameraFill className="icon"/>
+            </UserImageButton>
+          </UserImage>
           <Contant>
             <ContentHeader>
               <span className="userName">
-                {/* 김준영 */}
-                {user.name}
+                김준영
               </span>
               <span className="year">
-                {/* 11기 */}
-                {user.year}
+                11기
               </span>
               <EditUserPositionDiv>
                 <EditUserPosition
@@ -424,17 +440,7 @@ const Profile = () => {
                 value={formData.new_password}
                 onChange={handleChange}
               />
-              {/* <Password
-                  type='password'
-                  firstName='current_password'
-                  firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
-                  firstValue={formData.current_password}
-                  secondName='new_password'
-                  secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
-                  secondValue={formData.new_password}
-                  onChange={handleChange}
-                  value={formData.new_password}
-                /> */}
+
             </EditPasswordDiv>
             <EditButton onClick={handleSubmit}>수정하기</EditButton>
           </Contant>
