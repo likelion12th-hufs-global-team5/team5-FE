@@ -30,8 +30,10 @@ const Text=styled.p`
     margin:30px auto;
 
     &:hover{
-    background-color:white;
-    color:#FE5826;
+    color:${({theme})=>theme.colors.mainColor};
+    background:${({theme})=>theme.colors.white};
+    /* border-radius:20px ; */
+    transition: all 0.1s;
     }
 `;
 
@@ -166,10 +168,12 @@ const Button2=styled.button`
     &.active, &:active{
     background-color:rgba(254,58,26,0.75);
     color:white;
+    transition: all 0.1s;
     }
     &:hover{
         background-color:rgba(254,58,26,0.75);
         color:white;
+        transition: all 0.1s;
     }
 `;
 
@@ -189,11 +193,13 @@ const Button3=styled.button`
     &.active, &:active{
     background-color:rgba(254,58,26,0.75);
     color:white;
+    transition: all 0.1s;
     }
 
     &:hover{
         background-color:rgba(254,58,26,0.75);
         color:white;
+        transition: all 0.1s;
     }
 `;
 
@@ -227,6 +233,7 @@ const WriteDetails=styled.textarea`
         border: 3px solid #FE5826;
         background-color: rgba(254, 58, 26, 0.19);
         color: #FE5826;
+        transition: all 0.1s;
     }
     &:hover::placeholder{
         color:#FE5826;
@@ -250,6 +257,7 @@ const UploadButton=styled.button`
     &:hover{
         background-color:white;
         color:#FE5826;
+        transition: all 0.1s;
     }
 `;
 
@@ -335,7 +343,7 @@ const ProjectUpload=()=>{
                         <AllDiv>
                             <InputService 
                             type="text"
-                            placeholder="서비스명을 작성해주세요.(최대 10글자)"
+                            placeholder="서비스명을 작성해주세요.(최대 20글자)"
                             maxLength="10"
                             value={teamName}
                             onChange={(e) => setTeamName(e.target.value)} />
