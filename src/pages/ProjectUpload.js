@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -264,12 +264,36 @@ const UploadButton=styled.button`
 
 
 const ProjectUpload=()=>{
-    const [teamName, setTeamName] = useState('');
-    const [projectType, setProjectType] = useState('');
-    const [projectDetail, setProjectDetail] = useState('');
-    const [projectImage, setProjectImage] = useState(null);
+    const url = "/projects/upload/";
+    const [projectUp, setProjectUp] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [activeButton, setActiveButton] = useState(null);
+    const [projectType, setProjectType] = useState('');
+    const [projectImage, setProjectImage] = useState(null);
+    const [teamName, setTeamName] = useState('');
+    const [projectDetail, setProjectDetail] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+    fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("error!");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      setProjectUp(data);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+      setError("Failed to load projects. ");
+      setLoading(false);
+    });
+    }, [url]);
+    console.log(projectUp);
 
     const handleButtonClick = (buttonType) => {
         setActiveButton(buttonType);
@@ -283,47 +307,11 @@ const ProjectUpload=()=>{
         }
     };
 
-    const [error, setError] = useState(null);
-
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append('teamName', teamName);
-        formData.append('projectType', projectType);
-        formData.append('projectDetail', projectDetail);
-        if (projectImage) {
-            formData.append('projectImage', projectImage);
-        }
-
-        try {
-            const response = await fetch('https://likelionteam5.pythonanywhere.com/projects/upload', {
-                method: 'POST',
-                headers: {
-                    "Authorization": "usertoken"
-                },
-                body: formData
-            });
-
-            if (response.ok) {
-                navigate('/project');
-            } else if (response.status === 400) {
-                const responseData = await response.json();
-                setError(responseData);
-            } else {
-                console.error('이 피드는 필수입니다.');
-            }
-        } catch (error) {
-            console.error('이 피드는 필수입니다.', error);
-        }
-    };
-
 
     return(
         <>
             <Container>
                 <Header />
-                <form onSubmit={handleFormSubmit}>
                     <Projectdiv>
                         <Link to={'/project'} className='link'>
                         <CloseButton>
@@ -344,8 +332,10 @@ const ProjectUpload=()=>{
                             <InputService 
                             type="text"
                             placeholder="서비스명을 작성해주세요.(최대 20글자)"
-                            maxLength="10"
+                            maxLength="20"
                             value={teamName}
+                            label1={projectType}
+                            label3={projectImage}
                             onChange={(e) => setTeamName(e.target.value)} />
                             <ButtonContainer>
                                 <Button1
@@ -361,20 +351,16 @@ const ProjectUpload=()=>{
                             <WriteDetails 
                             placeholder="프로젝트 소개를 작성해주세요. (최대 200글자)" 
                             maxLength="200"
-                            value={projectDetail}
+                            label2={projectDetail}
                             onChange={(e) => setProjectDetail(e.target.value)}/>
                             <Link to={'/project'} className='link'>
-                                <UploadButton type="submit">
-                                    업로드하기
-                                </UploadButton>
-                            </Link>
+                                    <UploadButton type="submit">
+                                        업로드하기
+                                    </UploadButton>
+                                </Link>
                         </AllDiv>
                     </Projectdiv>
-                </form>
                 <Footer />
-                {error && (
-                    <div>Error: {Object.values(error).flat().join(',')}</div>
-                )}
             </Container>
         </>
     )

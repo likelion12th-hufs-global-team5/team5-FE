@@ -76,6 +76,7 @@ const Project=()=>{
     const url = "/projects/all/";
     const [projects, setProjects] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -92,12 +93,9 @@ const Project=()=>{
         .catch((error) => {
           console.error("Fetch error:", error);
         });
-    }, [url]);
+    }, []);
 
     console.log(projects);
-    const filteredProjects = projects.filter((project) =>
-      [1, 2, 3, 4, 5].includes(project.id)
-    );
 
     const handleUploadClick = () => {
         const isLoggedIn = true;
@@ -123,7 +121,7 @@ const Project=()=>{
                         </Buttondiv>
                     </Link>
                     <ImageContainerSet>
-                        {filteredProjects.map((project) => (
+                        {projects.map((project) => (
                             <ImageContainers
                             key={project.id}
                             label1={project.projectType}
