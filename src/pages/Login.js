@@ -75,7 +75,7 @@ const LoginInput=styled.input`
     width:100%;
     height: auto;
 
-    border:none;
+    /* border:none; */
     border-radius:50px;
 
     font-size:${({theme})=>theme.fontSize.loginInputText};
@@ -85,6 +85,7 @@ const LoginInput=styled.input`
 
     background:rgba(255,255,255,0.19);
     border-color:${({theme})=>theme.colors.white};
+    
 
     color:${({theme})=>theme.colors.white};
 

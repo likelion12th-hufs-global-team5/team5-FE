@@ -51,16 +51,22 @@ const Buttondiv=styled.button`
     float:right;
     font-size:28px;
     font-weight : 700;
-    font-family: "Noto+Sans+KR", sans-serif;
-    transition: all 0.1s;
-    
-    
 
-&:hover{
-    color:${({theme}) => theme.colors.fe5826};
-    background-color:white;
+    /* font-family: "Noto+Sans+KR", sans-serif; */
+    font-family: ${({theme})=>theme.fonts.korean};
 
-}
+    &:hover{
+        background-color:white;
+        color:#FE5826;
+        transition: all 0.2s;
+    }
+
+    &:active{
+        color:white;
+        background-color: ${({theme})=>theme.colors.mainColor};
+        transition: all 0.2s;
+    }
+
 `;
 
 const StyledLink = styled(Link)`
@@ -116,11 +122,19 @@ const Project=()=>{
             <Container>
                 <Header />
                   <Projectdiv>
+<<<<<<< Updated upstream
                     <StyledLink to={'/projectUpload'}>
                         <Buttondiv onClick={handleUploadClick}>
                             업로드하기
                         </Buttondiv>
                     </StyledLink>
+=======
+                    <Link to={'/projectUpload'} className='link'>
+                        <Buttondiv onClick={handleUploadClick}>
+                            업로드하기
+                        </Buttondiv>
+                    </Link>
+>>>>>>> Stashed changes
 
                     <ImageContainerSet>
                         {filteredProjects.map((project) => (
