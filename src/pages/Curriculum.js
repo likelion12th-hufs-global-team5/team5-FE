@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const CurriculumBox = styled.div`
   width: 1000px;
-  height: 1100px;
+  height: 1150px;
   background-color: rgba(255, 255, 255, 0.19);
   border-radius: 35px;
   display: flex;
@@ -34,13 +34,15 @@ const Curriculumtext = styled.p`
   margin-bottom: 25px;
   color: white;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 55px;
+  font-family: ${({ theme }) => theme.fonts.english};
 `;
 
 const Curriculumsubtext = styled.p`
   margin-bottom: 88px;
   font-size: 13px;
   color: white;
+  font-family: ${({ theme }) => theme.fonts.korean};
 `;
 
 const CommoncurBox = styled.div`
@@ -60,8 +62,9 @@ const CommonTitle = styled.p`
   padding-left: 45px;
   padding-bottom: 20px;
   text-align: left;
-  font-size: 25px;
+  font-size: 35px;
   margin: 0 0 10px 0;
+  font-family: ${({ theme }) => theme.fonts.korean};
 `;
 
 const Commonsubtitle = styled.p`
@@ -70,6 +73,7 @@ const Commonsubtitle = styled.p`
   padding-left: 45px;
   font-size: 14px;
   margin: 0 0 10px 0;
+  font-family: ${({ theme }) => theme.fonts.korean};
 `;
 
 const Commonline = styled.div`
@@ -100,7 +104,7 @@ const PartTitle = styled.p`
   color: #fe5826;
   font-weight: bold;
   text-align: left;
-  font-size: 25px;
+  font-size: 35px;
   padding-left: 5px;
 `;
 
@@ -109,6 +113,7 @@ const Partsubitle = styled.p`
   text-align: left;
   font-size: 14px;
   margin-top: 10px;
+  font-family: ${({ theme }) => theme.fonts.korean};
 `;
 
 const Hackerthon = styled.p`
@@ -116,7 +121,8 @@ const Hackerthon = styled.p`
   color: #fe5826;
   font-weight: bold;
   text-align: left;
-  font-size: 25px;
+  font-size: 50px;
+  font-family: ${({ theme }) => theme.fonts.english};
 `;
 
 const Curriculum = () => {

@@ -25,10 +25,10 @@ const StyledLink = styled(Link)`
 `;
 
 const ButtonLabel = styled.span`
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
   flex-grow: 1;
   text-align: left;
+  font-family: ${({ theme }) => theme.fonts.english};
 `;
 
 const UploadButton = styled.button`
