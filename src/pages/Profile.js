@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../redux/userSlice";
@@ -220,6 +220,32 @@ const EditPasswordDiv = styled.div`
   /* flex-wrap: wrap;
     gap:2vw; */
 `;
+const EditPasswordInput=styled.input`
+  background:rgba(255,255,255,0.19);
+    color:${({theme})=>theme.colors.white};
+    padding: 12px 25px;
+
+    border-radius: 50px;
+    box-sizing: border-box; /* border-box 값을 설정하여 border가 요소 안으로 들어가게 함 */
+
+    font-size: ${({theme})=>theme.fontSize.joinPositionBtn};
+
+    &:hover{
+        background:rgba(255,255,255,0.19);
+        color:${({theme})=>theme.colors.white};
+        border: solid 3px;
+        border-color: ${({theme})=>theme.colors.white};
+        transition: all 0.1s;
+    }
+
+    &:active{
+        background:rgba(254,88,38,0.19);
+        color:${({theme})=>theme.colors.mainColor};
+        border: solid 3px;
+        border-color: ${({theme})=>theme.colors.mainColor};
+        transition: all 0.1s;
+    }
+`;
 const EditButton = styled.button`
   position: relative;
   left: 40%;
@@ -244,6 +270,10 @@ const EditButton = styled.button`
   }
 `;
 const Profile = () => {
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const user=useSelector((state)=>state.user);
+
   // const user = useSelector((state) => state.user.user);
   // const [formData, setFormData] = useState({
   //     part: user.part || '',
@@ -254,21 +284,13 @@ const Profile = () => {
   // });
 
   const [formData, setFormData] = useState({
-    part: "testFe",
-    introduction: "테스트입니다",
+    part: "",
+    introduction: "",
     userPhoto: "",
     current_password: "",
     new_password: "",
   });
 
-  const dispatch = useDispatch();
-
-  // const handleChange = (e) => {
-  //     setFormData({
-  //       ...formData,
-  //       [e.target.name]: e.target.value,
-  //     });
-  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -279,12 +301,18 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    alert('회원정보 수정 완료~');
     dispatch(
       editUser({
         ...formData,
-        // memberId: user.memberId
+        'part': `${formData.part}`,
+        'introduction': `${formData.introduction}`,
+        'userPhoto': `${formData.userPhoto}`,
+        'current_password': `${formData.current_password}`,
+        'new_password': `${formData.new_password}`
       })
     );
+    navigate('/')
   };
   return (
     <>
@@ -311,8 +339,8 @@ const Profile = () => {
                 <EditUserPosition
                   type="text"
                   name="part"
-                  // value={formData.part}
-                  // onChange={handleChange}
+                  value={formData.part}
+                  onChange={handleChange}
                   placeholder="바꾸실 포지션을 작성해주세요"
                 />
                 <button type="submit">
@@ -325,8 +353,8 @@ const Profile = () => {
               <AddUserIntroduce
                 type="text"
                 name="introduction"
-                // value={formData.introduction}
-                // onChange={handleChange}
+                value={formData.introduction}
+                onChange={handleChange}
                 placeholder="한줄 소개를 입력해주세요"
               >
                 {/* {user.introduction} */}
@@ -334,17 +362,35 @@ const Profile = () => {
             </div>
             <EditPasswordDiv>
               로그인 정보 수정
-              <Password
-                type={Password}
+              <EditPasswordInput 
+                type="password"
+                name='current_password'
+                placeholder="현재 비밀번호를 입력해주세요"
+                value={formData.current_password}
+                onChange={handleChange}
+              />
+              <EditPasswordInput 
+                type="password"
+                name='new_password'
+                placeholder="변경하실 비밀번호를 입력해주세요"
+                value={formData.new_password}
+                onChange={handleChange}
+              />
+              {/* <Password
+                type='password'
+                firstName='current_password'
                 firstPlaceHolder={"현재 비밀번호를 입력해주세요"}
-                // firstValue={formData.current_password}
+                firstValue={formData.current_password}
+                secondName='new_password'
                 secondPlaceHolder={"변경하실 비밀번호를 입력해주세요"}
-                // secondValue={formData.new_password}
+                secondValue={formData.new_password}
                 onChange={handleChange}
                 value={formData.new_password}
-              />
+              /> */}
             </EditPasswordDiv>
-            <EditButton>수정하기</EditButton>
+            <EditButton
+              onClick={handleSubmit}
+            >수정하기</EditButton>
           </Contant>
         </ContentDiv>
         <Footer />
