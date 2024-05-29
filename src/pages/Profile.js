@@ -56,11 +56,11 @@ const UserImage = styled.div`
   padding-left: 50px;
   background-image: url("https://i.pinimg.com/564x/33/5f/14/335f1418109df8cf8bdbe15f80d621c4.jpg");
 
-  img{
+  img {
     z-index: 0;
   }
 
-  .imgButton{
+  .imgButton {
     position: absolute;
     /* z-index: 2; */
 
@@ -274,8 +274,8 @@ const EditPasswordInput = styled.input`
   outline: none;
 
   background: rgba(255, 255, 255, 0.19);
-  border-color: ${({ theme }) => theme.colors.white};
-
+  //border-color: ${({ theme }) => theme.colors.white};
+  border: 0.3vw solid rgba(255, 255, 255, 0);
   color: ${({ theme }) => theme.colors.white};
 
   &:hover {
@@ -384,17 +384,13 @@ const Profile = () => {
           <UserImage/> */}
           <UserImage>
             <UserImageButton className="iconButton">
-              <BsFillCameraFill className="icon"/>
+              <BsFillCameraFill className="icon" />
             </UserImageButton>
           </UserImage>
           <Contant>
             <ContentHeader>
-              <span className="userName">
-                김준영
-              </span>
-              <span className="year">
-                11기
-              </span>
+              <span className="userName">김준영</span>
+              <span className="year">11기</span>
               <EditUserPositionDiv>
                 <EditUserPosition
                   type="text"
@@ -440,7 +436,6 @@ const Profile = () => {
                 value={formData.new_password}
                 onChange={handleChange}
               />
-
             </EditPasswordDiv>
             <EditButton onClick={handleSubmit}>수정하기</EditButton>
           </Contant>
