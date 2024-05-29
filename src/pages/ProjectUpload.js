@@ -259,6 +259,12 @@ const UploadButton=styled.button`
         color:#FE5826;
         transition: all 0.1s;
     }
+
+    &:active{
+        background-color: #FE5826;
+        color:white;
+        transition: all 0.1s;
+    }
 `;
 
 
