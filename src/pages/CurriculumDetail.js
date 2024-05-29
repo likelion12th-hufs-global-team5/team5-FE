@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import Stars from "../components/Stars";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -103,13 +103,12 @@ const useQuery = () => {
 const CurriculumDetail = () => {
   const query = useQuery();
   const id = query.get("id");
-  const url = `/sessions/detail/${id}/`;
   const [sessionDetail, setSessionDetail] = useState({
     sessionName: "임시 Title 입니다",
     url: "임시 URL 입니다",
     sessionIntro: "임시 세션 Detail 내용입니다",
   });
-
+  const url = `/sessions/detail/${id}/`;
   useEffect(() => {
     if (id) {
       fetch(url)
@@ -154,6 +153,7 @@ const CurriculumDetail = () => {
         <URL>{displayUrl}</URL>
         <Detail>{displayIntro}</Detail>
       </CurriculumBox>
+      <Stars />
       <Footer />
     </Container>
   );

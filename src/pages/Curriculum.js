@@ -3,9 +3,11 @@ import SessionBar from "../components/Sessionbar";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Stars from "../components/Stars";
 
 const Container = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -24,6 +26,7 @@ const CurriculumBox = styled.div`
   padding: 0;
   margin-top: 77px;
   margin-bottom: 77px;
+  z-index: 1;
 `;
 
 const Curriculumtext = styled.p`
@@ -232,6 +235,8 @@ const Curriculum = () => {
           </div>
         </PartBox>
       </CurriculumBox>
+
+      <Stars />
       <Footer />
     </Container>
   );

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import Stars from "../components/Stars";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -221,6 +221,7 @@ const CurriculumUpload = () => {
           />
           <UploadButton>업로드 하기</UploadButton>
         </CurriculumBox>
+        <Stars />
         <Footer />
       </Container>
     </>
