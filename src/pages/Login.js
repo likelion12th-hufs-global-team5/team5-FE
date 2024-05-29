@@ -3,6 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { userLogin, userLogout } from '../redux/userSlice';
+import Cookies from 'js-cookie'
 
 import LogoCircle from '../components/LogoCircle';
 import Stars from '../components/Stars';
@@ -159,6 +160,10 @@ const Login=()=>{
         password:''
     });
 
+    const [userId,setUserId]=useState('');
+    const [password,setPassword]=useState('');
+    const [isLoggedIn,setIsLoggedIn]=useState(false);
+
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
         setLoginFormData({
@@ -173,10 +178,13 @@ const Login=()=>{
         console.log(loginFormData);
         dispatch(userLogin(
             {
-                memberId:`${loginFormData.id}`,
+                memberId:`${loginFormData.memberId}`,
                 password:`${loginFormData.password}`
             }
         ))
+        // 로그인 성공 시 하루동안만 쿠키 유지
+        Cookies.set('isLoggedIn','true',{expires:1})
+        setIsLoggedIn(true);
         navigate('/');
     }
 
@@ -188,19 +196,36 @@ const Login=()=>{
             memberId:'',
             password:''
         }))
+        //로그아웃시 쿠키 삭제
+        Cookies.remove('isLoggedIn');
+        navigate('/');
     }
 
-    // chat 시작
-    useEffect(()=>{
-        const storedLoginFormData=localStorage.getItem('loginFormData');
-        if(storedLoginFormData){
-            setLoginFormData(JSON.parse(storedLoginFormData));
+    const checkLoginStatus=()=>{
+        const loggedIn=Cookies.get('isLoggedIn');
+        if (loggedIn === 'true'){
+            setIsLoggedIn(true);
+        }else{
+            setIsLoggedIn(false);
         }
-    },[])
+    };
 
+    // chat - 로컬스토리지
+    // useEffect(()=>{
+    //     const storedLoginFormData=localStorage.getItem('loginFormData');
+    //     if(storedLoginFormData){
+    //         setLoginFormData(JSON.parse(storedLoginFormData));
+    //     }
+    // },[])
+
+    // useEffect(()=>{
+    //     localStorage.setItem('loginFormData',JSON.stringify(loginFormData));
+    // },[loginFormData]);
+
+    // chat - cookie save
     useEffect(()=>{
-        localStorage.setItem('loginFormData',JSON.stringify(loginFormData));
-    },[loginFormData]);
+        checkLoginStatus();
+    },[]);
 
     return(
         <>
@@ -215,8 +240,8 @@ const Login=()=>{
                     <p id='inputText'>ID</p>
                     <LoginInput 
                         type='text'
-                        name='id'
-                        value={loginFormData.id}
+                        name='memberId'
+                        value={loginFormData.memberId}
                         onChange={handleInputChange}
                         required
                         placeholder='아이디를 입력해주세요.'
@@ -235,11 +260,12 @@ const Login=()=>{
                         onClick={handleFormSubmit}
                     >Login</LoginButton>
                     {/* 로그아웃 버튼 */}
-                    {/* <LoginButton
-                        onClick={()=>{dispatch(handleLogoutButton())}}
+                    <LoginButton
+                        // onClick={()=>{dispatch(handleLogoutButton())}}
+                        onClick={handleLogoutButton}
                     >
                         Logout
-                    </LoginButton> */}
+                    </LoginButton>
                     <GotoJoinMembership>
                         회원이 아니신가요?
                         <Link to='/joinMembership' className='textGotoJoin'>

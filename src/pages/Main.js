@@ -43,23 +43,16 @@ const Main = () => {
     const [isLoggedIn, setIsLoggedIn]=useState(Cookies.get('isLoggedIn')==='true');
 
     // 로컬스토리지
-    const [inputValue,setInputValue]=useState('');
+    // const [inputValue,setInputValue]=useState('');
 
-    useEffect(()=>{
-        const storedValue=localStorage.getItem('inputValue');
-        if(storedValue){
-            setInputValue(storedValue);
-        }
-    },
+    // useEffect(()=>{
+    //     const storedValue=localStorage.getItem('inputValue');
+    //     if(storedValue){
+    //         setInputValue(storedValue);
+    //     }
+    // },
     // 빈 배열을 전달하여 페이지가 로드될 때 한 번만 실행되도록함
-    []);
-    
-    // input 값 변경될 때마다 상태 업데이트 및 로컬 스토리지에 저장
-    const handleChange=(event)=>{
-        const value=event.target.value;
-        setInputValue(value);
-        localStorage.setItem('inputValue',value);
-    };
+    // []);
 
     // 로그인 버튼 클릭 시 로그인 상태를 변경하고 쿠키를 설정 -> 이거는 로그인 페이지에서 선언하기
     const handleLogin=()=>{
@@ -72,6 +65,20 @@ const Main = () => {
         Cookies.remove('isLoggedIn');
     }
 
+    // const handleClick = () => {
+    //     if (isLoggedIn) {
+    //         onLogout(()=>{
+    //           setIsLoggedIn(false);
+    //           Cookies.remove('isLoggedIn');
+    //         });
+    //     } else {
+    //         onLogin(()=>{
+    //           setIsLoggedIn(true);
+    //         //   Cookies.set('isLoggedIn','true');
+    //         });
+    //     }
+    // };
+
     return(
         <>
             <Container>
@@ -79,16 +86,11 @@ const Main = () => {
                     isLoggedIn={isLoggedIn} 
                     onLogin={handleLogin} 
                     onLogout={handleLogout}
-                    
+                    // onClick={handleClick}
+                    // {isLoggedIn?
+                    //     onclick={handleLogout}:onclick={handleLogin}
+                    // }
                     />
-                {/* 테스트용 코드 */}
-                {/* <input
-                    type='text'
-                    value={inputValue}
-                    onChange={handleChange}
-                    placeholder='test input localStorage'
-                />
-                <p>Test Input value : {inputValue}</p> */}
                 <Circle styled={{ zIndex: 10 }}/>
                 <Stars />
                 <Footer />

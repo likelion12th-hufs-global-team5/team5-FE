@@ -1,7 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect,useState } from 'react';
+import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import Cookies from 'js-cookie'
 
+import { userLogin, userLogout } from '../redux/userSlice';
 import Logo from './Logo';
 
 import { BsCaretDownFill } from 'react-icons/bs';
@@ -87,15 +90,6 @@ const LoginButton = styled.button`
   }
 `;
 
-// const LoginButton=({isLoggedIn, onLogin, onLogout })=>{
-//   return(
-//     <button 
-//       onClick={isLoggedIn?onLogout:onLogin}>
-//       {isLoggedIn?'LOGOUT':'LOGIN'}
-//     </button>
-//   )
-// }
-
 const Header = ({isLoggedIn, onLogin, onLogout}) => {
   return (
     <>
@@ -130,10 +124,11 @@ const Header = ({isLoggedIn, onLogin, onLogout}) => {
         <User>
           <UserImg />
           <Link to={'/login'}>
-          <LoginButton 
-                isLoggedIn={isLoggedIn} onLogin={onLogin} onLogout={onLogout}>
-                {isLoggedIn ? 'LOGOUT':'LOGIN'}
-          </LoginButton>
+            <LoginButton
+              // isLoggedIn={isLoggedIn} onLogin={onLogin} onLogout={onLogout}
+            >
+              {isLoggedIn ? 'LOGOUT':'LOGIN'}
+            </LoginButton>
           </Link>
         </User>
       </Container>
