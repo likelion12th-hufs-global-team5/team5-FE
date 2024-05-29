@@ -39,6 +39,7 @@ const CircleDiv = styled.div`
     border-radius: 50%;
     animation: ${rotate} 1s linear infinite;
     transition: background-color 0.2s;
+;
 `;
 
 const Slogan = styled.div`
@@ -57,9 +58,9 @@ const Slogan = styled.div`
 const Circle = () => {
     return (
         <>
-            <CircleDiv>
-                <Slogan>GROWL - TO<br/>- &gt; WORLD</Slogan>
-            </CircleDiv>
+        <CircleDiv>
+            <Slogan>GROWL - TO<br/>- &gt; WORLD</Slogan>
+        </CircleDiv>
         </>
     )
 };

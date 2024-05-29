@@ -36,10 +36,6 @@ export const userLogin = createAsyncThunk(
                 response.data.accessToken,
                 {expires:1}
             );
-            
-            // 사용자 정보를 로컬 스토리지에 저장
-            // localStorage.setItem('userData',JSON.stringify(userData));
-
             return response.data;
         } catch (error) {
             console.error('Login failed:',error);
@@ -74,6 +70,34 @@ export const editUser = createAsyncThunk(
         }
     }
 );
+
+// 회원 정보 쿠키에 저장 액션
+export const saveCookies=createAsyncThunk(
+    'user/saveCookies',
+    async (userInfo, thunkAPI)=>{
+        try{
+            // 여기에 쿠키 저장 코드를 작성하면
+            const response = Cookies.saveCookies(userInfo);
+            console.log('userInfo : ',userInfo);
+            return response.data;
+        } catch(error){
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
+// 회원 정보 쿠키에 저장한거 받아온 것
+export const getSaveCookies=createAsyncThunk(
+    'user/getSaveCookies',
+    async(userInfo, thunkAPI)=>{
+        try{
+            const response=Cookies.set(userInfo,userInfo.value);
+            return response.data
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+)
 
 const userSlice = createSlice({
     name: 'user',

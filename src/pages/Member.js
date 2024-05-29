@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
-
+import Stars from '../components/Stars';
 import Footer from '../components/Footer';
 import Image from '../image/test.jpg';
 
@@ -207,6 +207,7 @@ const Member=()=>{
                         </MemberDetail>
                     </MemberList>
                 </MemberContainer>
+                <Stars />
                 <Footer />
             </Container>
         </>
