@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../redux/userSlice";
 
 import Header from "../components/Header";
-import Password from "../components/Password";
 
 import Footer from "../components/Footer";
 import {
   BsPencilFill,
   BsFillCameraFill,
   BsExclamationCircleFill,
+  BsPersonSquare
 } from "react-icons/bs";
 import Stars from "../components/Stars";
 
@@ -25,7 +25,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   gap: 5vw;
 
-  /* width: 100%; */
   justify-content: space-around;
 
   z-index: 10;
@@ -63,6 +62,9 @@ const UserImage = styled.div`
   .imgButton {
     position: absolute;
     /* z-index: 2; */
+
+    flex-wrap: wrap;
+    gap: 0.5vw;
 
     color: white;
   }
@@ -122,23 +124,10 @@ const Contant = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
     gap: 1vw;
 
     color: ${({ theme }) => theme.colors.white};
-  }
-
-  .passwordEdit {
-    /* display: flex;
-    flex-direction: row; */
-    flex-wrap: wrap;
-    gap: 1vw;
-    justify-content: left;
-    text-align: left;
-
-    color: white;
-    background-color: blue;
   }
 `;
 const ContentHeader = styled.div`
@@ -215,6 +204,23 @@ const EditUserPosition = styled.input`
   font-size: ${({ theme }) => theme.fontSize.profilePosition};
   font-family: ${({ theme }) => theme.fonts.korean};
 `;
+const EditIntroduceHeader=styled.div`
+  display: flex;
+  flex-direction: row;
+
+  justify-content: left;
+  text-align: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 1vw;
+
+  color: white;
+
+  .icon{
+    margin:0;
+  }
+`;
 const AddUserIntroduce = styled.textarea`
   padding: 1.5vw;
   color: ${({ theme }) => theme.colors.white};
@@ -227,6 +233,8 @@ const AddUserIntroduce = styled.textarea`
   width: 100%;
 
   resize: none;
+  font-size: ${({ theme }) => theme.fontSize.loginInputText};
+
 
   &:hover {
     border: 0.3vw solid white;
@@ -239,6 +247,7 @@ const AddUserIntroduce = styled.textarea`
     transition: all 0.1s;
   }
 `;
+
 const EditPasswordDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -263,7 +272,7 @@ const EditPasswordInput = styled.input`
 
   padding: 18px 23px;
 
-  width: 85%;
+  width: 100%;
   height: auto;
 
   border: none;
@@ -319,28 +328,41 @@ const EditButton = styled.button`
   font-size: ${({ theme }) => theme.fontSize.profileButton};
   font-weight: bold;
   &:hover {
-    border: 0.3vw solid white;
+    /* border: 0.3vw solid white; */
+    color: ${({theme})=>theme.colors.mainColor};
+    background-color: white;
     transition: all 0.1s;
   }
   &:active {
-    background-color: white;
-    color: ${({ theme }) => theme.colors.mainColor};
+    /* background-color: white;
+    color: ${({ theme }) => theme.colors.mainColor}; */
     transition: all 0.1s;
+
+    background-color: ${({theme})=>theme.colors.mainColor};
+    color: white;
+  }
+`;
+const EditPasswordHeader=styled.div`
+  display: flex;
+  flex-direction: row;
+
+  justify-content: left;
+  text-align: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 1vw;
+
+  color: white;
+
+  .icon{
+    margin:0;
   }
 `;
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-
-  // const user = useSelector((state) => state.user.user);
-  // const [formData, setFormData] = useState({
-  //     part: user.part || '',
-  //     introduction: user.introduction || '',
-  //     userPhoto: user.userPhoto || '',
-  //     current_password: '',
-  //     new_password: ''
-  // });
 
   const [formData, setFormData] = useState({
     part: "",
@@ -378,10 +400,6 @@ const Profile = () => {
       <Container>
         <Header />
         <ContentDiv>
-          {/* <UserImageButton>
-            <BsFillCameraFill className="icon" />
-          </UserImageButton>
-          <UserImage/> */}
           <UserImage>
             <UserImageButton className="iconButton">
               <BsFillCameraFill className="icon" />
@@ -405,21 +423,24 @@ const Profile = () => {
               </EditUserPositionDiv>
             </ContentHeader>
             <div className="introduce">
-              한줄소개
-              <AddUserIntroduce
+            <EditIntroduceHeader>
+              <BsPersonSquare className="icon"/>
+                한줄소개
+            </EditIntroduceHeader>
+            <AddUserIntroduce
                 type="text"
                 name="introduction"
                 value={formData.introduction}
                 onChange={handleChange}
                 placeholder="한줄 소개를 입력해주세요"
-              >
+            >
                 {user.introduction}
-              </AddUserIntroduce>
+            </AddUserIntroduce>
             </div>
-            <div className="passwordEdit">
-              <BsExclamationCircleFill />
-              로그인 정보 수정
-            </div>
+            <EditPasswordHeader>
+              <BsExclamationCircleFill className="icon"/>
+                로그인 정보 수정              
+            </EditPasswordHeader>
             <EditPasswordDiv>
               P W
               <EditPasswordInput
@@ -440,7 +461,6 @@ const Profile = () => {
             <EditButton onClick={handleSubmit}>수정하기</EditButton>
           </Contant>
         </ContentDiv>
-
         <Stars />
         <Footer />
       </Container>
